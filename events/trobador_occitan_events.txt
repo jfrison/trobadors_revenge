@@ -63,7 +63,7 @@ country_event = {
 
 	trigger = {
 		advisor = trobador
-		NOT = { has_country_modifier = innovation_wave }
+		#NOT = { has_country_modifier = innovation_wave }
 	}
 
 	mean_time_to_happen = {
@@ -99,22 +99,17 @@ country_event = {
 	}
 
 	option = {
-		name = "trobador_occitan_1_opta"		# We need him at the court
-		add_prestige = 5
-		add_treasury = -50
-		create_advisor = trobador
+		name = "trobador_occitan_2_opta"		# Let the scholars study it
 		add_country_modifier = {
 			name = "innovation_wave"
 			duration = 365
 		}
+		#trigger = {
+		#	NOT = { has_country_modifier = innovation_wave }
+		#}
 	}
 	option = {
-		name = "trobador_occitan_1_optb"		# Let him wander
-		random_neighbor_country = {
-			add_opinion = {
-				who = ROOT
-				modifier = opinion_pleased
-			}
-		}
+		name = "trobador_occitan_2_optb"		# Display it in the throne room
+		add_prestige = 10
 	}
 }

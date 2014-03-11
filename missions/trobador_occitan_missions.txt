@@ -329,6 +329,18 @@ cancel_nice_dedition = {
 			factor = 2
 			mil = 4
 		}	
+		modifier = {
+			factor = 0.3
+			102 = { owner = { NOT = { adm_tech = 15 } } }
+		}	
+		modifier = {
+			factor = 0.3
+			102 = { owner = { NOT = { adm_tech = 20 } } }
+		}	
+		modifier = {
+			factor = 0.3
+			102 = { owner = { NOT = { adm_tech = 25 } } }
+		}	
 	}
 	immediate = {
 		add_claim = 102
@@ -369,7 +381,7 @@ conquer_occitania = {
 		culture_group = occitanocatala
 		is_subject = no
 		NOT = { exists = OCC }
-		any_province = { has_province_flag = claimed_by_occitan_mission } # otherwise this mission is not multiplayer-safe
+		NOT = { any_province = { has_province_flag = claimed_by_occitan_mission } } # otherwise this mission is not multiplayer-safe
 	}
 	abort = {
 		is_subject = yes		
