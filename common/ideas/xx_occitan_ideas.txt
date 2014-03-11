@@ -1,0 +1,52 @@
+# These ideas are loaded after all country ideas, but before default idea.
+
+occitan_ideas = {
+	start = {
+		global_tax_modifier = 0.10
+		mercenary_cost = -0.1
+	}
+	
+	bonus = {
+		technology_cost = -0.10
+	}
+	
+	trigger = {
+		OR = {
+			tag = OCC
+			primary_culture = occitan
+			primary_culture = occitain
+			primary_culture = aquitaine
+			primary_culture = gascon
+		}
+	}
+	free = yes
+	
+	religious_openmindedness = {
+		tolerance_heretic = 1
+		idea_cost = -0.1
+		interest = -1
+	}
+	paratge_traditions = {
+		diplomatic_reputation = 2
+	}
+	mediterranean_multiculturalism = {
+		tolerance_heathen = 1
+		global_missionary_strength = -0.02
+		religious_unity = 0.25
+	}
+	merchant_cities = {	
+		global_trade_power = 0.15
+		naval_maintenance_modifier = -0.1
+	}
+	ambiguous_diplomacy = {
+		diplomatic_upkeep = 2
+	}
+	foral_laws = {
+		global_revolt_risk = -1
+		republican_tradition = 0.005
+	}
+	occitan_renaissance = {
+		prestige = 1
+	}
+}
+

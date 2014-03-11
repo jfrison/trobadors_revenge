@@ -1,0 +1,582 @@
+namespace = occitanism_spreading
+
+#########################
+## Converting Countries
+
+country_event = {
+	id = occitanism_spreading.1
+	title = "occitanism_spreading_1_title"
+	desc = "occitanism_spreading_1_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		OR = {
+			primary_culture = gascon
+			primary_culture = aquitaine
+			primary_culture = occitain
+ 		}
+		any_country = {
+			OR = {
+				primary_culture = occitan
+				primary_culture = catala
+			}
+			has_opinion = { who = ROOT value = 50 }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+		modifier = {
+			factor = 100
+			has_country_flag = refused_occitanism
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_1_opta"		# Accept
+		change_primary_culture = occitan
+		every_owned_province = {
+			limit = {
+				OR = {
+					culture = gascon
+					culture = aquitaine
+					culture = occitain
+				}
+			}
+			change_culture = occitan
+		}
+		FRA = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mildly_displeased
+			}
+		}
+	}
+	option = {
+		name = "occitanism_spreading_1_optb"		# Refuse
+		every_country = {
+			limit = {
+				OR = {
+					primary_culture = catala
+					primary_culture = occitan
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_displeased
+			}
+		}
+		set_country_flag = refused_occitanism
+	}
+}
+
+country_event = {
+	id = occitanism_spreading.2
+	title = "occitanism_spreading_2_title"
+	desc = "occitanism_spreading_2_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		primary_culture = catalan
+ 		any_country = {
+			OR = {
+				primary_culture = occitan
+				primary_culture = catala
+			}
+			has_opinion = { who = ROOT value = 50 }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+		modifier = {
+			factor = 100
+			has_country_flag = refused_occitanism
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_2_opta"		# Accept
+		change_primary_culture = catala
+		every_owned_province = {
+			limit = {
+				culture = catalan
+			}
+			change_culture = catala
+		}
+		CAS = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mildly_displeased
+			}
+		}
+		SPA = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_mildly_displeased
+			}
+		}
+	}
+	option = {
+		name = "occitanism_spreading_2_optb"		# Refuse
+		every_country = {
+			limit = {
+				OR = {
+					primary_culture = catala
+					primary_culture = occitan
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_displeased
+			}
+		}
+		set_country_flag = refused_occitanism
+	}
+}
+
+###################################
+## Separatism in other countries
+
+country_event = {
+	id = occitanism_spreading.3
+	title = "occitanism_spreading_3_title"
+	desc = "occitanism_spreading_3_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		NOT = { primary_culture = catalan }
+		NOT = { primary_culture = catala }
+		any_owned_province = {
+			culture = catalan
+		}
+ 		any_country = {
+			OR = {
+				primary_culture = occitan
+				primary_culture = catala
+			}
+			has_opinion = { who = ROOT value = 50 }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+		modifier = {
+			factor = 100
+			has_country_flag = refused_occitanism
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_3_opta"		# Let them go
+		every_owned_province = {
+			limit = {
+				culture = catalan
+			}
+			change_culture = catala
+		}
+		add_prestige = -15
+	}
+	option = {
+		name = "occitanism_spreading_3_optb"		# Oppose to this separatism
+		every_country = {
+			limit = {
+				OR = {
+					primary_culture = catala
+					primary_culture = occitan
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_displeased
+			}
+		}
+		every_owned_province = {
+			limit = {
+				culture = catalan
+			}
+			add_nationalism = 5
+		}
+		set_country_flag = refused_occitanism
+	}
+}
+
+country_event = {
+	id = occitanism_spreading.4
+	title = "occitanism_spreading_4_title"
+	desc = "occitanism_spreading_4_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		NOT = { primary_culture = gascon }
+		NOT = { primary_culture = aquitaine }
+		NOT = { primary_culture = occitain }
+		NOT = { primary_culture = occitan }
+		any_owned_province = {
+			OR = {
+				culture = gascon
+				culture = aquitaine
+				culture = occitain
+	 		}
+		}
+ 		any_country = {
+			OR = {
+				primary_culture = occitan
+				primary_culture = catala
+			}
+			has_opinion = { who = ROOT value = 50 }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+		modifier = {
+			factor = 100
+			has_country_flag = refused_occitanism
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_4_opta"		# Let them go
+		every_owned_province = {
+			limit = {
+				OR = {
+					culture = gascon
+					culture = aquitaine
+					culture = occitain
+				}
+			}
+			change_culture = occitan
+		}
+		add_prestige = -15
+	}
+	option = {
+		name = "occitanism_spreading_4_optb"		# Oppose to this separatism
+		every_country = {
+			limit = {
+				OR = {
+					primary_culture = catala
+					primary_culture = occitan
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_displeased
+			}
+		}
+		every_owned_province = {
+			limit = {
+				OR = {
+					culture = gascon
+					culture = aquitaine
+					culture = occitain
+				}
+			}
+			add_nationalism = 5
+		}
+		set_country_flag = refused_occitanism
+	}
+}
+
+
+###############################
+## Convert newly acquired
+
+country_event = {
+	id = occitanism_spreading.5
+	title = "occitanism_spreading_5_title"
+	desc = "occitanism_spreading_5_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		OR = {
+			primary_culture = occitan
+			primary_culture = catala
+		}
+		any_owned_province = {
+			OR = {
+				culture = gascon
+				culture = aquitaine
+				culture = occitain
+	 		}
+		}
+	}
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "occitanism_spreading_5_opta"		# This can only be good
+		every_owned_province = {
+			limit = {
+				OR = {
+					culture = gascon
+					culture = aquitaine
+					culture = occitain
+				}
+			}
+			change_culture = occitan
+		}
+	}
+}
+
+country_event = {
+	id = occitanism_spreading.6
+	title = "occitanism_spreading_6_title"
+	desc = "occitanism_spreading_6_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		OR = {
+			primary_culture = occitan
+			primary_culture = catala
+		}
+		any_owned_province = {
+			culture = catalan
+		}
+	}
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "occitanism_spreading_6_opta"		# This can only be good
+		every_owned_province = {
+			limit = {
+				culture = catalan
+			}
+			change_culture = catala
+		}
+	}
+}
+
+#####################################
+## Undo
+
+country_event = {
+	id = occitanism_spreading.7
+	title = "occitanism_spreading_7_title"
+	desc = "occitanism_spreading_7_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		OR = {
+			culture_group = french
+			culture_group = iberian
+		}
+		NOT = {primary_culture = occitan}
+		NOT = {primary_culture = catala}
+	}
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 0.1
+			has_country_flag = refused_occitanism
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				all_province = {
+					OR = { 
+						NOT = {
+							OR = {
+								culture = catalan 
+								culture = catala 
+							}
+						}
+						owned_by = ROOT
+					}
+				}
+				all_province = {
+					OR = {
+						NOT = {
+							OR = {
+								culture = occitan 
+								culture = occitain 
+								culture = aquitaine 
+								culture = gascon
+							}
+						}
+						owned_by = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_7_opta"		# It's just some regionalism
+		every_owned_province = {
+			limit = {
+				culture = occitan
+			}
+			change_culture = occitain
+			add_nationalism = 10
+		}
+		every_owned_province = {
+			limit = {
+				culture = catala
+			}
+			change_culture = catalan
+			add_nationalism = 10
+		}
+	}
+
+	option = {
+		name = "occitanism_spreading_7_opta"		# We should not impose our culture
+		clr_country_flag = refused_occitanism
+	}
+
+}
+
+
+#########################################
+## Occitanism strong enough to put cores
+
+country_event = {
+	id = occitanism_spreading.8
+	title = "occitanism_spreading_8_title"
+	desc = "occitanism_spreading_8_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		primary_culture = occitan
+		any_province = {
+			NOT = { owned_by = ROOT }
+			culture = occitan
+		}
+	}
+	mean_time_to_happen = { 
+		months = 12
+		modifier = {
+			factor = 0.1
+			tag = OCC
+		}
+		# it becomes more and more difficult as France gets better centralisation
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 7 }
+		}
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 10 }
+		}
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 13 }
+		}
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 16 }
+		}
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 19 }
+		}
+		modifier = {
+			factor = 1.5
+			vassal_of = FRA
+			FRA = { adm_tech = 22 }
+		}
+		# A prestigious state will reflect on the overall prestige of the nation
+		modifier = {
+			factor = 4.0
+			NOT = { prestige = 0 }
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { prestige = 25 }
+		}
+		modifier = {
+			factor = 0.5
+			prestige = 50
+		}
+		modifier = {
+			factor = 0.25
+			prestige = 75
+		}
+		# if more than 3 historical provinces are not occitan, the event becomes very unlikely
+		modifier = {
+			factor = 5
+			NOT = { 102 = { culture = occitan } } # Nice
+		}
+		modifier = {
+			factor = 5
+			NOT = { 174 = { culture = occitan } } # Gascogne
+		}
+		modifier = {
+			factor = 5
+			NOT = { 175 = { culture = occitan } } # Armagnac
+		}
+		modifier = {
+			factor = 5
+			NOT = { 176 = { culture = occitan } } # Bearn
+		}
+		modifier = {
+			factor = 5
+			NOT = { 194 = { culture = occitan } } # Perigord
+		}
+		modifier = {
+			factor = 5
+			NOT = { 195 = { culture = occitan } } # Limousin
+		}
+		modifier = {
+			factor = 5
+			NOT = { 196 = { culture = occitan } } # Toulouse
+		}
+		modifier = {
+			factor = 5
+			NOT = { 198 = { culture = occitan } } # Rouergue
+		}
+		modifier = {
+			factor = 5
+			NOT = { 199 = { culture = occitan } } # Auvergne
+		}
+		modifier = {
+			factor = 5
+			NOT = { 200 = { culture = occitan } } # Languedoc
+		}
+		modifier = {
+			factor = 5
+			NOT = { 201 = { culture = occitan } } # Provence
+		}
+		modifier = {
+			factor = 5
+			NOT = { 202 = { culture = occitan } } # Avignon
+		}
+		# We skip 203 Lyonnais, which has been under some occitan influence but has never been occitan
+		modifier = {
+			factor = 5
+			NOT = { 204 = { culture = occitan } } # Dauphine
+		}
+		# replace not occitan by occitain/aquitaine/gascon ?
+	}
+	fire_only_once = yes
+
+	option = {
+		name = "occitanism_spreading_8_opta"		# Our nation will be free
+		every_province = {
+			limit = {
+				OR = {
+					culture = occitan
+					culture = occitain
+					culture = aquitaine
+					culture = gascon
+				}
+			}
+			add_core = OCC
+			if = {
+				limit = { owner = { NOT = { primary_culture = occitan } } }
+				add_nationalism = 25
+			}
+		}
+	}
+
+}
+
+

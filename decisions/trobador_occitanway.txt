@@ -1,0 +1,42 @@
+country_decisions = {
+
+	give_birth_occitanism = {
+		major = yes
+		potential = {
+			OR = {
+				primary_culture = gascon
+				primary_culture = aquitaine
+				primary_culture = occitain
+			}
+		}
+		allow = {
+				NOT = { has_opinion = { who = FRA value = 125 } }
+				has_idea = paratge_traditions
+			}
+		effect = {
+			change_primary_culture = occitan
+			every_owned_province = {
+				limit = {
+					OR = {
+						culture = gascon
+						culture = aquitaine
+						culture = occitain
+					}
+				}
+				change_culture = occitan
+			}
+			FRA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+			}
+			add_prestige = 5
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+
+}

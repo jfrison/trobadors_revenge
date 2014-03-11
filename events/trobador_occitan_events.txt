@@ -1,0 +1,120 @@
+namespace = trobador_occitan
+
+country_event = {
+	id = trobador_occitan.1
+	title = "trobador_occitan_1_title" # Itinerant trobador
+	desc = "trobador_occitan_1_desc"
+	picture = FEAST_eventPicture
+
+	trigger = {
+		OR = {
+			primary_culture = gascon
+			primary_culture = aquitaine
+			primary_culture = occitain
+			primary_culture = occitan
+ 		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.5
+			advisor = trobador
+		}
+		modifier = {
+			factor = 0.5
+			primary_culture = occitan
+		}
+		modifier = {
+			factor = 10
+			has_country_flag = refused_occitanism
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				any_country = {
+					primary_culture = occitan
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "trobador_occitan_1_opta"		# We need him at the court
+		add_prestige = 5
+		create_advisor = trobador
+	}
+	option = {
+		name = "trobador_occitan_1_optb"		# Let him wander
+		random_neighbor_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
+}
+
+country_event = {
+	id = trobador_occitan.2
+	title = "trobador_occitan_2_title" # Ancient manuscript discovered
+	desc = "trobador_occitan_2_desc"
+	picture = FEAST_eventPicture
+
+	trigger = {
+		advisor = trobador
+		NOT = { has_country_modifier = innovation_wave }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 3
+			NOT = { trobador = 2 }
+		}
+		modifier = {
+			factor = 0.3
+			trobador = 3
+		}
+		modifier = {
+			factor = 0.2
+			trobador = 4
+		}
+		modifier = {
+			factor = 0.5
+			primary_culture = occitan
+		}
+		modifier = {
+			factor = 10
+			has_country_flag = refused_occitanism
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				any_country = {
+					primary_culture = occitan
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "trobador_occitan_1_opta"		# We need him at the court
+		add_prestige = 5
+		add_treasury = -50
+		create_advisor = trobador
+		add_country_modifier = {
+			name = "innovation_wave"
+			duration = 365
+		}
+	}
+	option = {
+		name = "trobador_occitan_1_optb"		# Let him wander
+		random_neighbor_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
+}

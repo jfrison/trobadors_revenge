@@ -1,0 +1,64 @@
+
+######################################################
+trobador = {
+	monarch_power = DIP
+	
+	# Bonus
+	prestige = 2
+	
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0.2
+			NOT = {culture = occitan}
+			NOT = {culture = occitain}
+			NOT = {culture = aquitaine}
+			NOT = {culture = gascon}
+			NOT = {culture = catala} # Not the iberian "catalan" !
+		}
+		modifier = {
+			factor = 0.2
+			NOT = { culture_group = occitanocatala }
+			NOT = { culture_group = latin }
+			NOT = { culture_group = french }
+			NOT = { culture_group = iberian }
+		}
+		modifier = {
+			factor = 0.2
+			NOT = { owner = { capital_scope = { continent = europe } } }
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_country = { culture_group = occitanocatala }
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { 
+				owner = { # just for PREV
+					any_province = {
+						has_discovered = PREV
+						OR = {
+							culture = occitan
+							culture = occitain
+							culture = aquitaine
+							culture = gascon
+						}
+					}
+				}
+			}
+			#owner = { NOT = { has_discovered = 196 } } # Toulouse is a simpler test
+		}
+		modifier = {
+			factor = 2
+			owner = { has_idea = paratge_traditions }
+		}
+		modifier = {
+			factor = 2
+			owner = { has_idea = occitan_renaissance }
+		}
+	}
+}
+
+

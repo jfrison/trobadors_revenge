@@ -1,0 +1,152 @@
+country_decisions = {
+
+	turn_our_back_to_castille = {
+		major = yes
+		potential = {
+			primary_culture = catalan
+		}
+		allow = {
+				NOT = { has_opinion = { who = CAS value = 150 } }
+				NOT = { has_opinion = { who = SPA value = 150 } }
+			}
+		effect = {
+			change_primary_culture = catala
+			every_owned_province = {
+				limit = {
+					culture = catalan
+				}
+				change_culture = catala
+			}
+			CAS = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+			}
+			SPA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+			}
+			add_prestige = -5
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	express_support_for_occitanism = {
+		potential = {
+			NOT = { has_country_flag = expressed_support_for_occitanism }
+			#OR = {
+				primary_culture = catala
+				#primary_culture = catalan
+			#}
+		}
+		allow = {
+				NOT = { has_opinion = { who = FRA value = 50 } }
+			}
+		effect = {
+			FRA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+			}
+			every_country = {
+				limit = {
+					NOT = { primary_culture = occitan }
+					NOT = { primary_culture = catala }
+					NOT = { primary_culture = occitain }
+					NOT = { primary_culture = aquitaine }
+					NOT = { primary_culture = gascon }
+					NOT = { primary_culture = catalan }
+					any_owned_province = {
+						OR = {
+							culture = occitain
+							culture = occitan
+							culture = aquitaine
+							culture = gascon
+						}
+					}
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						primary_culture = occitan
+						primary_culture = occitain
+						primary_culture = aquitaine
+						primary_culture = gascon
+					}
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_pleased
+				}
+			}
+			set_country_flag = expressed_support_for_occitanism
+		}
+	}
+
+	provencal_irredentism = {
+		potential = {
+			primary_culture = catala
+			NOT = { is_core = 201 }
+		}
+		allow = {
+			prestige = 50
+		}
+		effect = {
+			add_core = 201
+			201 = {
+				owner = {
+					add_opinion = {
+						who = ROOT
+						modifier = opinion_displeased
+					}
+				}
+			}
+		}
+	}
+
+	reform_occitan_language = {
+		potential = {
+			primary_culture = catala
+		}
+		allow = {
+			NOT = { exists = OCC }
+			adm_tech = 10
+			OR = {
+				owns = 196  # Toulouse
+				196 = { owner = { is_subject_of = ROOT } }
+			}
+			OR = {
+				owns = 201 # Provence
+				201 = { owner = { is_subject_of = ROOT } }
+			}
+			OR = {
+				owns = 200 # Languedoc
+				200 = { owner = { is_subject_of = ROOT } }
+			}
+			OR = {
+				owns = 174 # Gascogne
+				174 = { owner = { is_subject_of = ROOT } }
+			}
+			OR = {
+				owns = 195 # Limousin
+				195 = { owner = { is_subject_of = ROOT } }
+			}
+		}
+		effect = {
+			culture_group_union = occitanocatala
+			add_prestige = 15
+		}
+	}
+
+}

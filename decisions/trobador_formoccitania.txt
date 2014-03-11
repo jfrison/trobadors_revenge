@@ -1,0 +1,39 @@
+country_decisions = {
+
+	form_occitania = {
+		major = yes
+		potential = {
+			primary_culture = occitan
+			NOT = { exists = OCC }
+		}
+		allow = {
+				adm_tech = 7
+				is_subject = no
+				is_at_war = no
+				owns = 196  # Toulouse
+				owns = 201 # Provence
+				owns = 200 # Languedoc
+				owns = 174 # Gascogne
+				owns = 195 # Limousin
+				is_core = 196
+				is_core = 201
+				is_core = 200
+				is_core = 174
+				is_core = 195
+			}
+		effect = {
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			change_tag = OCC
+			culture_group_union = occitanocatala
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+}

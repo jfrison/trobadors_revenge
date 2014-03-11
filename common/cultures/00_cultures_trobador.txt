@@ -1,0 +1,21 @@
+occitanocatala = {
+	graphical_culture = westerngfx
+
+	catala =  {
+		primary = CAT
+		dynasty_names = { 
+			"d'Aragó" "de Borja" "de Luna" "d'Urgell" "Folc de Cardona"
+		}
+
+	}
+	occitan = {
+		primary = TOU
+		dynasty_names = { 
+			"de Tolosa" "de Fois" "de Navara" "d'Anjou-Sicile" "de San Gelis" 
+		}
+	}
+	
+	dynasty_names = { 
+		"de Barcelona"
+	}
+}

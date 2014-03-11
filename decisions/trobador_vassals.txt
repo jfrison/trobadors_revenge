@@ -1,0 +1,96 @@
+country_decisions = {
+
+	# switch between FRA and ARA as an overlord
+	get_another_protector_FRA2ARA = {
+		potential = {
+			primary_culture = occitan
+			is_subject = yes
+			vassal_of = FRA
+		}
+		allow = {
+			is_at_war = no
+			vassal_of = FRA
+			exists = ARA
+			NOT = { has_opinion = { who = FRA value = 0 } }
+			has_opinion = { who = ARA value = 100 }
+		}
+		effect = {
+			FRA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+				free_vassal = ROOT
+				add_casus_belli = {
+					type = cb_disloyal_vassal
+					months = 120
+					target = ROOT
+				}
+				add_prestige = -20
+			}
+			ARA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_pleased
+				}
+				vassalize = ROOT
+				add_prestige = 20
+			}
+			add_prestige = -5
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_opinion = { who = ARA value = 200 } }
+			}
+		}
+	}
+
+	get_another_protector_ARA2FRA = {
+		potential = {
+			primary_culture = occitan
+			is_subject = yes
+			vassal_of = ARA
+		}
+		allow = {
+			is_at_war = no
+			vassal_of = ARA
+			exists = FRA
+			NOT = { has_opinion = { who = ARA value = 0 } }
+			has_opinion = { who = FRA value = 100 }
+		}
+		effect = {
+			ARA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_displeased
+				}
+				free_vassal = ROOT
+				add_casus_belli = {
+					type = cb_disloyal_vassal
+					months = 120
+					target = ROOT
+				}
+				add_prestige = -20
+			}
+			FRA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_pleased
+				}
+				vassalize = ROOT
+				add_prestige = 20
+			}
+			add_prestige = -5
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { has_opinion = { who = FRA value = 200 } }
+			}
+		}
+	}
+
+}

@@ -1,0 +1,529 @@
+free_oppressed_occitans = {
+	
+	type = country
+
+	category = MIL
+	
+	target_provinces = {
+		OR = {
+			culture = occitan
+			culture = occitain
+			culture = aquitaine
+			culture = gascon
+		}
+		owner = {
+			NOT = { primary_culture = occitan }
+			NOT = { primary_culture = occitain }
+			NOT = { primary_culture = aquitaine }
+			NOT = { primary_culture = gascon }
+		}
+	}
+	allow = {
+		primary_culture = occitan
+		is_subject = no
+		any_province = {
+			OR = {
+				culture = occitan
+				culture = occitain
+				culture = aquitaine
+				culture = gascon
+			}
+			owner = {
+				NOT = { primary_culture = occitan }
+				NOT = { primary_culture = occitain }
+				NOT = { primary_culture = aquitaine }
+				NOT = { primary_culture = gascon }
+			}
+		}
+		prestige = 0
+		is_at_war = no
+	}
+	success = {
+		any_target_province = {
+			owner = {
+				OR = {
+					primary_culture = occitan
+					primary_culture = occitain
+					primary_culture = aquitaine
+					primary_culture = gascon
+				}
+			}
+			NOT = { owned_by = ROOT }
+		}
+	}
+	abort = {
+		OR = {
+			is_subject = yes
+			all_country = {
+				NOT = {
+					ROOT = {
+						has_casus_belli = {
+							type = cb_free_occitan_mission
+							target = PREV
+						}
+					}
+				}
+			}
+		}
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 0.5
+			NOT = { dip = 4 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { mil = 3 }
+		}
+		modifier = {
+			factor = 0.2
+			all_province = {
+				NOT = { is_core = OCC }
+			}
+		}
+		modifier = {
+			factor = 2
+			all_country = { 
+				OR = {
+					NOT = { primary_culture = occitan }
+					has_opinion = { who = ROOT value = 100 }
+				}
+			}
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				NOT = { primary_culture = occitan }
+				NOT = { primary_culture = occitain }
+				NOT = { primary_culture = aquitaine }
+				NOT = { primary_culture = gascon }
+				any_owned_province = {
+					OR = {
+						culture = occitan
+						culture = occitain
+						culture = aquitaine
+						culture = gascon
+					}
+				}
+			}
+			ROOT = {
+				add_casus_belli = {
+					type = cb_free_occitan_mission
+					months = 300
+					target = PREV
+				}
+			}
+		}
+	}
+	abort_effect = {
+		every_country = {
+			limit = {
+				NOT = { primary_culture = occitan }
+				NOT = { primary_culture = occitain }
+				NOT = { primary_culture = aquitaine }
+				NOT = { primary_culture = gascon }
+				any_owned_province = {
+					OR = {
+						culture = occitan
+						culture = occitain
+						culture = aquitaine
+						culture = gascon
+					}
+				}
+			}
+			ROOT = {
+				remove_casus_belli = {
+					type = cb_free_occitan_mission
+					target = PREV
+				}
+			}
+		}
+	}
+	effect = {
+		add_prestige = 5
+		add_dip_power = 25
+	}
+}
+
+keep_trobador = {
+	
+	type = country
+
+	category = DIP
+
+	allow = {
+		primary_culture = occitan
+		advisor = trobador
+	}
+	success = {
+		advisor = trobador
+		had_country_flag = { flag = trobador_mission_timer days = 730 }
+	}
+	abort = {
+		NOT = { advisor = trobador }
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			dip = 4
+		}
+	}
+	immediate = {
+		set_country_flag = trobador_mission_timer
+	}
+	abort_effect = {
+		clr_country_flag = trobador_mission_timer
+	}
+	effect = {
+		add_prestige = 5
+		clr_country_flag = trobador_mission_timer
+	}
+}
+
+
+occitanism_must_spread = {
+	
+	type = country
+
+	category = DIP
+
+	target_provinces = {
+		OR = {
+			culture = occitain
+			culture = aquitaine
+			culture = gascon
+		}
+	}
+
+	allow = {
+		primary_culture = occitan
+		any_province = {
+			OR = {
+				culture = occitain
+				culture = aquitaine
+				culture = gascon
+			}
+		}
+	}
+	success = {
+		any_target_province = {
+			culture = occitan
+		}
+	}
+	abort = {
+		all_target_province = {
+			NOT = { culture = occitan }
+			NOT = { culture = occitain }
+			NOT = { culture = aquitaine }
+			NOT = { culture = gascon }
+		}
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			dip = 4
+		}
+	}
+	immediate = {
+		every_country = {
+			limit = {
+				any_owned_province = {  # should not be necessary because of event triggers... to check ! 
+					OR = {
+						culture = occitain
+						culture = aquitaine
+						culture = gascon
+					}
+				}
+			}
+			country_event = { id = occitanism_spreading.1 days = 10 } 
+			country_event = { id = occitanism_spreading.4 days = 10 } 
+		}
+	}
+	abort_effect = {
+	}
+	effect = {
+		add_prestige = 5
+		add_dip_power = 25
+	}
+}
+
+
+occitan_conquest_provence = {
+	
+	type = country
+
+	category = MIL
+	ai_mission = yes
+	
+	allow = {
+		OR = {
+			tag = OCC
+			tag = TOU
+			tag = ARA
+			tag = CAT
+		}
+		is_subject = no
+		NOT = { owns = 201 }
+		201 = { owner = { NOT = { alliance_with = ROOT } } }
+	}
+	abort = {
+		is_subject = yes		
+	}
+	success = {
+		owns = 201
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			mil = 4
+		}	
+		modifier = {
+			factor = 4
+			is_core = 201
+		}
+	}
+	immediate = {
+		add_claim = 201
+	}
+	abort_effect = {
+		remove_claim = 201
+	}
+	effect = {
+		add_prestige = 5
+	}
+}
+
+cancel_nice_dedition = {
+	
+	type = country
+
+	category = MIL
+	ai_mission = yes
+	
+	allow = {
+		owns = 201 # Provence
+		OR = {
+			culture_group = occitanocatala
+			primary_culture = occitain
+			primary_culture = aquitaine
+			primary_culture = gascon
+		}
+		is_subject = no
+		NOT = { owns = 102 }
+		102 = { owner = { NOT = { alliance_with = ROOT } } }
+	}
+	abort = {
+		is_subject = yes		
+	}
+	success = {
+		owns = 102
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			mil = 4
+		}	
+	}
+	immediate = {
+		add_claim = 102
+	}
+	abort_effect = {
+		remove_claim = 102
+	}
+	effect = {
+		add_prestige = 5
+	}
+}
+
+conquer_occitania = {
+	
+	type = country
+
+	category = MIL
+	ai_mission = yes
+
+	target_provinces = {
+		NOT = { owned_by = ROOT }
+		OR = {
+			culture = occitan
+			culture = occitain
+			culture = aquitaine
+			culture = gascon
+		}
+		owner = {
+			NOT = { primary_culture = occitan }
+			NOT = { primary_culture = occitain }
+			NOT = { primary_culture = aquitaine }
+			NOT = { primary_culture = gascon }
+			NOT = { alliance_with = ROOT }
+		}
+	}
+	
+	allow = {
+		culture_group = occitanocatala
+		is_subject = no
+		NOT = { exists = OCC }
+		any_province = { has_province_flag = claimed_by_occitan_mission } # otherwise this mission is not multiplayer-safe
+	}
+	abort = {
+		is_subject = yes		
+	}
+	success = {
+		any_target_province = {
+			owned_by = ROOT
+		}
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			mil = 4
+		}	
+		modifier = {
+			factor = 2
+			primary_culture = occitan
+		}	
+		modifier = {
+			factor = 4
+			any_target_province = {
+				is_core = ROOT
+			}
+		}
+	}
+	immediate = {
+		random_target_province = {
+			add_claim = ROOT
+			set_province_flag = claimed_by_occitan_mission
+		}
+	}
+	abort_effect = {
+		every_target_province = {
+			limit = { has_province_flag = claimed_by_occitan_mission }
+			remove_claim = ROOT
+			clr_province_flag = claimed_by_occitan_mission
+		}
+	}
+	effect = {
+		add_prestige = 5
+		every_target_province = {
+			clr_province_flag = claimed_by_occitan_mission
+		}
+	}
+}
+
+change_poitou_culture = {
+
+	type = country
+	
+	category = ADM
+	
+	allow = {
+		180 = {
+			owned_by = ROOT
+			NOT = { culture_group = occitanocatala } 
+			has_owner_accepted_culture = no
+			NOT = { culture_group = owner }
+			is_core = owner
+			has_owner_religion = yes
+			NOT = { has_construction = culture }
+		}
+		is_at_war = no
+	}
+	abort = {
+		NOT = {	owns = 180 }
+	}
+	success = {
+		180 = { culture = owner }
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 1.5
+			180 = { base_tax = 5 }
+		}
+	}
+	effect = {
+		add_prestige = 5
+		add_dip_power = 25
+	}
+}
+
+ask_aragon_help = {
+
+	type = country
+	
+	category = DIP
+	
+	allow = {
+		culture_group = occitanocatala
+		exists = ARA
+		NOT = { tag = ARA }
+		vassal_of = FRA
+		NOT = { truce_with = FRA }
+		NOT = { ARA = { truce_with = FRA } }
+		NOT = { has_country_flag = asked_aragon_help }
+	}
+	abort = {
+		OR = {
+			truce_with = FRA
+			ARA = {
+				NOT = { 
+					has_casus_belli =  {
+						type = cb_free_occitan_mission
+						target = FRA
+					}
+				}
+			}
+		}
+	}
+	success = {
+		war_with = FRA
+		ARA = { war_with = FRA }
+	}
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 2
+			NOT = { has_opinion = { who = FRA value = 0 } }
+		}
+		modifier = {
+			factor = 2
+			has_opinion = { who = ARA value = 100 }
+		}
+		modifier = {
+			factor = 100
+			any_country = { has_country_flag = asked_aragon_help }
+		}
+	}
+	immediate = {
+		set_country_flag = asked_aragon_help
+		ARA = {
+			set_country_flag = occitans_asked_for_help
+			add_casus_belli = {
+				type = cb_free_occitan_mission
+				months = 300
+				target = FRA
+			}
+			country_event = { id = trobador_catalan.1 }
+		}
+	}
+	abort_effect = {
+		ARA = {
+			remove_casus_belli = {
+				type = cb_free_occitan_mission
+				target = FRA
+			}
+		}
+		clr_country_flag = asked_aragon_help
+	}
+	effect = {
+		add_mil_power = 25
+		clr_country_flag = asked_aragon_help
+	}
+}
