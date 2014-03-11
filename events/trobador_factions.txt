@@ -1,0 +1,119 @@
+namespace = trobador_faction
+
+# Initialising factions
+country_event = {
+	id = trobador_faction.1
+	title = "trobador_faction_1_title"
+	desc = "trobador_faction_1_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		OR = {
+			primary_culture = gascon
+			primary_culture = aquitaine
+			primary_culture = occitain
+			primary_culture = occitan
+ 		}
+		has_factions = no
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	immediate = {
+		hidden_effect = {
+			add_faction = trobador_occitanist
+			add_faction = trobador_republican
+			add_faction = trobador_french
+			add_faction = trobador_aragonese
+			add_faction_influence = { # default
+				faction = trobador_occitanist
+				influence = 50
+			}
+			add_faction_influence = { # default
+				faction = trobador_republican
+				influence = 25
+			}
+			add_faction_influence = { # default
+				faction = trobador_french
+				influence = 25
+			}
+			if = {
+				limit = { vassal_of = FRA }
+				add_faction_influence = {
+					faction = trobador_french
+					influence = 100
+				}
+			}
+			if = {
+				limit = { vassal_of = ARA }
+				add_faction_influence = {
+					faction = trobador_aragonese
+					influence = 100
+				}
+			}
+			if = {
+				limit = { is_subject = no }
+				add_faction_influence = {
+					faction = trobador_occitanist
+					influence = 25
+				}
+				add_faction_influence = {
+					faction = trobador_republican
+					influence = 25
+				}
+			}
+			if = {
+				limit = { culture_group = occitanocatala }
+				add_faction_influence = {
+					faction = trobador_occitanist
+					influence = 33
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "trobador_faction_1_opta"		# Encourage occitanists
+		add_faction_influence = {
+			faction = trobador_occitanist
+			influence = 25
+		}
+		create_advisor = trobador
+	}
+	option = {
+		name = "trobador_faction_1_optb"		# Encourage republicans
+		add_faction_influence = {
+			faction = trobador_republican
+			influence = 25
+		}
+		add_republican_tradition = 5
+	}
+	option = {
+		name = "trobador_faction_1_optc"		# Encourage French
+		add_faction_influence = {
+			faction = trobador_french
+			influence = 25
+		}
+		FRA = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
+	option = {
+		name = "trobador_faction_1_optd"		# Encourage Aragonese
+		add_faction_influence = {
+			faction = trobador_aragonese
+			influence = 25
+		}
+		ARA = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
+}

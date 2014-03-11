@@ -1,0 +1,22 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_trobador_occitanist"	
+		texturefile = "gfx//interface//trobador_occitanist.dds"
+	}
+	spriteType = {
+		name = "GFX_trobador_catalanist"	
+		texturefile = "gfx//interface//trobador_catalanist.dds"
+	}
+	spriteType = {
+		name = "GFX_trobador_republican"	
+		texturefile = "gfx//interface//trobador_republican.dds"
+	}
+	spriteType = {
+		name = "GFX_trobador_french"	
+		texturefile = "gfx//interface//trobador_french.dds"
+	}
+	spriteType = {
+		name = "GFX_trobador_aragonese"	
+		texturefile = "gfx//interface//trobador_aragonese.dds"
+	}
+}
