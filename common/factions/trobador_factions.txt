@@ -35,7 +35,7 @@ trobador_catalanist =
 	}
 }
 
-# This faction don't care about forming a large nation, they'ld rather follow the path of Italian trading republics
+# This faction doesn't care about forming a large nation, they'ld rather follow the path of Italian trading republics
 trobador_republican =
 {
 	monarch_power = DIP

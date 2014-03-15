@@ -8,6 +8,7 @@ country_event = {
 	picture = CULTURE_eventPicture
 
 	trigger = {
+		tag = PRO  # Unfortunately each country needs to have its own GUI, otherwise it crashes
 		OR = {
 			primary_culture = gascon
 			primary_culture = aquitaine
@@ -26,7 +27,7 @@ country_event = {
 			add_faction = trobador_occitanist
 			add_faction = trobador_republican
 			add_faction = trobador_french
-			add_faction = trobador_aragonese
+			#add_faction = trobador_aragonese # only 3 can fit in the GUI right now
 			add_faction_influence = { # default
 				faction = trobador_occitanist
 				influence = 50
@@ -46,13 +47,13 @@ country_event = {
 					influence = 100
 				}
 			}
-			if = {
-				limit = { vassal_of = ARA }
-				add_faction_influence = {
-					faction = trobador_aragonese
-					influence = 100
-				}
-			}
+			#if = {
+			#	limit = { vassal_of = ARA }
+			#	add_faction_influence = {
+			#		faction = trobador_aragonese
+			#		influence = 100
+			#	}
+			#}
 			if = {
 				limit = { is_subject = no }
 				add_faction_influence = {
@@ -103,17 +104,17 @@ country_event = {
 			}
 		}
 	}
-	option = {
-		name = "trobador_faction_1_optd"		# Encourage Aragonese
-		add_faction_influence = {
-			faction = trobador_aragonese
-			influence = 25
-		}
-		ARA = {
-			add_opinion = {
-				who = ROOT
-				modifier = opinion_pleased
-			}
-		}
-	}
+	#option = {
+	#	name = "trobador_faction_1_optd"		# Encourage Aragonese
+	#	add_faction_influence = {
+	#		faction = trobador_aragonese
+	#		influence = 25
+	#	}
+	#	ARA = {
+	#		add_opinion = {
+	#			who = ROOT
+	#			modifier = opinion_pleased
+	#		}
+	#	}
+	#}
 }
