@@ -10,6 +10,7 @@ country_event = {
 
 	trigger = {
 		NOT = { has_global_flag = trobador_initialised }
+		ai = yes # this way the player will not have a useless message
 	}
 
 	immediate = {

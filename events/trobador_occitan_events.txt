@@ -59,7 +59,7 @@ country_event = {
 	id = trobador_occitan.2
 	title = "trobador_occitan_2_title" # Ancient manuscript discovered
 	desc = "trobador_occitan_2_desc"
-	picture = FEAST_eventPicture
+	picture = BIG_BOOK_eventPicture
 
 	trigger = {
 		advisor = trobador
@@ -111,5 +111,281 @@ country_event = {
 	option = {
 		name = "trobador_occitan_2_optb"		# Display it in the throne room
 		add_prestige = 10
+	}
+}
+
+country_event = {
+	id = trobador_occitan.3
+	title = "trobador_occitan_3_title" # Trobador seducing your queen
+	desc = "trobador_occitan_3_desc"
+	picture = ACCUSATION_eventPicture
+
+	trigger = {
+		has_regency = no
+		advisor = trobador
+	}
+
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 3
+			NOT = { trobador = 2 }
+		}
+		modifier = {
+			factor = 0.3
+			trobador = 3
+		}
+		modifier = {
+			factor = 0.2
+			trobador = 4
+		}
+		modifier = {
+			factor = 0.5
+			ruler_age = 30  # validator doesnt like this, but it's OK for N++ and VeF
+		}
+		modifier = {
+			factor = 0.5
+			ruler_age = 40
+		}
+		modifier = {
+			factor = 0.5
+			ruler_age = 50
+		}
+		modifier = {
+			factor = 0.5
+			ruler_age = 60
+		}
+	}
+
+	option = {
+		name = "trobador_occitan_3_opta"		# Let them have fun
+		add_papal_influence = -5
+		if = {
+			limit = { has_heir = no }
+			define_heir = {
+				dynasty = ROOT
+				claim = 25
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_3_optb"		# Get rid of him with gold
+		add_treasury = -50
+		kill_advisor = trobador
+	}
+	option = {
+		name = "trobador_occitan_3_optc"		# Fair trial
+		add_prestige = -10
+		random_list = {
+			50 = {
+				add_stability = -1
+			}
+			40 = {
+				add_stability = 1
+			}
+			10 = {
+				add_stability = 1
+				kill_advisor = trobador
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_3_optd"		# Execute him so that everyone see the cost of defying me
+		kill_advisor = trobador
+		add_stability = -1
+		add_country_modifier = {
+			name = "executed_trobador"
+			duration = 365
+		}
+	}
+}
+
+country_event = {
+	id = trobador_occitan.4
+	title = "trobador_occitan_4_title" # Discussing with your trobador 
+	desc = "trobador_occitan_4_desc"
+	picture = COURT_eventPicture # why doesn't this appear correctly ??
+
+	trigger = {
+		has_regency = no
+		advisor = trobador
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 3
+			NOT = { trobador = 2 }
+		}
+		modifier = {
+			factor = 0.3
+			trobador = 3
+		}
+		modifier = {
+			factor = 0.2
+			trobador = 4
+		}
+	}
+	
+	immediate = {
+		hidden_effect = { # looks like triggers are checked *before* immediate :(
+			random_list = {
+				50 = { set_variable = { which = trobador_occitan_4_canso value = 0 } }
+				50 = { set_variable = { which = trobador_occitan_4_canso value = 1 } }
+			}
+			random_list = {
+				50 = { set_variable = { which = trobador_occitan_4_sirventes value = 0 } }
+				50 = { set_variable = { which = trobador_occitan_4_sirventes value = 1 } }
+			}
+			random_list = {
+				50 = { set_variable = { which = trobador_occitan_4_canso_de_crozada value = 0 } }
+				50 = { set_variable = { which = trobador_occitan_4_canso_de_crozada value = 1 } }
+			}
+			random_list = {
+				50 = { set_variable = { which = trobador_occitan_4_ensenhamen value = 0 } }
+				50 = { set_variable = { which = trobador_occitan_4_ensenhamen value = 1 } }
+			}
+			random_list = {
+				70 = { set_variable = { which = trobador_occitan_4_planh value = 0 } }
+				30 = { set_variable = { which = trobador_occitan_4_planh value = 1 } }
+			}
+			random_list = {
+				80 = { set_variable = { which = trobador_occitan_4_salut value = 0 } }
+				20 = { set_variable = { which = trobador_occitan_4_salut value = 1 } }
+			}
+			random_list = {
+				80 = { set_variable = { which = trobador_occitan_4_alba value = 0 } }
+				20 = { set_variable = { which = trobador_occitan_4_alba value = 1 } }
+			}
+			random_list = {
+				80 = { set_variable = { which = trobador_occitan_4_pastorela value = 0 } }
+				20 = { set_variable = { which = trobador_occitan_4_pastorela value = 1 } }
+			}
+		}
+	}
+
+	option = {
+		name = "trobador_occitan_4_opta"		# Express your love for cansons
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_canso value = 1 }
+		#}
+		add_prestige = 10
+	}
+	option = {
+		name = "trobador_occitan_4_optb"		# Express your love for sirventes
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_sirventes value = 1 }
+		#}
+		#every_country = {
+		#	limit = { ROOT = { has_opinion = { who = PREV value = -100 } } }
+		every_rival_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_displeased
+			}
+		}
+		every_country = {
+			limit = {
+				#ROOT = { has_opinion = { who = PREV value = 50 } } 
+				any_country = {
+					OR = {
+						is_rival = PREV # does this mean PREV is the rival of (scope) or (scope) is the rival of PREV ?
+						is_enemy = PREV
+					}
+					OR = {
+						is_rival = ROOT
+						is_enemy = ROOT
+					}
+				}
+			 }
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_4_optc"		# Express your love for cansons de crozada
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_canso_de_crozada value = 1 }
+		#}
+		add_mil_power = 10
+		add_army_tradition = 5 
+	}
+	option = {
+		name = "trobador_occitan_4_optd"		# Express your love for ensenhamen
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_ensenhamen value = 1 }
+		#}
+		add_adm_power = 10
+	}
+	option = {
+		name = "trobador_occitan_4_opte"		# Express your love for planh
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_planh value = 1 }
+		#}
+		add_legitimacy = 10 # bof. Can I find better?
+	}
+	option = {
+		name = "trobador_occitan_4_optf"		# Express your love for salut d'amor
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_salut value = 1 }
+		#}
+		add_prestige = 10
+		if = {
+			limit = { has_heir = no }
+			random_list = {
+				10 = {
+					define_heir = {
+						dynasty = ROOT
+					}
+				}
+				90 = {}
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_4_optg"		# Express your love for alba
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_alba value = 1 }
+		#}
+		add_prestige = 10
+		if = {
+			limit = { has_heir = no }
+			random_list = {
+				20 = {
+					define_heir = {
+						dynasty = ROOT
+						claim = 50
+					}
+				}
+				80 = {}
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_4_opth"		# Express your love for pastorela
+		#trigger = {
+		#	check_variable = { which = trobador_occitan_4_pastorela value = 1 }
+		#}
+		add_prestige = 10
+		if = {
+			limit = { has_heir = no }
+			random_list = {
+				30 = {
+					define_heir = {
+						dynasty = ROOT
+						claim = 25
+					}
+				}
+				70 = {}
+			}
+		}
+	}
+	option = {
+		name = "trobador_occitan_4_opti"		# Do you know a chanson de geste?
+		add_army_tradition = 10
+		add_faction_influence = { faction = trobador_occitanist influence = -30 }
+		add_faction_influence = { faction = trobador_french influence = 10 }
 	}
 }

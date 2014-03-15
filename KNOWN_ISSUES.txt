@@ -7,3 +7,6 @@
 
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country get converted to occitan (for instance because of Provence releasing Anjou), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)
+
+== Advisors ==
+* Could we have female trobairitz? The presence of women was a bit of a specificity of the trobar. 

@@ -1,0 +1,4 @@
+executed_trobador = {
+	global_revolt_risk = -10
+	stability_cost_modifier = 0.30
+}
