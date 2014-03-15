@@ -21,13 +21,16 @@ occitan_ideas = {
 	}
 	free = yes
 	
+	paratge_traditions = {
+		diplomatic_reputation = 2
+	}
 	religious_openmindedness = {
 		tolerance_heretic = 1
 		idea_cost = -0.1
 		interest = -1
 	}
-	paratge_traditions = {
-		diplomatic_reputation = 2
+	ambiguous_diplomacy = {
+		diplomatic_upkeep = 2
 	}
 	mediterranean_multiculturalism = {
 		tolerance_heathen = 1
@@ -37,9 +40,6 @@ occitan_ideas = {
 	merchant_cities = {	
 		global_trade_power = 0.15
 		naval_maintenance_modifier = -0.1
-	}
-	ambiguous_diplomacy = {
-		diplomatic_upkeep = 2
 	}
 	foral_laws = {
 		global_revolt_risk = -1

@@ -10,6 +10,7 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			vassal_of = FRA
+			NOT = { truce_with = FRA }
 			exists = ARA
 			NOT = { has_opinion = { who = FRA value = 0 } }
 			has_opinion = { who = ARA value = 100 }
@@ -41,8 +42,20 @@ country_decisions = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.5
+				has_opinion = { who = FRA value = -50 }
+			}
+			modifier = {
 				factor = 0
-				NOT = { has_opinion = { who = ARA value = 200 } }
+				NOT = { has_opinion = { who = ARA value = 150 } }
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { has_opinion = { who = ARA value = 175 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { has_opinion = { who = ARA value = 190 } }
 			}
 		}
 	}
@@ -56,6 +69,7 @@ country_decisions = {
 		allow = {
 			is_at_war = no
 			vassal_of = ARA
+			NOT = { truce_with = ARA }
 			exists = FRA
 			NOT = { has_opinion = { who = ARA value = 0 } }
 			has_opinion = { who = FRA value = 100 }
@@ -87,8 +101,20 @@ country_decisions = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
+				factor = 0.5
+				has_opinion = { who = ARA value = -50 }
+			}
+			modifier = {
 				factor = 0
-				NOT = { has_opinion = { who = FRA value = 200 } }
+				NOT = { has_opinion = { who = FRA value = 150 } }
+			}
+			modifier = {
+				factor = 0.25
+				NOT = { has_opinion = { who = FRA value = 175 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { has_opinion = { who = FRA value = 190 } }
 			}
 		}
 	}

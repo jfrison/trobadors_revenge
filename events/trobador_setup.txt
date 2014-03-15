@@ -1,0 +1,45 @@
+namespace = trobador_setup
+
+# Initialising the mod at startup
+# Warning: if other mods needs the same, we're not sure to have our event triggering first. Is there a rule?
+country_event = {
+	id = trobador_setup.1
+	title = "trobador_setup_1_title"
+	desc = "trobador_setup_1_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		NOT = { has_global_flag = trobador_initialised }
+	}
+
+	immediate = {
+		hidden_effect = {
+			# Corrects Nice's culture without having to keep a copy of the history file
+			102 = {
+				if = {
+					limit = { culture = lombard }
+					change_culture = occitain
+				}
+			}
+			# And its correct owner if the Union Aix hasn't lead to the dedition yet
+			if = {
+				limit = {
+					NOT = { is_year = 1388 }
+					102 = { owned_by = SAV }
+					exists = PRO
+				}
+				102 = {
+					add_core = PRO
+					remove_core = SAV
+					cede_province = PRO
+				}
+			}
+			# Initialisation is finished
+			set_global_flag = trobador_initialised
+		}
+	}
+
+	option = {
+		name = "trobador_ok"		# OK
+	}
+}
