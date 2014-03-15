@@ -1,8 +1,9 @@
 == VeF integration == 
 * text_l_english.yml should start from a copy of either vanilla or VeF, according to whether VeF is activated (we just want to replace Occitain by Provencal, so deleting this file would be no big deal)
-* looks like nothing is implemented for the Union of Aix. Maybe I should add an Hungarian faction for this period. 
+* looks like nothing is implemented for the Union of Aix except the change of owner for Nice (at a wrong date). Maybe I should add an Hungarian faction for this period. 
 * the sea access of Cuneo sounds absurd and makes Nice's dedition much less important
-* TODO: I think the King René(Renat) was a bit of a trobador
+* "Cap" should be corrected in "Gap", its capital too. And maybe the important centre of trade moved to Marseille. "Languedoc" should be called "Montpellier" as its capital and in coherence with the title of "Lord of Montpellier" used by the catalan kings, if dropping vanilla name is not a problem (the word "Languedoc" has been invented to speak about the French part of Occitania, the big chunk around Toulouse, then the restriction of its use to designate the "Languedoc" province comes from XXth century)
+* TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this
 
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country get converted to occitan (for instance because of Provence releasing Anjou), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)

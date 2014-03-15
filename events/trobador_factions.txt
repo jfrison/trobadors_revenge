@@ -30,15 +30,15 @@ country_event = {
 			#add_faction = trobador_aragonese # only 3 can fit in the GUI right now
 			add_faction_influence = { # default
 				faction = trobador_occitanist
-				influence = 50
+				influence = 30
 			}
 			add_faction_influence = { # default
 				faction = trobador_republican
-				influence = 25
+				influence = 35
 			}
 			add_faction_influence = { # default
 				faction = trobador_french
-				influence = 25
+				influence = 35
 			}
 			if = {
 				limit = { vassal_of = FRA }

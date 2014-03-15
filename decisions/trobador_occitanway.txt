@@ -11,7 +11,13 @@ country_decisions = {
 		}
 		allow = {
 				NOT = { has_opinion = { who = FRA value = 125 } }
-				has_idea = paratge_traditions
+				OR = {
+					faction_in_power = trobador_occitanist
+					AND = { # fallback in case of absent GUI for factions
+						has_factions = no
+						has_idea = paratge_traditions
+					}
+				}
 			}
 		effect = {
 			change_primary_culture = occitan
