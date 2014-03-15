@@ -8,7 +8,10 @@ country_event = {
 	picture = DEBATE_REPUBLICAN_eventPicture
 
 	trigger = {
-		tag = PRO  # Unfortunately each country needs to have its own GUI, otherwise it crashes
+		OR = {
+			tag = PRO  # Unfortunately each country needs to have its own GUI, otherwise it crashes
+			tag = AUV
+		}
 		OR = {
 			primary_culture = gascon
 			primary_culture = aquitaine

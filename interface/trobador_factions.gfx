@@ -1,5 +1,10 @@
 spriteTypes = {
 	spriteType = {
+		name = "GFX_factions_four_bg"	
+		texturefile = "gfx//interface//factions_four_bg.dds"
+		transparencecheck = yes
+	}
+	spriteType = {
 		name = "GFX_trobador_occitanist"	
 		texturefile = "gfx//interface//trobador_occitanist.dds"
 	}
