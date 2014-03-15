@@ -214,21 +214,21 @@ country_event = {
 	mean_time_to_happen = {
 		months = 120
 		modifier = {
-			factor = 3
-			NOT = { trobador = 2 }
+			factor = 0.3
+			trobador = 2
 		}
 		modifier = {
 			factor = 0.3
 			trobador = 3
 		}
 		modifier = {
-			factor = 0.2
+			factor = 0.3
 			trobador = 4
 		}
 	}
 	
 	immediate = {
-		hidden_effect = { # looks like triggers are checked *before* immediate :(
+		hidden_effect = { # looks like option triggers are checked *before* immediate :(
 			random_list = {
 				50 = { set_variable = { which = trobador_occitan_4_canso value = 0 } }
 				50 = { set_variable = { which = trobador_occitan_4_canso value = 1 } }

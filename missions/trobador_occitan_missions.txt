@@ -259,6 +259,24 @@ occitan_conquest_provence = {
 	category = MIL
 	ai_mission = yes
 	
+	target_provinces = {
+		OR = {
+			province_id = 201 # Provence (Aix and Haut-Var if VeF)
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				province_id = 2019 # Marseille
+			}
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				province_id = 2020 # Toulon
+			}
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				province_id = 2311 # Gap
+			}
+		}
+	}
+	
 	allow = {
 		OR = {
 			tag = OCC
@@ -267,10 +285,10 @@ occitan_conquest_provence = {
 			tag = CAT
 		}
 		is_subject = no
-		NOT = { owns = 201 }
-		201 = { owner = { NOT = { alliance_with = ROOT } } }
-		NOT = {
-			201 = {
+		any_target_province = {
+			NOT = { owned_by = ROOT }
+			NOT = { owner = { alliance_with = ROOT } }
+			NOT = {
 				owner = {
 					is_subject = yes
 					overlord = { alliance_with = ROOT } 
@@ -282,7 +300,9 @@ occitan_conquest_provence = {
 		is_subject = yes		
 	}
 	success = {
-		owns = 201
+		every_target_province = {
+			owned_by = ROOT
+		}
 	}
 	chance = {
 		factor = 1000
@@ -296,10 +316,14 @@ occitan_conquest_provence = {
 		}
 	}
 	immediate = {
-		add_claim = 201
+		every_target_province = {
+			add_claim = ROOT
+		}
 	}
 	abort_effect = {
-		remove_claim = 201
+		every_target_province = {
+			remove_claim = ROOT
+		}
 	}
 	effect = {
 		add_prestige = 5

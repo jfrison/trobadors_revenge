@@ -79,7 +79,7 @@ country_event = {
 		name = "trobador_faction_1_opta"		# Encourage occitanists
 		add_faction_influence = {
 			faction = trobador_occitanist
-			influence = 25
+			influence = 15
 		}
 		create_advisor = trobador
 	}
@@ -87,7 +87,7 @@ country_event = {
 		name = "trobador_faction_1_optb"		# Encourage republicans
 		add_faction_influence = {
 			faction = trobador_republican
-			influence = 25
+			influence = 15
 		}
 		add_republican_tradition = 5
 	}
@@ -95,7 +95,7 @@ country_event = {
 		name = "trobador_faction_1_optc"		# Encourage French
 		add_faction_influence = {
 			faction = trobador_french
-			influence = 25
+			influence = 15
 		}
 		FRA = {
 			add_opinion = {

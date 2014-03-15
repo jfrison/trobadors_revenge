@@ -1,0 +1,258 @@
+# Triggered modifiers are here.
+# these are checked for each countries once/month and then applied.
+#
+# Effects are fully scriptable here.
+
+######################################
+# Faction dynamics
+######################################
+
+occitanist_faction_rising1 = {
+	potential = {
+		has_faction = trobador_occitanist
+		NOT = { primary_culture = occitan }
+	}
+	
+	trigger = {
+		has_faction = trobador_occitanist # Validator doesn't like, I found no example, but N++ highlights and it works
+		OR = {
+			primary_culture = occitan # always false but it indicates the condition to skip directly to next level
+			any_country = {
+				primary_culture = occitan
+				has_opinion = { who = ROOT value = 100 }
+			}
+		}
+	}
+	
+	trobador_occitanist_influence = 0.05
+}
+
+occitanist_faction_rising2 = {
+	potential = {
+		has_faction = trobador_occitanist
+		OR = {
+			primary_culture = occitan
+			any_country = {
+				primary_culture = occitan
+				has_opinion = { who = ROOT value = 100 }
+			}
+		}
+		NOT = { advisor = trobador }
+	}
+	
+	trigger = {
+		primary_culture = occitan
+	}
+	
+	trobador_occitanist_influence = 0.1
+}
+
+occitanist_faction_rising3 = {
+	potential = {
+		has_faction = trobador_occitanist
+		primary_culture = occitan
+		NOT = { trobador = 2 }
+	}
+	
+	trigger = {
+		primary_culture = occitan
+		advisor = trobador
+	}
+	
+	trobador_occitanist_influence = 0.15
+}
+
+occitanist_faction_rising4 = {
+	potential = {
+		has_faction = trobador_occitanist
+		primary_culture = occitan
+		advisor = trobador
+		NOT = { trobador = 3 }
+	}
+	
+	trigger = {
+		primary_culture = occitan
+		trobador = 2
+	}
+	
+	trobador_occitanist_influence = 0.2
+}
+
+occitanist_faction_rising5 = {
+	potential = {
+		has_faction = trobador_occitanist
+		primary_culture = occitan
+		trobador = 2
+	}
+	
+	trigger = {
+		primary_culture = occitan
+		trobador = 3
+	}
+	
+	trobador_occitanist_influence = 0.25
+}
+
+
+republican_faction_rising1 = {
+	potential = {
+		has_faction = trobador_republican
+		NOT = { trade_income_percentage = 0.40 }
+		NOT = { num_of_merchants = 2 }
+	}
+	
+	trigger = {
+		trade_income_percentage = 0.30
+		num_of_merchants = 1
+	}
+	
+	trobador_republican_influence = 0.05
+}
+
+republican_faction_rising2 = {
+	potential = {
+		has_faction = trobador_republican
+		NOT = { trade_income_percentage = 0.50 }
+		NOT = { num_of_merchants = 3 }
+		trade_income_percentage = 0.30
+		num_of_merchants = 1
+	}
+	
+	trigger = {
+		trade_income_percentage = 0.40
+		num_of_merchants = 2
+	}
+	
+	trobador_republican_influence = 0.1
+}
+
+republican_faction_rising3 = {
+	potential = {
+		has_faction = trobador_republican
+		NOT = { trade_income_percentage = 0.60 }
+		NOT = { num_of_merchants = 4 }
+		trade_income_percentage = 0.40
+		num_of_merchants = 2
+	}
+	
+	trigger = {
+		trade_income_percentage = 0.50
+		num_of_merchants = 3
+	}
+	
+	trobador_republican_influence = 0.15
+}
+
+republican_faction_rising4 = {
+	potential = {
+		has_faction = trobador_republican
+		NOT = { trade_income_percentage = 0.70 }
+		NOT = { num_of_merchants = 5 }
+		trade_income_percentage = 0.50
+		num_of_merchants = 3
+	}
+	
+	trigger = {
+		trade_income_percentage = 0.60
+		num_of_merchants = 4
+	}
+	
+	trobador_republican_influence = 0.2
+}
+
+republican_faction_rising5 = {
+	potential = {
+		has_faction = trobador_republican
+		trade_income_percentage = 0.60
+		num_of_merchants = 4
+	}
+	
+	trigger = {
+		trade_income_percentage = 0.70
+		num_of_merchants = 5
+	}
+	
+	trobador_republican_influence = 0.25
+}
+
+french_faction_rising1 = { # we could also compare prestige, army size, province size and so on (then look at the "post-independance" political positions of this faction)
+	potential = {
+		has_faction = trobador_french
+		exists = FRA
+		NOT = { war_with = FRA }
+		NOT = { truce_with = FRA }
+		NOT = { has_opinion = { who = FRA value = 50 } }
+	}
+	
+	trigger = {
+		has_opinion = { who = FRA value = 0 }
+	}
+	
+	trobador_french_influence = 0.05
+}
+
+french_faction_rising2 = {
+	potential = {
+		has_faction = trobador_french
+		exists = FRA
+		NOT = { war_with = FRA }
+		NOT = { truce_with = FRA }
+		NOT = { has_opinion = { who = FRA value = 100 } }
+	}
+	
+	trigger = {
+		has_opinion = { who = FRA value = 50 }
+	}
+	
+	trobador_french_influence = 0.1
+}
+
+french_faction_rising3 = {
+	potential = {
+		has_faction = trobador_french
+		exists = FRA
+		NOT = { war_with = FRA }
+		NOT = { truce_with = FRA }
+		NOT = { has_opinion = { who = FRA value = 150 } }
+		has_opinion = { who = FRA value = 50 }
+	}
+	
+	trigger = {
+		has_opinion = { who = FRA value = 100 }
+	}
+	
+	trobador_french_influence = 0.15
+}
+
+french_faction_rising4 = {
+	potential = {
+		has_faction = trobador_french
+		exists = FRA
+		NOT = { war_with = FRA }
+		NOT = { truce_with = FRA }
+		NOT = { has_opinion = { who = FRA value = 200 } }
+		has_opinion = { who = FRA value = 100 }
+	}
+	
+	trigger = {
+		has_opinion = { who = FRA value = 150 }
+	}
+	
+	trobador_french_influence = 0.2
+}
+
+french_faction_rising5 = {
+	potential = {
+		has_faction = trobador_french
+		exists = FRA
+		NOT = { war_with = FRA }
+		NOT = { truce_with = FRA }
+		has_opinion = { who = FRA value = 150 }
+	}
+	
+	trigger = {
+		has_opinion = { who = FRA value = 200 }
+	}
+	
+	trobador_french_influence = 0.25
+}
