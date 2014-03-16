@@ -256,3 +256,84 @@ french_faction_rising5 = {
 	
 	trobador_french_influence = 0.25
 }
+aragonese_faction_rising1 = {
+	potential = {
+		has_faction = trobador_aragonese
+		exists = ARA
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
+		NOT = { has_opinion = { who = ARA value = 50 } }
+	}
+	
+	trigger = {
+		has_opinion = { who = ARA value = 0 }
+	}
+	
+	trobador_aragonese_influence = 0.05
+}
+
+aragonese_faction_rising2 = {
+	potential = {
+		has_faction = trobador_aragonese
+		exists = ARA
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
+		NOT = { has_opinion = { who = ARA value = 100 } }
+	}
+	
+	trigger = {
+		has_opinion = { who = ARA value = 50 }
+	}
+	
+	trobador_aragonese_influence = 0.1
+}
+
+aragonese_faction_rising3 = {
+	potential = {
+		has_faction = trobador_aragonese
+		exists = ARA
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
+		NOT = { has_opinion = { who = ARA value = 150 } }
+		has_opinion = { who = ARA value = 50 }
+	}
+	
+	trigger = {
+		has_opinion = { who = ARA value = 100 }
+	}
+	
+	trobador_aragonese_influence = 0.15
+}
+
+aragonese_faction_rising4 = {
+	potential = {
+		has_faction = trobador_aragonese
+		exists = ARA
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
+		NOT = { has_opinion = { who = ARA value = 200 } }
+		has_opinion = { who = ARA value = 100 }
+	}
+	
+	trigger = {
+		has_opinion = { who = ARA value = 150 }
+	}
+	
+	trobador_aragonese_influence = 0.2
+}
+
+aragonese_faction_rising5 = {
+	potential = {
+		has_faction = trobador_aragonese
+		exists = ARA
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
+		has_opinion = { who = ARA value = 150 }
+	}
+	
+	trigger = {
+		has_opinion = { who = ARA value = 200 }
+	}
+	
+	trobador_aragonese_influence = 0.25
+}

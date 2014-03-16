@@ -1,7 +1,7 @@
 guiTypes = {
 
 	windowType = {
-		name = "AUV_faction_view"
+		name = "DAU_faction_view"
 		backGround="faction_bg"
 		position = { x=-292 y=-310 }	
 		size = { x=584 y=620 }

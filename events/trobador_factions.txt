@@ -9,8 +9,16 @@ country_event = {
 
 	trigger = {
 		OR = {
-			tag = PRO  # Unfortunately each country needs to have its own GUI, otherwise it crashes
+			tag = AMG  # Unfortunately each country needs to have its own GUI, otherwise it crashes
 			tag = AUV
+			#tag = AVI # Not sure we want to apply this to Avignon, where the France/Vatican opposition is the most important
+			tag = BER
+			tag = DAU
+			tag = FOI
+			tag = GUY
+			tag = OCC
+			tag = PRO
+			tag = TOU
 		}
 		OR = {
 			primary_culture = gascon
@@ -20,6 +28,7 @@ country_event = {
 			primary_culture = occitan
  		}
 		has_factions = no
+		NOT = { has_country_flag = trobador_factions_dissolved } # for the moment there is no event to set such a flag, but I should think about it
 	}
 
 	mean_time_to_happen = {
@@ -34,15 +43,15 @@ country_event = {
 			add_faction = trobador_aragonese 
 			add_faction_influence = { # default
 				faction = trobador_french
-				influence = 40
+				influence = 50
 			}
 			add_faction_influence = { # default
 				faction = trobador_occitanist
-				influence = 25
+				influence = 20
 			}
 			add_faction_influence = { # default
 				faction = trobador_republican
-				influence = 25
+				influence = 20
 			}
 			add_faction_influence = { # default
 				faction = trobador_aragonese
@@ -65,12 +74,12 @@ country_event = {
 			if = {
 				limit = { is_subject = no }
 				add_faction_influence = {
-					faction = trobador_occitanist
-					influence = 25
+					faction = trobador_french
+					influence = -15
 				}
 				add_faction_influence = {
-					faction = trobador_republican
-					influence = 25
+					faction = trobador_aragonese
+					influence = -15
 				}
 			}
 			if = {
@@ -98,6 +107,7 @@ country_event = {
 			influence = 15
 		}
 		add_republican_tradition = 5
+		create_advisor = trader
 	}
 	option = {
 		name = "trobador_faction_1_optc"		# Encourage French
