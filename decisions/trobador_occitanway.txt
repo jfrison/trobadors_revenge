@@ -6,6 +6,7 @@ country_decisions = {
 			OR = {
 				primary_culture = gascon
 				primary_culture = aquitaine
+				primary_culture = provencal
 				primary_culture = occitain
 			}
 		}
@@ -26,6 +27,7 @@ country_decisions = {
 					OR = {
 						culture = gascon
 						culture = aquitaine
+						culture = provencal
 						culture = occitain
 					}
 				}

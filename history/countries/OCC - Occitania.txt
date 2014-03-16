@@ -9,6 +9,7 @@ mercantilism = 0.1
 #serfdom_freesubjects = 2
 primary_culture = occitan
 add_accepted_culture = occitain
+add_accepted_culture = provencal
 add_accepted_culture = aquitaine
 add_accepted_culture = gascon
 religion = catholic

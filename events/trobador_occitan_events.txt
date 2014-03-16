@@ -10,6 +10,7 @@ country_event = {
 		OR = {
 			primary_culture = gascon
 			primary_culture = aquitaine
+			primary_culture = provencal
 			primary_culture = occitain
 			primary_culture = occitan
  		}

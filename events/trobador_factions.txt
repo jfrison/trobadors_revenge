@@ -16,6 +16,7 @@ country_event = {
 			primary_culture = gascon
 			primary_culture = aquitaine
 			primary_culture = occitain
+			primary_culture = provencal
 			primary_culture = occitan
  		}
 		has_factions = no
@@ -30,18 +31,22 @@ country_event = {
 			add_faction = trobador_occitanist
 			add_faction = trobador_republican
 			add_faction = trobador_french
-			#add_faction = trobador_aragonese # only 3 can fit in the GUI right now
+			add_faction = trobador_aragonese 
+			add_faction_influence = { # default
+				faction = trobador_french
+				influence = 40
+			}
 			add_faction_influence = { # default
 				faction = trobador_occitanist
-				influence = 30
+				influence = 25
 			}
 			add_faction_influence = { # default
 				faction = trobador_republican
-				influence = 35
+				influence = 25
 			}
 			add_faction_influence = { # default
-				faction = trobador_french
-				influence = 35
+				faction = trobador_aragonese
+				influence = 10
 			}
 			if = {
 				limit = { vassal_of = FRA }
@@ -50,13 +55,13 @@ country_event = {
 					influence = 100
 				}
 			}
-			#if = {
-			#	limit = { vassal_of = ARA }
-			#	add_faction_influence = {
-			#		faction = trobador_aragonese
-			#		influence = 100
-			#	}
-			#}
+			if = {
+				limit = { vassal_of = ARA }
+				add_faction_influence = {
+					faction = trobador_aragonese
+					influence = 100
+				}
+			}
 			if = {
 				limit = { is_subject = no }
 				add_faction_influence = {
@@ -107,17 +112,17 @@ country_event = {
 			}
 		}
 	}
-	#option = {
-	#	name = "trobador_faction_1_optd"		# Encourage Aragonese
-	#	add_faction_influence = {
-	#		faction = trobador_aragonese
-	#		influence = 25
-	#	}
-	#	ARA = {
-	#		add_opinion = {
-	#			who = ROOT
-	#			modifier = opinion_pleased
-	#		}
-	#	}
-	#}
+	option = {
+		name = "trobador_faction_1_optd"		# Encourage Aragonese
+		add_faction_influence = {
+			faction = trobador_aragonese
+			influence = 15
+		}
+		ARA = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_pleased
+			}
+		}
+	}
 }

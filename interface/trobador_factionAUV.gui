@@ -230,11 +230,76 @@ guiTypes = {
 			Orientation = "CENTER"
 		}
 		
+		### FOURTH
+		
+		iconType = 
+			{
+				name ="trobador_aragonese_icon"
+				spriteType = "GFX_china_bureaucrat"
+				position = { x= -262 y = 270 }
+				Orientation = "CENTER"
+			}
+			iconType = 
+			{
+				name ="trobador_aragonese_circle"
+				spriteType = "GFX_china_circle_bg"
+				position = { x= 172 y = 298 }
+				Orientation = "CENTER"
+			}
+		instantTextBoxType = {
+			name = "trobador_aragonese_value"
+			position = { x = 471 y = 472 }
+			font = "vic_22"
+			borderSize = {x = 1 y = 1}
+			text = "22"	
+			maxWidth = 50
+			maxHeight = 30
+			format = centre
+		}
+		iconType = 
+			{
+				name ="trobador_aragonese_arrow"
+				spriteType = "GFX_china_arrow"
+				position = { x= 243 y = 324 }
+				Orientation = "CENTER"
+			}
+		instantTextBoxType = {
+			name = "trobador_aragonese_label"
+			position = { x= 175 y = 411 }
+			font = "vic_22"
+			borderSize = {x = 1 y = 1}
+			text = "trobador_aragonese"	
+			maxWidth = 225
+			maxHeight = 30
+			format = centre
+		}
+		instantTextBoxType = {
+			name = "trobador_aragonese_info"
+			position = { x = 150 y = 443 }
+			font = "vic_18"
+			borderSize = {x = 1 y = 1}
+			text = "Info"	
+			maxWidth = 275
+			maxHeight = 200
+			format = left
+		}
+		
+		guiButtonType =
+		{
+			name ="trobador_aragonese_boost"
+			quadTextureSprite= "GFX_standard_button_105"
+			position = { x= 154 y = 370 }
+			Orientation = "UPPER_LEFT"
+			buttonText = "BOOST"
+			buttonFont = "vic_18"
+			Orientation = "CENTER"
+		}
+		
 		########
 		
 		guiButtonType = {
 				name = "close_button"
-				position = { x=-62 y =260}
+				position = { x=-62 y =420}
 				quadTextureSprite ="button_type_1"	
 				tooltip = ""
 				tooltipText =""

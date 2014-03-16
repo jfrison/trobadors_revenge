@@ -13,6 +13,7 @@ country_event = {
 		OR = {
 			primary_culture = gascon
 			primary_culture = aquitaine
+			primary_culture = provencal
 			primary_culture = occitain
  		}
 		any_country = {
@@ -27,8 +28,18 @@ country_event = {
 	mean_time_to_happen = {
 		months = 1
 		modifier = {
-			factor = 100
+			factor = 10
 			has_country_flag = refused_occitanism
+		}
+		modifier = {
+			factor = 10
+			has_factions = yes
+			NOT = { faction_influence = { faction = trobador_occitanist influence = 25 } }
+		}
+		modifier = {
+			factor = 2
+			has_factions = yes
+			NOT = { faction_in_power = trobador_occitanist }
 		}
 	}
 
@@ -40,6 +51,7 @@ country_event = {
 				OR = {
 					culture = gascon
 					culture = aquitaine
+					culture = provencal
 					culture = occitain
 				}
 			}
@@ -49,6 +61,18 @@ country_event = {
 			add_opinion = {
 				who = ROOT
 				modifier = opinion_mildly_displeased
+			}
+		}
+		add_faction_influence = { faction = trobador_occitanist influence = 25 }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				faction_influence = { faction = trobador_occitanist influence = 30 }
+			}
+			modifier = {
+				factor = 100
+				faction_in_power = trobador_occitanist
 			}
 		}
 	}
@@ -66,6 +90,7 @@ country_event = {
 				modifier = opinion_displeased
 			}
 		}
+		add_faction_influence = { faction = trobador_occitanist influence = -25 }
 		set_country_flag = refused_occitanism
 	}
 }
@@ -211,12 +236,14 @@ country_event = {
 		NOT = { primary_culture = gascon }
 		NOT = { primary_culture = aquitaine }
 		NOT = { primary_culture = occitain }
+		NOT = { primary_culture = provencal }
 		NOT = { primary_culture = occitan }
 		any_owned_province = {
 			OR = {
 				culture = gascon
 				culture = aquitaine
 				culture = occitain
+				culture = provencal
 	 		}
 		}
  		any_country = {
@@ -244,6 +271,7 @@ country_event = {
 					culture = gascon
 					culture = aquitaine
 					culture = occitain
+					culture = provencal
 				}
 			}
 			change_culture = occitan
@@ -270,6 +298,7 @@ country_event = {
 					culture = gascon
 					culture = aquitaine
 					culture = occitain
+					culture = provencal
 				}
 			}
 			add_nationalism = 5
@@ -298,6 +327,7 @@ country_event = {
 				culture = gascon
 				culture = aquitaine
 				culture = occitain
+				culture = provencal
 	 		}
 		}
 	}
@@ -313,6 +343,7 @@ country_event = {
 					culture = gascon
 					culture = aquitaine
 					culture = occitain
+					culture = provencal
 				}
 			}
 			change_culture = occitan
@@ -387,12 +418,13 @@ country_event = {
 						owned_by = ROOT
 					}
 				}
-				all_province = {
+				all_province = { # Occitania is just a part of France (or whoever)
 					OR = {
 						NOT = {
 							OR = {
 								culture = occitan 
 								culture = occitain 
+								culture = provencal
 								culture = aquitaine 
 								culture = gascon
 							}
@@ -447,7 +479,11 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = { 
-		months = 12
+		months = 120
+		modifier = {
+			factor = 0.1
+			faction_in_power = trobador_occitanist
+		}
 		modifier = {
 			factor = 0.1
 			tag = OCC
@@ -565,6 +601,7 @@ country_event = {
 				OR = {
 					culture = occitan
 					culture = occitain
+					culture = provencal
 					culture = aquitaine
 					culture = gascon
 				}

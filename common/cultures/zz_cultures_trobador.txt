@@ -1,0 +1,12 @@
+french = { # just a patch
+	graphical_culture = westerngfx
+
+	provencal =  {
+		primary = PRO
+		dynasty_names = { 
+			"d'Aix" "de Die" "de Tarascon" "de Freissinet" "de Clermont" "de Beaucaire" "de Marseille" "du Vivarais" "d'Auvergne" "de Bézier"
+		}
+
+	}
+
+}

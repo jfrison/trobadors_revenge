@@ -12,6 +12,7 @@ trobador = {
 			factor = 0.2
 			NOT = {culture = occitan}
 			NOT = {culture = occitain}
+			NOT = {culture = provencal}
 			NOT = {culture = aquitaine}
 			NOT = {culture = gascon}
 			NOT = {culture = catala} # Not the iberian "catalan" !
@@ -42,6 +43,7 @@ trobador = {
 						OR = {
 							culture = occitan
 							culture = occitain
+							culture = provencal
 							culture = aquitaine
 							culture = gascon
 						}

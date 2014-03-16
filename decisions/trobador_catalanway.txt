@@ -59,12 +59,14 @@ country_decisions = {
 					NOT = { primary_culture = occitan }
 					NOT = { primary_culture = catala }
 					NOT = { primary_culture = occitain }
+					NOT = { primary_culture = provencal }
 					NOT = { primary_culture = aquitaine }
 					NOT = { primary_culture = gascon }
 					NOT = { primary_culture = catalan }
 					any_owned_province = {
 						OR = {
 							culture = occitain
+							culture = provencal
 							culture = occitan
 							culture = aquitaine
 							culture = gascon
@@ -81,6 +83,7 @@ country_decisions = {
 					OR = {
 						primary_culture = occitan
 						primary_culture = occitain
+						primary_culture = provencal
 						primary_culture = aquitaine
 						primary_culture = gascon
 					}

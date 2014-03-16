@@ -15,6 +15,7 @@ occitan_ideas = {
 			tag = OCC
 			primary_culture = occitan
 			primary_culture = occitain
+			primary_culture = provencal
 			primary_culture = aquitaine
 			primary_culture = gascon
 		}

@@ -2,6 +2,7 @@ namespace = trobador_setup
 
 # Initialising the mod at startup
 # Warning: if other mods needs the same, we're not sure to have our event triggering first. Is there a rule?
+# all that stuff is a bit messy but less than maintaining copies of the base files
 country_event = {
 	id = trobador_setup.1
 	title = "trobador_setup_1_title"
@@ -19,10 +20,10 @@ country_event = {
 			102 = {
 				if = {
 					limit = { culture = lombard }
-					change_culture = occitain
+					change_culture = provencal
 				}
 			}
-			# And its correct owner if the Union Aix hasn't lead to the dedition yet
+			# And its correct owner if the Union of Aix hasn't lead to the dedition yet
 			if = {
 				limit = {
 					NOT = { is_year = 1388 }
@@ -34,6 +35,15 @@ country_event = {
 					remove_core = SAV
 					cede_province = PRO
 				}
+			}
+			# Same thing for provencal, we don't want to modify the province history files
+			every_province = {
+				limit = { culture = occitain }
+				change_culture = provencal
+			}
+			every_country = {
+				limit = { primary_culture = occitain }
+				change_primary_culture = provencal
 			}
 			# Initialisation is finished
 			set_global_flag = trobador_initialised
