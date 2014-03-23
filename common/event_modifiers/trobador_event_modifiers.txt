@@ -50,3 +50,20 @@ working_on_trobar = {
 	global_tax_modifier = -0.05
 	adm_tech_cost_modifier = 0.10
 }
+
+## Republican Faction enforcing autonomy
+
+autonomous_city = {
+	local_tax_modifier = -1.0
+	local_production_efficiency = -1.0 # production contributing only through trade, is it correct?
+	trade_goods_size = 0.25
+	province_trade_power_modifier = 0.25
+	trade_value_modifier = 0.25
+	local_manpower_modifier = -0.50
+	possible_mercenaries = 0.5 # I think it's global and it should cumulate, to be checked
+	local_ship_cost = -0.10
+	ship_recruit_speed = -0.1
+	local_revolt_risk = -5
+	local_defensiveness = 0.1
+	global_missionary_strength = -0.02
+}

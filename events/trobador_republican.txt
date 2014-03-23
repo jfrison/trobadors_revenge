@@ -1,14 +1,29 @@
 namespace = trobador_republican
 
+# Republican Factions + Unstable country = Bad
+# Setups the republican cores
 country_event = {
 	id = trobador_republican.1
 	title = "trobador_republican_1_title"
 	desc = "trobador_republican_1_desc"
-	picture = CULTURE_eventPicture
+	picture = DEBATE_REPUBLICAN_eventPicture
 
 	trigger = {
 		has_global_flag = veritas_et_fortitudo 
-		always = no
+		NOT = { tag = MRS }
+		NOT = { tag = NCE }
+		NOT = { tag = TLN }
+		NOT = { tag = MPL }
+		num_of_cities = 2
+		faction_in_power = trobador_republican
+		NOT = { government = republic }
+		OR = {
+			NOT = { stability = 0 }
+			NOT = { legitimacy = 60 }
+			overextension_percentage = 1
+			NOT = { religious_unity = 0.5 }
+			revolt_percentage = 0.75
+		}
 		OR = {
 			AND = {
 				NOT = { exists = MRS }
@@ -19,16 +34,19 @@ country_event = {
 				NOT = { exists = TLN }
 				NOT = { 2020 = { is_core = TLN } }
 				owns = 2020
+				2020 = { revolt_risk = 1.0 } # We use this to give an advantage to the historical Republic of Marseille against the non-historical ones
 			}
 			AND = {
 				NOT = { exists = NCE }
 				NOT = { 102 = { is_core = NCE } }
 				owns = 102
+				102 = { revolt_risk = 0.1 } # Nice has never been a Republic but it did try to get some autonomy
 			}
 			AND = {
 				NOT = { exists = MPL }
-				NOT = { 200 = { is_core = MRS } }
+				NOT = { 200 = { is_core = MPL } }
 				owns = 200
+				200 = { revolt_risk = 1.0 }
 			}
 		} 
 	}
@@ -71,18 +89,386 @@ country_event = {
 			}
 		#}
 	}
+	
+	mean_time_to_happen = {
+		months = 12
+		
+		modifier = {
+			factor = 0.5
+			owns = 2019 # Marseille
+			2019 = { controlled_by = REB }
+		}
 
-	#options: release now, give autonomy, restrict city powers, do nothing
+		modifier = {
+			factor = 0.5
+			owns = 2019 # Marseille
+			2019 = { revolt_risk = 2 }
+		}
+		modifier = {
+			factor = 0.75
+			owns = 2020
+			2020 = { revolt_risk = 3 }
+		}
+		modifier = {
+			factor = 0.75
+			owns = 200
+			200 = { revolt_risk = 3 }
+		}
+		modifier = {
+			factor = 0.75
+			owns = 102
+			102 = { revolt_risk = 3 }
+		}
+
+		modifier = {
+			factor = 0.75
+			NOT = { stability = 0 }
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { legitimacy = 60 }
+		}
+		modifier = {
+			factor = 0.75
+			overextension_percentage = 1
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { religious_unity = 0.5 }
+		}
+		modifier = {
+			factor = 0.75
+			revolt_percentage = 0.75
+		}
+
+		modifier = {
+			factor = 1.5
+			stability = 2
+		}
+		modifier = {
+			factor = 1.5
+			legitimacy = 90
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { overextension_percentage = 0.1 }
+		}
+		modifier = {
+			factor = 1.5
+			religious_unity = 1.0
+		}
+		modifier = {
+			factor = 1.5
+			revolt_percentage = 0
+		}
+
+		
+		modifier = {
+			factor = 2
+			dip = 3
+		}
+		modifier = {
+			factor = 2
+			dip = 5
+		}
+		
+		modifier = {
+			factor = 0.5
+			faction_influence = { faction = trobador_republican influence = 75 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { faction_influence = { faction = trobador_republican influence = 50 } }
+		}
+		
+	}
+
+	#options: release now, give autonomy, restrict city powers, do nothing, abdicate
 	option = {
 		name = "trobador_republican_1_opta"		# indep
+		release = MRS
+		if = {
+			limit = { 102 = { revolt_risk = 0.1 } }
+			release = NCE
+		}
+		if = {
+			limit = { 2020 = { revolt_risk = 1.0 } }
+			release = TLN
+		}
+		if = {
+			limit = { 200 = { revolt_risk = 1.0 } }
+			release = MPL
+		}
+		add_stability = 1
+		hidden_effect = {
+			every_province = {
+				limit = {
+					OR = {
+						owned_by = MRS
+						owned_by = NCE
+						owned_by = TLN
+						owned_by = MPL
+					}
+				}
+				remove_province_modifier = autonomous_city
+				clr_province_flag = city_autonomy_timer
+			}
+		}
+		add_faction_influence = { faction = trobador_republican influence = -50 } # Pression released, the republicans were mostly in the cities we've released
 	}
 	option = {
 		name = "trobador_republican_1_optb"		# auton
+		every_owned_province = {
+			limit = {
+				OR = {
+					is_core = MRS
+					is_core = NCE
+					is_core = TLN
+					is_core = MPL
+				}
+				OR = {
+					is_core = MRS
+					revolt_risk = 0.1
+				}
+			}
+			add_province_modifier = { name = "autonomous_city" duration = -1 } 
+			set_province_flag = city_autonomy_timer
+		}
+		add_faction_influence = { faction = trobador_republican influence = -20 } 
+		set_country_flag = gave_autonomy_to_cities # useful to spot a change of owner
 	}
 	option = {
-		name = "trobador_republican_1_optc"		# restrict
+		name = "trobador_republican_1_optc"		# restrict, (there will be future events too)
+		every_owned_province = {
+			limit = {
+				OR = {
+					is_core = MRS
+					is_core = NCE
+					is_core = TLN
+					is_core = MPL
+				}
+			}
+			add_revolt_risk = 10
+		}
+		if = {
+			limit = { owns = 2019 }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+				friend = MRS
+			}
+		}
+		add_faction_influence = { faction = trobador_republican influence = -50 }
 	}
 	option = {
-		name = "trobador_republican_1_optd"		# nothing
+		name = "trobador_republican_1_optd"		# nothing (there will be other events)
 	}
+	option = {
+		name = "trobador_republican_1_opte"		# abdicate
+		trigger = {
+			NOT = { legitimacy = 50 }
+		}
+		add_stability = -5
+		change_government = noble_republic # or merchant?
+		add_faction_influence = { faction = trobador_republican influence = 20 } 
+	}
+}
+
+# make local versions
+
+province_event = {
+	id = trobador_republican.2
+	title = "trobador_republican_2_title"
+	desc = "trobador_republican_2_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		has_global_flag = veritas_et_fortitudo 
+		NOT = { owner = { government = republic } }
+		OR = {
+			AND = {
+				is_core = MRS
+				NOT = { owned_by = MRS }
+			}
+			AND = {
+				is_core = NCE
+				NOT = { owned_by = NCE }
+			}
+			AND = {
+				is_core = TLN
+				NOT = { owned_by = TLN }
+			}
+			AND = {
+				is_core = MPL
+				NOT = { owned_by = MPL }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		
+		modifier = {
+			factor = 5
+			NOT = { province_id = 2019 } # not Marseille
+		}
+		
+		modifier = {
+			factor = 5
+			has_province_modifier = autonomous_city
+		}
+
+		modifier = {
+			factor = 5
+			NOT = { owner = { faction_in_power = trobador_republican } }
+		}
+		modifier = {
+			factor = 5
+			NOT = { owner = { faction_influence = { faction = trobador_republican influence = 25 } } }
+		}
+
+		
+		modifier = {
+			factor = 2
+			NOT = { revolt_risk = 0.1 }
+		}
+		modifier = {
+			factor = 0.5
+			revolt_risk = 1
+		}
+		modifier = {
+			factor = 0.5
+			has_owner_religion = no
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { owner = { stability = 0 } }
+		}
+		modifier = {
+			factor = 2
+			owner = { stability = 2 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { owner = { legitimacy = 60 } }
+		}
+		modifier = {
+			factor = 2
+			owner = { legitimacy = 90 }
+		}
+		modifier = {
+			factor = 0.5
+			owner = { overextension_percentage = 1 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { owner = { overextension_percentage = 0.1 } }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { owner = { religious_unity = 0.5 } }
+		}
+		modifier = {
+			factor = 2
+			owner = { religious_unity = 1.0 }
+		}
+		modifier = {
+			factor = 0.5
+			owner = { revolt_percentage = 0.75 }
+		}
+
+		modifier = {
+			factor = 2
+			owner = { dip = 3 }
+		}
+		modifier = {
+			factor = 2
+			owner = { dip = 5 }
+		}
+
+
+	}
+
+	option = {
+		name = "trobador_republican_2_opta"		# indep
+		owner = { add_stability = 1 }
+		owner = { add_faction_influence = { faction = trobador_republican influence = -30 } }
+		if = {
+			limit = { is_core = MRS }
+			owner = { release = MRS }
+		}
+		if = {
+			limit = { is_core = NCE }
+			owner = { release = NCE }
+		}
+		if = {
+			limit = { is_core = TLN }
+			owner = { release = TLN }
+		}
+		if = {
+			limit = { is_core = MPL }
+			owner = { release = MPL }
+		}
+		hidden_effect = {
+			every_province = {
+				limit = {
+					OR = {
+						owned_by = MRS
+						owned_by = NCE
+						owned_by = TLN
+						owned_by = MPL
+					}
+				}
+				remove_province_modifier = autonomous_city
+				clr_province_flag = city_autonomy_timer
+			}
+		}
+	}
+	option = {
+		name = "trobador_republican_2_optb"		# auton
+		add_province_modifier = { name = "autonomous_city" duration = -1 } 
+		set_province_flag = city_autonomy_timer
+		owner = { add_faction_influence = { faction = trobador_republican influence = -10 } } 
+		owner = { set_country_flag = gave_autonomy_to_cities }
+	}
+	option = { # Prepare to enforce order
+		name = "trobador_republican_2_optc"	
+		if = {
+			limit = { is_core = MRS }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+				friend = MRS
+			}
+			change_siege = 20
+		}
+		if = {
+			limit = { is_core = NCE }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 2
+				friend = NCE
+			}
+			change_siege = 20
+		}
+		if = {
+			limit = { is_core = TOU }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				friend = MRS
+			}
+			change_siege = 20
+		}
+		if = {
+			limit = { is_core = MPL }
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 1
+				friend = MPL
+			}
+			change_siege = 20
+		}
+	}
+
 }

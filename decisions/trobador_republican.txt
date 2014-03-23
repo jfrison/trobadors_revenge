@@ -1,0 +1,73 @@
+country_decisions = {
+
+	cancel_city_autonomy = {
+		potential = {
+			any_owned_province = {
+				has_province_modifier = autonomous_city
+			}
+		}
+		allow = {
+			is_at_war = no
+			NOT = { faction_in_power = trobador_republican }
+		}
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = gave_autonomy_to_cities
+					any_owned_province = {
+						has_province_flag = city_autonomy_timer
+						NOT = { had_province_flag = { flag = city_autonomy_timer  days = 36500 } }
+					}
+				}
+				add_stability = -1
+			}
+			every_owned_province = {
+				limit = {
+					has_province_modifier = autonomous_city
+					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 365 } }
+					NOT = { owner = { government = republic } }
+				}
+				add_revolt_risk = 10
+				nationalist_rebels = 3
+			}
+			every_owned_province = {
+				limit = {
+					has_province_modifier = autonomous_city
+					had_province_flag = { flag = city_autonomy_timer  days = 365 }
+					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 1825 } }
+					NOT = { owner = { government = republic } }
+				}
+				add_revolt_risk = 10
+				nationalist_rebels = 2
+			}
+			every_owned_province = {
+				limit = {
+					has_province_modifier = autonomous_city
+					had_province_flag = { flag = city_autonomy_timer  days = 1825 }
+					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 3650 } }
+					NOT = { owner = { government = republic } }
+				}
+				add_revolt_risk = 5
+				nationalist_rebels = 1
+			}
+			every_owned_province = {
+				limit = {
+					has_province_modifier = autonomous_city
+					had_province_flag = { flag = city_autonomy_timer  days = 3650 }
+					NOT = { owner = { government = republic } }
+				}
+				add_revolt_risk = 2
+			}
+			every_owned_province = {
+				remove_province_modifier = autonomous_city
+				clr_province_flag = city_autonomy_timer
+			}
+			clr_country_flag = gave_autonomy_to_cities
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+
+}

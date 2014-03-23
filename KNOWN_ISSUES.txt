@@ -18,5 +18,4 @@
 * TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this
 * TODO: neo-cathars? religion (~protestant) or just heretics?
 * TODO: "Yo mamma" between rival (sirventes either written by you -hoping you are gifted- or by your trobador -if you have one-) => event launched by a sirventes in "discussing with your trobador" ?
-* TODO: activable private jokes with provencialists and gascons?
-* TODO: finish ruler-trobador, finish repub indep cities, finish repub events
+* TODO: finish ruler-trobador, finish repub (non-city) events

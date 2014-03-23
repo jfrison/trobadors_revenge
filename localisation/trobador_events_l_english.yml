@@ -88,4 +88,10 @@
  trobador_republican_1_optb: "Give them more autonomy"
  trobador_republican_1_optc: "Restrict city powers"
  trobador_republican_1_optd: "It's not a threat for the moment"
+ trobador_republican_1_opte: "Abdicate"
+ trobador_republican_2_title: "Imminent revolt in $PROVINCE$"
+ trobador_republican_2_desc: "The republicans of $PROVINCE$ are becoming more and more confident. If we do nothing, the revolt will be unavoidable. "
+ trobador_republican_2_opta: "Grant them independence"
+ trobador_republican_2_optb: "Give them more autonomy"
+ trobador_republican_2_optc: "Prepare to enforce order"
 
