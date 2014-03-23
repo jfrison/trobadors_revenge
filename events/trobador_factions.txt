@@ -136,3 +136,216 @@ country_event = {
 		}
 	}
 }
+
+# Handling relation modifiers
+country_event = {
+	id = trobador_faction.2
+	title = "trobador_faction_2_title"
+	desc = "trobador_faction_2_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		faction_in_power = trobador_french
+		exists = FRA
+		NOT = { has_opinion_modifier = { who = FRA modifier = "faction_friendly_to_them" } }
+	}
+
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				remove_opinion = { who = ROOT modifier = "faction_friendly_to_us" }
+			}
+			every_country = {
+				ROOT = {
+					remove_opinion = { who = PREV modifier = "faction_friendly_to_them" }
+				}
+			}
+			add_opinion = { who = FRA modifier = "faction_friendly_to_them" }
+			FRA = { add_opinion = { who = ROOT modifier = "faction_friendly_to_us" } }
+		}
+	}
+	
+	option = {
+		name = "trobador_ok"
+	}
+
+}
+
+country_event = {
+	id = trobador_faction.3
+	title = "trobador_faction_3_title"
+	desc = "trobador_faction_3_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		faction_in_power = trobador_aragonese
+		exists = ARA
+		NOT = { has_opinion_modifier = { who = ARA modifier = "faction_friendly_to_them" } }
+	}
+
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				remove_opinion = { who = ROOT modifier = "faction_friendly_to_us" }
+			}
+			every_country = {
+				ROOT = {
+					remove_opinion = { who = PREV modifier = "faction_friendly_to_them" }
+				}
+			}
+			add_opinion = { who = ARA modifier = "faction_friendly_to_them" }
+			ARA = { add_opinion = { who = ROOT modifier = "faction_friendly_to_us" } }
+		}
+	}
+	
+	option = {
+		name = "trobador_ok"
+	}
+
+}
+
+country_event = {
+	id = trobador_faction.4
+	title = "trobador_faction_4_title"
+	desc = "trobador_faction_4_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		NOT = { faction_in_power = trobador_aragonese }
+		NOT = { faction_in_power = trobador_french }
+		any_country = {
+			has_opinion_modifier = { who = ROOT modifier = "faction_friendly_to_us" }
+		}
+		NOT = { has_opinion_modifier = { who = ARA modifier = "faction_friendly_to_them" } }
+	}
+
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				remove_opinion = { who = ROOT modifier = "faction_friendly_to_us" }
+			}
+			every_country = {
+				ROOT = {
+					remove_opinion = { who = PREV modifier = "faction_friendly_to_them" }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "trobador_ok"
+	}
+
+}
+
+# Checking for alliance
+
+country_event = {
+	id = trobador_faction.5
+	title = "trobador_faction_5_title"
+	desc = "trobador_faction_5_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		NOT = { has_country_flag = trobador_allied_france }
+		exists = FRA
+		alliance_with = FRA
+		has_faction = trobador_french
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = trobador_allied_france
+		}
+	}
+
+	option = {
+		name = "trobador_ok"
+		add_faction_influence = { faction = trobador_french influence = 20 }
+	}
+
+}
+
+country_event = {
+	id = trobador_faction.6
+	title = "trobador_faction_6_title"
+	desc = "trobador_faction_6_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		NOT = { has_country_flag = trobador_allied_aragon }
+		exists = ARA
+		alliance_with = ARA
+		has_faction = trobador_aragonese
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = trobador_allied_aragon
+		}
+	}
+
+	option = {
+		name = "trobador_ok"
+		add_faction_influence = { faction = trobador_aragonese influence = 20 }
+	}
+
+}
+
+country_event = {
+	id = trobador_faction.7
+	title = "trobador_faction_7_title"
+	desc = "trobador_faction_7_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		has_country_flag = trobador_allied_france
+		NOT = { alliance_with = FRA }
+		has_faction = trobador_french
+	}
+	
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = trobador_allied_france
+		}
+	}
+
+	option = {
+		name = "trobador_ok"
+		if = {
+			limit = { faction_in_power = trobador_french }
+			add_stability = -1
+		}
+		add_faction_influence = { faction = trobador_french influence = -20 }
+	}
+
+}
+
+country_event = {
+	id = trobador_faction.8
+	title = "trobador_faction_8_title"
+	desc = "trobador_faction_8_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		has_country_flag = trobador_allied_aragon
+		NOT = { alliance_with = ARA }
+		has_faction = trobador_aragonese
+	}
+	
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = trobador_allied_aragon
+		}
+	}
+
+	option = {
+		name = "trobador_ok"
+		if = {
+			limit = { faction_in_power = trobador_aragonese }
+			add_stability = -1
+		}
+		add_faction_influence = { faction = trobador_aragonese influence = -20 }
+	}
+
+}

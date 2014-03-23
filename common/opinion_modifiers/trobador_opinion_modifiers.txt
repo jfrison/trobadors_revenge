@@ -1,0 +1,7 @@
+faction_friendly_to_us = {
+	opinion = 25
+}
+
+faction_friendly_to_them = {
+	opinion = 50
+}

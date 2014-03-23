@@ -1,4 +1,52 @@
+## Trobador seducing the queen
 executed_trobador = {
 	global_revolt_risk = -10
 	stability_cost_modifier = 0.30
+}
+
+### Ruler modifiers for trobador skill
+
+apprentice_trobador = {
+	heir_chance = 0.06
+	trobador_occitanist_influence = 0.025
+}
+
+decent_trobador = {
+	prestige = 0.5
+	heir_chance = 0.125
+	trobador_occitanist_influence = 0.05
+}
+
+gifted_trobador = {
+	prestige = 1
+	diplomatic_reputation = 0.5
+	heir_chance = 0.25
+	trobador_occitanist_influence = 0.10
+}
+
+famous_trobador = {
+	prestige = 1.5
+	diplomatic_reputation = 1
+	global_revolt_risk = -0.5
+	heir_chance = 0.5
+	trobador_occitanist_influence = 0.15
+}
+
+legendary_trobador = {
+	prestige = 2
+	diplomatic_reputation = 2
+	global_revolt_risk = -1
+	heir_chance = 1
+	trobador_occitanist_influence = 0.20
+}
+
+### Malus during learning of trobador skill
+
+working_on_trobar = {
+	leader_shock = -1
+	leader_fire = -1
+	leader_siege = -1
+	diplomatic_reputation = -1
+	global_tax_modifier = -0.05
+	adm_tech_cost_modifier = 0.10
 }

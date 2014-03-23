@@ -1,0 +1,97 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+
+color = { 55  120  206 }
+
+historical_idea_groups = {
+	trade_ideas
+	economic_ideas
+	naval_ideas
+	plutocracy_ideas
+	defensive_ideas
+	administrative_ideas 
+	religious_ideas
+	diplomatic_ideas
+	innovativeness_ideas
+	offensive_ideas
+	spy_ideas
+}
+
+historical_units = {
+	western_medieval_infantry
+	western_medieval_knights
+	western_men_at_arms
+	swiss_landsknechten
+	dutch_maurician
+	french_caracolle
+	anglofrench_line
+	french_dragoon
+	french_bluecoat
+	french_cuirassier
+	french_impulse
+	mixed_order_infantry
+	open_order_cavalry
+	napoleonic_square
+	napoleonic_lancers
+}
+
+monarch_names = {
+	"Vincenç #0" = 80
+	"Glaudi #0" = 20
+	"Simon #0" = 20
+	"Frederic #0" = 15
+	"Bertran #0" = 15
+	"Joana #0" = -15
+	"Guilhem #0" = 10
+	"Bernard #2" = 10
+	"Pons #0" = 10
+	"Odon #0" = 10
+	"Andiru #0" = 0
+	"Antoni #0" = 0
+	"Borel #0" = 0
+	"Carle #0" = 0
+	"Alfons #0" = 0
+	"Danis #0" = 0
+	"Emmanuel #0" = 0
+	"Evrard #0" = 0
+	"Foilan #0" = 0
+	"Francés #0" = 0
+	"Gelis #0" = 0
+	"Godefroi #0" = 0
+	"Guiraud #0" = 0
+	"Henri #0" = 0
+	"Huc #0" = 0
+	"Ignace #0" = 0
+	"Jaume #0" = 0
+	"Jules #0" = 0
+	"Leopold #0" = 0
+	"Raimon #0" = 0
+	"Mamert #0" = 0
+	"Maurice #0" = 0
+	"Olivier #0" = 0
+	"Patrici #0" = 0
+	"Richartz #0" = 0
+	"Roger #0" = 0
+	"Sauson #0" = 0
+	"Valeray #0" = 0
+	"Xavier #0" = 0
+}
+
+leader_names = {
+	"d'Aubagne" Redon
+	"de Mazargues" "de la Rose" "de l'Estaque" "de Vaufrèges" "de la Plana"
+	"de Noailles" "de Longchamps" "Berlsunce"
+	"de la Gaudinière" "de Saint-Victor" "de Sormiou" "de Marseilleveyre"
+	"du Rouve" "de Vitrolles" "de Berre" "d'Aix"
+}
+
+ship_names = {
+	"Pytheas" "Euthymenes" "Lo Phocean" "Massalia" "Fanny" "La Sardine" "Le Massaliote" "Nikaia" "Olbia"
+	"Antipolis" "Agathe Tychè" "Alalia" "Emporion" "Gyptis" "Protis" "Le Lacydon"
+}
+
+army_names = {
+	 "Armée de l'Huveaune" "Armée des Aygalades" "Armée de la Ciotat"
+	 "Armée de $PROVINCE$" 
+}

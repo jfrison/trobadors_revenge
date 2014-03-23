@@ -1,0 +1,88 @@
+namespace = trobador_republican
+
+country_event = {
+	id = trobador_republican.1
+	title = "trobador_republican_1_title"
+	desc = "trobador_republican_1_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		has_global_flag = veritas_et_fortitudo 
+		always = no
+		OR = {
+			AND = {
+				NOT = { exists = MRS }
+				NOT = { 2019 = { is_core = MRS } }
+				owns = 2019
+			}
+			AND = {
+				NOT = { exists = TLN }
+				NOT = { 2020 = { is_core = TLN } }
+				owns = 2020
+			}
+			AND = {
+				NOT = { exists = NCE }
+				NOT = { 102 = { is_core = NCE } }
+				owns = 102
+			}
+			AND = {
+				NOT = { exists = MPL }
+				NOT = { 200 = { is_core = MRS } }
+				owns = 200
+			}
+		} 
+	}
+
+	immediate = {
+		#hidden_effect = {
+			if = {
+				limit = { 
+					has_global_flag = veritas_et_fortitudo 
+					NOT = { exists = MRS }
+					NOT = { 2019 = { is_core = MRS } }
+					owns = 2019
+				}
+				MRS = { add_core = 2019 }
+			}
+			if = {
+				limit = { 
+					NOT = { exists = NCE }
+					NOT = { 102 = { is_core = NCE } }
+					owns = 102
+				}
+				NCE = { add_core = 102 }
+			}
+			if = {
+				limit = { 
+					NOT = { exists = MPL }
+					NOT = { 200 = { is_core = MPL } }
+					owns = 200
+				}
+				MPL = { add_core = 200 }
+			}
+			if = {
+				limit = { 
+					has_global_flag = veritas_et_fortitudo 
+					NOT = { exists = TLN }
+					NOT = { 2020 = { is_core = TLN } }
+					owns = 2020
+				}
+				TLN = { add_core = 2020 }
+			}
+		#}
+	}
+
+	#options: release now, give autonomy, restrict city powers, do nothing
+	option = {
+		name = "trobador_republican_1_opta"		# indep
+	}
+	option = {
+		name = "trobador_republican_1_optb"		# auton
+	}
+	option = {
+		name = "trobador_republican_1_optc"		# restrict
+	}
+	option = {
+		name = "trobador_republican_1_optd"		# nothing
+	}
+}

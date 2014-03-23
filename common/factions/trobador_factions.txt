@@ -42,6 +42,7 @@ trobador_republican =
 	modifier = 
 	{
 		republican_tradition = 0.005
+		legitimacy = -1
 		light_ship_cost = -0.10
 		global_trade_power = 0.10
 		global_trade_income_modifier = 0.10

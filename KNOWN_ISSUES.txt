@@ -1,19 +1,22 @@
-== VeF integration == 
-* Some events (factions arise, discussion with your trobador,... all?) have the "test" picture because the vanilla .gfx file has been removed. What is the best way to fix this? Probably having my own pictures.
+﻿== VeF integration == 
 * looks like nothing is implemented for the Union of Aix except the change of owner for Nice (at a wrong date). Maybe I should add an Hungarian/Durrazzo faction for this period. 
-* the sea access of Cuneo sounds absurd and makes Nice's dedition much less important
-* "Cap" should be corrected in "Gap", its capital too. And maybe the important centre of trade moved to Marseille. "Languedoc" should be called "Montpellier" as its capital and in coherence with the title of "Lord of Montpellier" used by the catalan kings, if dropping vanilla name is not a problem (the word "Languedoc" has been invented to speak about the French part of Occitania, the big chunk around Toulouse, then the restriction of its use to designate the "Languedoc" province comes from XXth century)
 
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country appears (for instance because of Provence releasing Anjou after converting the provinces, or because of another mod adding a small French vassal), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)
 * Republican faction is a bit tasteless for the moment. In particular, VeF could allow something like a republic of Marseille if republicans+rebels, plus maybe some less historic ones.
+* Triggered modifier for republican and aragonese didn't work last time. Needs further testing. Finally looks OK... 
 
 == Advisors ==
 * Could we have female trobairitz? The presence of women was a bit of a specificity of the trobar. 
 
+== Localisation ==
+* French has been kind of abandonated. Maybe I should catch up before it's too late. 
+
 == Decisions and Events ==
 * The Aragon intervention in coalition with French vassals might need some opinion/attitude boost (or maybe a proper coalition) to make sure the alliance is not broken. This require more testing. 
-* TODO: ruler can be a trobador (with a modifier for skill, this skill influencing events and vice-versa)
+* TODO: icons for modifiers
 * TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this
-* TODO: neo-cathars?
-
+* TODO: neo-cathars? religion (~protestant) or just heretics?
+* TODO: "Yo mamma" between rival (sirventes either written by you -hoping you are gifted- or by your trobador -if you have one-) => event launched by a sirventes in "discussing with your trobador" ?
+* TODO: activable private jokes with provencialists and gascons?
+* TODO: finish ruler-trobador, finish repub indep cities, finish repub events

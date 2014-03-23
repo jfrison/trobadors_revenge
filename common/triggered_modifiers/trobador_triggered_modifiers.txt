@@ -260,12 +260,12 @@ aragonese_faction_rising1 = {
 	potential = {
 		has_faction = trobador_aragonese
 		exists = ARA
-		NOT = { war_with = ARA }
-		NOT = { truce_with = ARA }
 		NOT = { has_opinion = { who = ARA value = 50 } }
 	}
 	
 	trigger = {
+		NOT = { war_with = ARA }
+		NOT = { truce_with = ARA }
 		has_opinion = { who = ARA value = 0 }
 	}
 	

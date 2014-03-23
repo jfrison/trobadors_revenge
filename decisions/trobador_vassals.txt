@@ -14,6 +14,7 @@ country_decisions = {
 			exists = ARA
 			NOT = { has_opinion = { who = FRA value = 0 } }
 			has_opinion = { who = ARA value = 100 }
+			faction_in_power = trobador_aragonese
 		}
 		effect = {
 			FRA = {
@@ -73,6 +74,7 @@ country_decisions = {
 			exists = FRA
 			NOT = { has_opinion = { who = ARA value = 0 } }
 			has_opinion = { who = FRA value = 100 }
+			faction_in_power = trobador_french
 		}
 		effect = {
 			ARA = {

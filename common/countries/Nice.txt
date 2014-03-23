@@ -1,0 +1,93 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+
+color = { 255  70  86 }
+
+historical_idea_groups = {
+	trade_ideas
+	economic_ideas
+	naval_ideas
+	plutocracy_ideas
+	defensive_ideas
+	administrative_ideas 
+	religious_ideas
+	diplomatic_ideas
+	innovativeness_ideas
+	offensive_ideas
+	spy_ideas
+}
+
+historical_units = {
+	western_medieval_infantry
+	western_medieval_knights
+	western_men_at_arms
+	swiss_landsknechten
+	dutch_maurician
+	french_caracolle
+	anglofrench_line
+	french_dragoon
+	french_bluecoat
+	french_cuirassier
+	french_impulse
+	mixed_order_infantry
+	open_order_cavalry
+	napoleonic_square
+	napoleonic_lancers
+}
+
+monarch_names = {
+	"Giuseppe #0" = 60
+	"Antoni #0" = 25
+	"Glaudi #0" = 25
+	"Raimon #0" = 20
+	"Alfons #0" = 20
+	"Simon #0" = 20
+	"Guilhem #0" = 15
+	"Bertran #0" = 15
+	"Catarina #0" = -15
+	"Bernard #0" = 10
+	"Pons #0" = 10
+	"Odon #0" = 10
+	"Frederic #0" = 10
+	"Andiru #0" = 0
+	"Borel #0" = 0
+	"Carle #0" = 0
+	"Danis #0" = 0
+	"Emmanuel #0" = 0
+	"Evrard #0" = 0
+	"Foilan #0" = 0
+	"Francés #0" = 0
+	"Gelis #0" = 0
+	"Godefroi #0" = 0
+	"Guiraud #0" = 0
+	"Henri #0" = 0
+	"Huc #0" = 0
+	"Ignace #0" = 0
+	"Jaume #0" = 0
+	"Jules #0" = 0
+	"Leopold #0" = 0
+	"Louis #0" = 0
+	"Mamert #0" = 0
+	"Maurice #0" = 0
+	"Olivier #0" = 0
+	"Patrici #0" = 0
+	"Richartz #0" = 0
+	"Roger #0" = 0
+	"Sauson #0" = 0
+	"Valeray #0" = 0
+	"Xavier #0" = 0
+}
+
+leader_names = {
+	"de Bueil" "de Saint-Roch" "de Drap" "de Tende" "de Menton" "de Vintimille"
+}
+
+ship_names = {
+	"L'Amploa" "Le Ficanas" "L'Aiglon"
+}
+
+army_names = {
+	 "Armée du Paillon"  "Armée du Ray"  "Armée du Var" 
+	 "Armada de $PROVINCE$" 
+}

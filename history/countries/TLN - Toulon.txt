@@ -1,0 +1,14 @@
+government = merchant_republic
+#aristocracy_plutocracy = -1
+#centralization_decentralization = -5
+#innovative_narrowminded = -2
+mercantilism = 0.1
+#offensive_defensive = 0
+#land_naval = 1
+#quality_quantity = 0
+#serfdom_freesubjects = 2
+primary_culture = occitan
+add_accepted_culture = provencal
+religion = catholic
+technology_group = western
+capital = 2020	# Toulon (VeF)

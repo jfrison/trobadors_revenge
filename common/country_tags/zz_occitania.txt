@@ -1,0 +1,5 @@
+OCC = "countries/Occitania.txt"
+MRS = "countries/Marseille.txt"
+NCE = "countries/Nice.txt"
+TLN = "countries/Toulon.txt"
+MPL = "countries/Montpellier.txt"

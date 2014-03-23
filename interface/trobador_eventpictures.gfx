@@ -1,0 +1,15 @@
+spriteTypes = {
+	
+	spriteType = {
+		name = "TROB_TROBADOR_eventPicture"
+		texturefile = "gfx/event_pictures/event_pictures_TROBADOR/TROB_TROBADOR_eventPicture.dds"
+		allwaystransparent = yes
+	}
+
+	spriteType = {
+		name = "TROB_MUSIC_eventPicture"
+		texturefile = "gfx/event_pictures/event_pictures_TROBADOR/TROB_MUSIC_eventPicture.dds"
+		allwaystransparent = yes
+	}
+
+}
