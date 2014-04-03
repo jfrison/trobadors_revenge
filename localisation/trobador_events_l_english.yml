@@ -94,4 +94,8 @@
  trobador_republican_2_opta: "Grant them independence"
  trobador_republican_2_optb: "Give them more autonomy"
  trobador_republican_2_optc: "Prepare to enforce order"
+ trobador_setup_1_title: "Welcome in Trobador's Revenge"
+ trobador_setup_1_desc: "We need to do some initialisation, sorry for this uninteresting message. "
+ trobador_setup_2_title: "Welcome in Trobador's Revenge (with VeF)"
+ trobador_setup_2_desc: "We need to do some VeF-only initialisation, sorry for this uninteresting message. "
 

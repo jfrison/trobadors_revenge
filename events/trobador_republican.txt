@@ -52,7 +52,7 @@ country_event = {
 	}
 
 	immediate = {
-		#hidden_effect = {
+		hidden_effect = {
 			if = {
 				limit = { 
 					has_global_flag = veritas_et_fortitudo 
@@ -87,7 +87,7 @@ country_event = {
 				}
 				TLN = { add_core = 2020 }
 			}
-		#}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -186,18 +186,38 @@ country_event = {
 	#options: release now, give autonomy, restrict city powers, do nothing, abdicate
 	option = {
 		name = "trobador_republican_1_opta"		# indep
-		release = MRS
 		if = {
-			limit = { 102 = { revolt_risk = 0.1 } }
-			release = NCE
+			limit = {
+				2019 = { owned_by = ROOT	}
+			}
+			release_vassal = MRS
 		}
 		if = {
-			limit = { 2020 = { revolt_risk = 1.0 } }
-			release = TLN
+			limit = { 
+				102 = {
+					owned_by = ROOT
+					revolt_risk = 0.1
+					}
+				}
+			release_vassal = NCE
 		}
 		if = {
-			limit = { 200 = { revolt_risk = 1.0 } }
-			release = MPL
+			limit = {
+				2020 = { 
+					owned_by = ROOT
+					revolt_risk = 1.0 
+				}
+			}
+			release_vassal = TLN
+		}
+		if = {
+			limit = {
+				200 = {
+					owned_by = ROOT
+					revolt_risk = 1.0 
+				}
+			}
+			release_vassal = MPL
 		}
 		add_stability = 1
 		hidden_effect = {
@@ -248,15 +268,17 @@ country_event = {
 					is_core = MPL
 				}
 			}
-			add_revolt_risk = 10
+			add_province_modifier = { name = "city_rights_restricted" duration = 1825 }
+			remove_province_modifier = autonomous_city
 		}
-		if = {
-			limit = { owns = 2019 }
+		every_owned_province = {
+			limit = { province_id = 2019 }
 			spawn_rebels = {
 				type = nationalist_rebels
-				size = 3
+				size = 4
 				friend = MRS
 			}
+			change_siege = 20
 		}
 		add_faction_influence = { faction = trobador_republican influence = -50 }
 	}

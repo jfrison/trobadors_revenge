@@ -11,15 +11,15 @@ country_decisions = {
 			}
 		}
 		allow = {
-				NOT = { has_opinion = { who = FRA value = 125 } }
-				OR = {
-					faction_in_power = trobador_occitanist
-					AND = { # fallback in case of absent GUI for factions
-						has_factions = no
-						has_idea = paratge_traditions
-					}
+			NOT = { has_opinion = { who = FRA value = 125 } }
+			OR = {
+				faction_in_power = trobador_occitanist
+				AND = { # fallback in case of absent GUI for factions
+					has_factions = no
+					has_idea = paratge_traditions
 				}
 			}
+		}
 		effect = {
 			change_primary_culture = occitan
 			every_owned_province = {
@@ -39,7 +39,43 @@ country_decisions = {
 					modifier = opinion_displeased
 				}
 			}
+			add_faction_influence = { faction = trobador_occitanist influence = 10 }
 			add_prestige = 5
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	assimilate_to_french_culture = {
+		major = yes
+		potential = {
+			primary_culture = occitan
+		}
+		allow = {
+			exists = FRA
+			FRA = { num_of_cities = 6 }
+			OR = {
+				faction_in_power = trobador_french
+				has_opinion = { who = FRA value = 200 }
+			}
+		}
+		effect = {
+			change_primary_culture = occitain
+			every_owned_province = {
+				limit = {
+					culture = occitan
+				}
+				change_culture = occitain
+			}
+			FRA = {
+				add_opinion = {
+					who = ROOT
+					modifier = opinion_pleased
+				}
+			}
+			add_faction_influence = { faction = trobador_french influence = 30 }
+			add_prestige = -10
 		}
 		ai_will_do = {
 			factor = 0

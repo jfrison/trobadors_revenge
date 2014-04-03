@@ -67,3 +67,14 @@ autonomous_city = {
 	local_defensiveness = 0.1
 	global_missionary_strength = -0.02
 }
+
+city_rights_restricted = {
+	local_revolt_risk = 10
+}
+
+## Special modifier for Marseille
+
+untameable_city = {
+	local_revolt_risk = 2
+	trobador_republican_influence = 0.05
+}

@@ -54,3 +54,49 @@ country_event = {
 		name = "trobador_ok"		# OK
 	}
 }
+
+## This one will only trigger when VeF is activated (and initialised ! which can take a bit of time)
+country_event = {
+	id = trobador_setup.2
+	title = "trobador_setup_2_title"
+	desc = "trobador_setup_2_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		has_global_flag = veritas_et_fortitudo
+		NOT = { has_global_flag = trobador_vef_initialised }
+		ai = yes # this way the player will not have a useless message
+	}
+
+	immediate = {
+		hidden_effect = {
+			# Puts a modifier to Marseille
+			2019 = {
+				add_permanent_province_modifier = {
+					name = "untameable_city"
+					duration = -1
+				}
+			}
+			# This second part is only for the Alternative History scenario
+			if = {
+				limit = {
+					has_global_flag = glory_of_byzantium
+					NOT = { has_global_flag = trobador_VeF_additional_content } # the "VeF only" part already has history files to release Marseille
+				}
+				2019 = { 
+					add_core = MRS
+					#owner = { release_vassal = MRS } # we should send an event to owner and neighbours to explain
+				}
+				2020 = { add_core = TLN }
+				102 = { add_core = NCE }
+				200 = { add_core = MPL }
+			}
+			# Initialisation is finished
+			set_global_flag = trobador_vef_initialised
+		}
+	}
+
+	option = {
+		name = "trobador_ok"		# OK
+	}
+}

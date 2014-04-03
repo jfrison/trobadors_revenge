@@ -79,7 +79,7 @@ monarch_names = {
 }
 
 leader_names = {
-	"d'Aubagne" Redon
+	"d'Aubagne" Redon "de Castellane" "de Casaulx"
 	"de Mazargues" "de la Rose" "de l'Estaque" "de Vaufrèges" "de la Plana"
 	"de Noailles" "de Longchamps" "Berlsunce"
 	"de la Gaudinière" "de Saint-Victor" "de Sormiou" "de Marseilleveyre"

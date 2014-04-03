@@ -19,6 +19,22 @@ country_event = {
 			tag = OCC
 			tag = PRO
 			tag = TOU
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				tag = MRS
+			}
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				tag = NCE
+			}
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				tag = TLN
+			}
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				tag = MPL
+			}
 		}
 		OR = {
 			primary_culture = gascon
@@ -89,6 +105,13 @@ country_event = {
 					influence = 33
 				}
 			}
+			if = {
+				limit = { government = republic }
+				add_faction_influence = {
+					faction = trobador_republican
+					influence = 50
+				}
+			}
 		}
 	}
 
@@ -106,7 +129,7 @@ country_event = {
 			faction = trobador_republican
 			influence = 15
 		}
-		add_republican_tradition = 5
+		add_republican_tradition = 0.1
 		create_advisor = trader
 	}
 	option = {
