@@ -43,6 +43,9 @@ country_decisions = {
 				primary_culture = catala
 				#primary_culture = catalan
 			#}
+			any_country = {
+				has_faction = trobador_occitanist
+			}
 		}
 		allow = {
 				NOT = { has_opinion = { who = FRA value = 50 } }
@@ -92,6 +95,7 @@ country_decisions = {
 					who = ROOT
 					modifier = opinion_pleased
 				}
+				add_faction_influence = { faction = trobador_occitanist influence  = 20 }
 			}
 			set_country_flag = expressed_support_for_occitanism
 		}

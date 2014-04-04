@@ -738,3 +738,310 @@ aragonese_alliance_mission = {
 		add_stability = 1
 	}
 }
+
+restore_occitan_independence = {
+
+	type = country
+
+	category = MIL
+
+	target_provinces = {
+		OR = {
+			culture = occitan
+			culture = occitain
+			culture = provencal
+			culture = aquitaine
+			culture = gascon
+		}
+		owned_by = FRA
+		# I've not managed to automatise that...
+		OR = {
+			AND = {
+				is_core = TOU
+				NOT = { exists = TOU }
+			}
+			AND = {
+				is_core = FOI
+				NOT = { exists = FOI }
+			}
+			AND = {
+				is_core = GUY
+				NOT = { exists = GUY }
+			}
+			AND = {
+				is_core = PRO
+				NOT = { exists = PRO }
+			}
+			AND = {
+				is_core = AUV
+				NOT = { exists = AUV }
+			}
+			AND = {
+				is_core = DAU
+				NOT = { exists = DAU }
+			}
+		}
+#		any_country = {
+#			exists = no
+#			is_core = PREV
+#			OR = {
+#				primary_culture = occitan
+#				primary_culture = occitain
+#				primary_culture = provencal
+#				primary_culture = aquitaine
+#				primary_culture = gascon
+#			}
+#		}
+	}
+
+	
+	allow = {
+		tag = ARA
+		OR = {
+			any_target_province = { is_core = TOU }
+			any_target_province = { is_core = FOI }
+			any_target_province = { is_core = GUY }
+			any_target_province = { is_core = PRO }
+			any_target_province = { is_core = AUV }
+			any_target_province = { is_core = DAU }
+		}
+#		any_country = {
+#			exists = no
+#			OR = {
+#				primary_culture = occitan
+#				primary_culture = occitain
+#				primary_culture = provencal
+#				primary_culture = aquitaine
+#				primary_culture = gascon
+#			}
+#			any_target_province = {
+#				is_core = PREV
+#			}
+#		}
+		is_at_war = no
+		is_lesser_in_union = no
+		has_regency = no
+	}
+
+	success = {
+		any_target_province = {
+			owned_by = FROM
+		}
+	}
+	abort = {
+		all_target_province = {
+			NOT = { owned_by = FRA }
+			NOT = { owned_by = FROM }
+		}
+	}
+	
+	immediate = {
+		every_target_province = {
+			add_claim = FROM
+		}
+	}
+	
+	abort_effect = {
+		every_target_province = {
+			remove_claim = FROM
+		}
+	}
+	
+	effect = {
+		# I've not managed to automatise that...
+		if = {
+			limit = { any_target_province = { is_core = TOU } }
+			release = TOU
+		}
+		if = {
+			limit = { any_target_province = { is_core = FOI } }
+			release = FOI
+		}
+		if = {
+			limit = { any_target_province = { is_core = GUY } }
+			release = GUY
+		}
+		if = {
+			limit = { any_target_province = { is_core = PRO } }
+			release = PRO
+		}
+		if = {
+			limit = { any_target_province = { is_core = AUV } }
+			release = AUV
+		}
+		if = {
+			limit = { any_target_province = { is_core = DAU } }
+			release = DAU
+		}
+	}
+
+	chance = {
+		factor = 0 # FIXME: I'm just unable to have anything working ! VeF didnt find a non-copypasting solution neither for its bishops
+		modifier = {
+			factor = 2
+			mil = 4
+		}
+		modifier = {
+			factor = 3
+			is_rival = FRA
+		}
+		modifier = {
+			factor = 3
+			culture_group = occitanocatala
+		}
+	}
+
+}
+
+control_strategic_province = {
+	
+	type = neighbor_provinces
+	category = MIL
+
+	ai_mission = yes
+
+	allow = {
+		OR = {
+			# Vanilla trade modifiers
+			has_province_modifier = center_of_trade_modifier 
+			has_province_modifier = bosphorous_sound_toll 
+			has_province_modifier = sound_toll 
+			has_province_modifier = river_estuary_modifier 
+			has_province_modifier = daugava_estuary_modifier
+			has_province_modifier = neman_estuary_modifier
+			has_province_modifier = vistula_estuary_modifier
+			has_province_modifier = oder_estuary_modifier
+			has_province_modifier = elbe_estuary_modifier
+			has_province_modifier = weser_estuary_modifier 
+			has_province_modifier = ems_estuary_modifier 
+			has_province_modifier = rhine_estuary_modifier 
+			has_province_modifier = thames_estuary_modifier 
+			has_province_modifier = rhone_estuary_modifier 
+			has_province_modifier = gironde_estuary_modifier 
+			has_province_modifier = loire_estuary_modifier 
+			has_province_modifier = seine_estuary_modifier
+			has_province_modifier = ebro_estuary_modifier
+			has_province_modifier = douro_estuary_modifier
+			has_province_modifier = tagus_estuary_modifier 
+			has_province_modifier = guadiana_estuary_modifier 
+			has_province_modifier = po_estuary_modifier 
+			has_province_modifier = danube_estuary_modifier 
+			has_province_modifier = dnestr_estuary_modifier 
+			has_province_modifier = dnieper_estuary_modifier 
+			has_province_modifier = volga_estuary_modifier 
+			has_province_modifier = don_estuary_modifier 
+			has_province_modifier = yangtze_estuary_modifier 
+			has_province_modifier = huang_he_estuary_modifier 
+			has_province_modifier = ganges_estuary_modifier 
+			has_province_modifier = indus_estuary_modifier 
+			has_province_modifier = euphrates_estuary_modifier 
+			has_province_modifier = nile_estuary_modifier 
+			has_province_modifier = gambia_estuary_modifier 
+			has_province_modifier = pearl_estuary_modifier 
+			has_province_modifier = parana_estuary_modifier 
+			has_province_modifier = mekong_estuary_modifier 
+			has_province_modifier = mississippi_estuary_modifier 
+			has_province_modifier = rio_grande_estuary_modifier 
+			has_province_modifier = niger_estuary_modifier 
+			has_province_modifier = saint_lawrence_estuary_modifier 
+			has_province_modifier = hudson_estuary_modifier 
+			has_province_modifier = nelson_eastuary_modifier 
+			# VeF additional modifiers (except "basin")
+			AND = {
+				has_global_flag = veritas_et_fortitudo
+				OR = {
+					has_province_modifier = natural_harbor
+					has_province_modifier = nile_delta
+					has_province_modifier = rhine_delta
+					has_province_modifier = tigris_euphrates_delta
+					has_province_modifier = congo_delta
+					has_province_modifier = amazon_delta
+					has_province_modifier = port_of_suez
+					has_province_modifier = vinland_toll
+				}
+			}
+		}
+		owner = { 
+			OR = {
+				government = republic
+				faction_in_power = trobador_republican
+			}
+			NOT = { truce_with = FROM } 
+			NOT = { is_subject_of = FROM }
+			NOT = { alliance_with = FROM }
+			NOT = { vassal_of = FROM }
+			NOT = { 
+				is_subject = yes
+				overlord = { alliance_with = FROM }
+			}
+			NOT = { has_opinion = { who = FROM value = 75 } }
+		}
+	}
+
+	abort = {
+		owner = { NOT = { is_neighbor_of = FROM } }
+	}
+
+	success = {
+		owned_by = FROM
+	}
+
+	immediate = {
+		add_claim = FROM
+	}
+
+	abort_effect = {
+		remove_claim = FROM
+	}
+
+	effect = {
+		FROM = {
+			add_prestige = 2
+			add_treasury = 25
+			add_mercantilism =  0.01
+		}
+	}
+
+	chance = {
+		factor = 1000
+		modifier = {
+			factor = 0.25
+			FROM = {
+				NOT = { government = republic }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = {
+				NOT = { trade_income_percentage = 0.30 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = {
+				NOT = { trade_income_percentage = 0.50 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = { army_size = FROM }
+		}
+		modifier = {
+			factor = 0.25
+			owner = { num_of_cities = 2 }
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.25
+			owner = { government = republic }
+		}
+		modifier = {
+			factor = 1.5
+			owner = { is_enemy = FROM }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { owner = { reverse_has_opinion = { who = FROM  value = -50 } } }
+		}
+	}
+}
