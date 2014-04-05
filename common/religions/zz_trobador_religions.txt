@@ -21,8 +21,10 @@ christian = {
 		}
 
 		country = {
-			production_efficiency = 0.1 # Cathars work, even nobles
+			production_efficiency = 0.15 # Cathars work, even nobles
 			global_missionary_strength = 0.01 # They stay close from the people and diffuse bibles in occitan
+			global_manpower_modifier = -0.25 # They don't even kill chickens ! 
+			diplomatic_reputation = 2
 		}
 		
 		on_convert = {

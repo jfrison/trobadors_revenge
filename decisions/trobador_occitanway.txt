@@ -54,7 +54,16 @@ country_decisions = {
 		}
 		allow = {
 			exists = FRA
-			FRA = { num_of_cities = 6 }
+			FRA = {
+				num_of_cities = 6
+				OR = {
+					NOT = { has_global_flag = veritas_et_fortitudo } # a VeF province is much smaller than a Vanilla province
+					num_of_cities = 12
+				}
+				any_owned_province = {
+					region = occitania
+				}
+			}
 			OR = {
 				faction_in_power = trobador_french
 				has_opinion = { who = FRA value = 200 }
