@@ -1,9 +1,10 @@
-﻿== VeF integration == 
-* looks like nothing is implemented for the Union of Aix except the change of owner for Nice (at a wrong date). Maybe I should add an Hungarian/Durrazzo faction for this period. It won't come from SI as Marco starts in 1444. 
+﻿== Graphics == 
 * I thought having my own event pictures would make sure I don't have "VeF vs Vanilla" conflicts but that's actually worse: the pictures need to have different sizes if VeF is here, which doesn't look possible in a single mod. 
+* No gfx for cathars if you don't have "VeF additional content" (for the moment it means that anyway you shouldn't have cathars). Having all the religion icons in a single dds file make it difficult to have something portable. Right now it doesn't deserve a "Vanilla additional content" mod or "Dei Gratia additional mod". 
 
 == History ==
 * The alternative scenario should turn Provence into Anjou, since it doesn't have any province in Province any more. Use MEIOU country ?
+* looks like nothing is implemented for the Union of Aix except the change of owner for Nice (at a wrong date). Maybe I should add an Hungarian/Durrazzo faction for this period. It won't come from SI as Marco starts in 1444. 
 
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country appears (for instance because of Provence releasing Anjou after converting the provinces, or because of another mod adding a small French vassal), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)
