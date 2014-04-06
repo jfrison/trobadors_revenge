@@ -797,13 +797,42 @@ restore_occitan_independence = {
 	
 	allow = {
 		tag = ARA
-		OR = {
-			any_target_province = { is_core = TOU }
-			any_target_province = { is_core = FOI }
-			any_target_province = { is_core = GUY }
-			any_target_province = { is_core = PRO }
-			any_target_province = { is_core = AUV }
-			any_target_province = { is_core = DAU }
+		any_province = {
+			OR = {
+				culture = occitan
+				culture = occitain
+				culture = provencal
+				culture = aquitaine
+				culture = gascon
+			}
+			owned_by = FRA
+			# I've not managed to automatise that...
+			OR = {
+				AND = {
+					is_core = TOU
+					NOT = { exists = TOU }
+				}
+				AND = {
+					is_core = FOI
+					NOT = { exists = FOI }
+				}
+				AND = {
+					is_core = GUY
+					NOT = { exists = GUY }
+				}
+				AND = {
+					is_core = PRO
+					NOT = { exists = PRO }
+				}
+				AND = {
+					is_core = AUV
+					NOT = { exists = AUV }
+				}
+				AND = {
+					is_core = DAU
+					NOT = { exists = DAU }
+				}
+			}
 		}
 #		any_country = {
 #			exists = no
@@ -821,6 +850,10 @@ restore_occitan_independence = {
 		is_at_war = no
 		is_lesser_in_union = no
 		has_regency = no
+		exists = FRA
+		NOT = { alliance_with = FRA }
+		NOT = { truce_with = FRA }
+		FRA = { is_subject = no }
 	}
 
 	success = {
@@ -848,37 +881,119 @@ restore_occitan_independence = {
 	}
 	
 	effect = {
+		hidden_effect = {
+			every_target_province = {
+				remove_claim = FROM
+				if = {
+					limit = { NOT = { owned_by = FROM } }
+					set_province_flag = oc_independence_excluded # using this flag instead of the direct condition is a way to ignore the condition in the tooltip, so that we know the potential effect before accepting the mission
+				}
+			}
+		}
 		# I've not managed to automatise that...
-		if = {
-			limit = { any_target_province = { is_core = TOU } }
-			release = TOU
+		every_target_province = { # and only the target provinces
+			# order matters: last "if" can overwrite the others
+			if = {
+				limit = { is_core = GUY NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = GUY
+			}
+			if = {
+				limit = { is_core = TOU NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = TOU
+			}
+			if = {
+				limit = { is_core = FOI NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = FOI
+			}
+			if = {
+				limit = { is_core = AUV NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = AUV
+			}
+			if = {
+				limit = { is_core = PRO NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = PRO
+			}
+			if = {
+				limit = { is_core = DAU NOT = { has_province_flag = oc_independence_excluded } }
+				cede_province = DAU
+			}
 		}
-		if = {
-			limit = { any_target_province = { is_core = FOI } }
-			release = FOI
+		hidden_effect = {
+			if = {
+				limit = { any_target_province = { owned_by = TOU } }
+				TOU = { # I'ld like to establish a peace too, but I don't know how
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			if = {
+				limit = { any_target_province = { owned_by = FOI } }
+				FOI = {
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			if = {
+				limit = { any_target_province = { owned_by = GUY } }
+				GUY = {
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			if = {
+				limit = { any_target_province = { owned_by = AUV } }
+				AUV = {
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			if = {
+				limit = { any_target_province = { owned_by = DAU } }
+				DAU = {
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			if = {
+				limit = { any_target_province = { owned_by = PRO } }
+				PRO = {
+					add_opinion = {
+						who = ROOT
+						modifier = released_us_freely 
+					}
+				}
+			}
+			every_target_province = {
+				clr_province_flag = oc_independence_excluded
+			}
 		}
-		if = {
-			limit = { any_target_province = { is_core = GUY } }
-			release = GUY
-		}
-		if = {
-			limit = { any_target_province = { is_core = PRO } }
-			release = PRO
-		}
-		if = {
-			limit = { any_target_province = { is_core = AUV } }
-			release = AUV
-		}
-		if = {
-			limit = { any_target_province = { is_core = DAU } }
-			release = DAU
-		}
+		add_prestige = 20
+		add_dip_power = 50
+		add_mil_power = 50
 	}
 
 	chance = {
-		factor = 0 # FIXME: I'm just unable to have anything working ! VeF didnt find a non-copypasting solution neither for its bishops
+		factor = 1000 # FIXME: I'm just unable to have anything working ! VeF didnt find a non-copypasting solution neither for its bishops
 		modifier = {
-			factor = 2
+			factor = 0.5
+			has_opinion = { who = FRA  value = 0 }
+		}
+		modifier = {
+			factor = 0.5
+			has_opinion = { who = FRA  value = 50 }
+		}
+		modifier = {
+			factor = 1.5
 			mil = 4
 		}
 		modifier = {
@@ -888,6 +1003,21 @@ restore_occitan_independence = {
 		modifier = {
 			factor = 3
 			culture_group = occitanocatala
+		}
+		modifier = {
+			factor = 3
+			FRA = {
+				any_owned_province = {
+					OR = {
+						culture = occitan
+						culture = occitain
+						culture = provencal
+						culture = aquitaine
+						culture = gascon
+					}
+					revolt_risk = 0.1
+				}
+			}
 		}
 	}
 

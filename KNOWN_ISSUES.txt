@@ -5,7 +5,6 @@
 == History ==
 * The alternative scenario should turn Provence into Anjou, since it doesn't have any province in Province any more. Use MEIOU country ?
 * looks like nothing is implemented for the Union of Aix except the change of owner for Nice (at a wrong date). Maybe I should add an Hungarian/Durrazzo faction for this period. It won't come from SI as Marco starts in 1444. 
-* limit alt hist to one bookmark
 
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country appears (for instance because of Provence releasing Anjou after converting the provinces, or because of another mod adding a small French vassal), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)
@@ -17,14 +16,10 @@
 == Localisation ==
 * French has been kind of abandonated. Maybe I should catch up before it's too late. 
 
-== Missions ==
-* restore_occitan_independence doesn't work. I'ld like to find a general solution, without copy-pasting, it's probably possible in some way... 
-
 == Decisions and Events ==
 * The Aragon intervention in coalition with French vassals might need some opinion/attitude boost (or maybe a proper coalition) to make sure the alliance is not broken. This require more testing. 
 * "Working on trobar" should be a ruler modifier, not country modifier, but then duration doesn't work
 * When Marseille is released it is typically vassal of a vassal, then it cannot make war for independence  (this is a problem of the vanilla game, but maybe I should try to bypass this issue)
-* Triggered modifiers fail sometimes, let's replace them by events
 * refusing occitanism should have more influence on countries with occitan faction in power
 
 == TODO ==

@@ -1,5 +1,5 @@
 government = merchant_republic
-#aristocracy_plutocracy = 3
+#aristocracy_plutocracy = -3
 #centralization_decentralization = -5
 #innovative_narrowminded = 2
 mercantilism = 0.1
@@ -11,3 +11,14 @@ primary_culture = provencal
 religion = catholic
 technology_group = western
 capital = 2019	# Marseille
+
+1309.1.1 = { # It's not "history", we just don't want a "no ruler" on the scenario menu
+	monarch = {
+		name = "Bertrand"
+		dynasty = "des Baux"
+		birth_date = 1268.5.26
+		adm = 6
+		dip = 6
+		mil = 2
+	}
+}
