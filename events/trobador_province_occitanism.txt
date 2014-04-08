@@ -1,0 +1,238 @@
+namespace = trobador_province_occitanism
+
+# Those events will handle the variable province_occitanism, whose value is between 0 and 100 for each province
+# <50 means french/iberian group and >50 occitanocatala group
+# it will be affected by owner, accepted_culture, faction, events, ...
+
+# Initialising the variable at startup
+country_event = {
+	id = trobador_province_occitanism.1
+	title = "trobador_province_occitanism_1_title"
+	desc = "trobador_province_occitanism_1_desc"
+	picture = CULTURE_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_global_flag = trobador_province_occitanism_initialised }
+		ai = yes # this way the player will not have a useless message
+	}
+
+	immediate = {
+		hidden_effect = {
+			every_province = {
+				limit = {
+					OR = {
+						culture = gascon
+						culture = aquitaine
+						culture = provencal
+						culture = occitain
+						culture = catalan
+					}
+				}
+				set_variable = { which = province_occitanism value = 0 }
+				set_province_flag = province_occitanism_active
+			}
+			every_province = {
+				limit = { culture_group = occitanocatala }
+				set_variable = { which = province_occitanism value = 100 }
+				set_province_flag = province_occitanism_active
+			}
+			# Initialisation is finished
+			set_global_flag = trobador_province_occitanism_initialised
+		}
+	}
+
+	option = {
+		name = "trobador_ok"		# OK
+	}
+}
+
+## Update regularly (not too much, the variable should only vary smoothly)
+country_event = {
+	id = trobador_province_occitanism.2
+	title = "trobador_province_occitanism_title"
+	desc = "trobador_province_occitanism_desc"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		has_global_flag = trobador_province_occitanism_initialised
+		ai = yes # this way the player will not have a useless message
+		had_global_flag = { flag = province_occitanism_updated days = 30 }
+	}
+
+	immediate = {
+		hidden_effect = {
+			# First fix discrepancies between culture and province_occitanism_active
+			every_province = {
+				limit = {  # happens when a province has just been converted
+					OR = {
+						culture = gascon
+						culture = aquitaine
+						culture = provencal
+						culture = occitain
+						culture = catalan
+					}
+					NOT = { has_province_flag = province_occitanism_active }
+				}
+				set_variable = { which = province_occitanism value = 0 }
+				if = {
+					limit = { owner = { faction_in_power = trobador_occitanist } }
+					change_variable = { which = province_occitanism value = 100 }
+				}
+				set_province_flag = province_occitanism_active
+			}
+			every_province = {
+				limit = {  # happens when a province has just been converted
+					culture_group = occitanocatala
+					NOT = { has_province_flag = province_occitanism_active }
+				}
+				set_variable = { which = province_occitanism value = 100 }
+				if = {
+					limit = { owner = { faction_in_power = trobador_french } }
+					change_variable = { which = province_occitanism value = -100 }
+				}
+				set_province_flag = province_occitanism_active
+			}
+			# Apply infinitesimal changes
+			every_province = {
+				limit = { 
+					has_province_flag = province_occitanism_active
+				}
+				if = {
+					limit = { owner = { culture_group = occitanocatala } }
+					change_variable = { which = province_occitanism value = +0.05 }
+				}
+				if = {
+					limit = { NOT = { owner = { culture_group = occitanocatala } } }
+					change_variable = { which = province_occitanism value = -0.05 }
+				}
+				if = {
+					limit = { owner = { faction_in_power = trobador_occitanist } }
+					change_variable = { which = province_occitanism value = +0.1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							owner = { faction_in_power = trobador_french }
+							AND = {
+								owned_by = FRA
+								OR = {
+									culture_group = french
+									culture = occitan
+								}
+							}
+							AND = {
+								owned_by = SPA
+								OR = {
+									culture_group = iberian
+									culture = catala
+								}
+							}
+						}
+					}
+					change_variable = { which = province_occitanism value = -0.1 }
+				}
+				if = {
+					limit = {
+						owner = { accepted_culture = PREV } # "accepted" actually means it is completely dominated and seen as regional folklore
+						OR = {
+							culture = occitan
+							culture = gascon
+							culture = aquitaine
+							culture = provencal
+							culture = occitain
+						}
+						owner = {
+							NOT = { primary_culture = occitan }
+							NOT = { primary_culture = gascon }
+							NOT = { primary_culture = aquitaine }
+							NOT = { primary_culture = provencal }
+							NOT = { primary_culture = occitain }
+						}
+					}
+					change_variable = { which = province_occitanism value = -0.1 }
+				}
+				if = {
+					limit = {
+						owner = { accepted_culture = catala }
+						OR = {
+							culture = catala
+							culture = catalan
+						}
+						owner = {
+							NOT = { primary_culture = catala }
+							NOT = { primary_culture = catalan }
+						}
+					}
+					change_variable = { which = province_occitanism value = -0.1 }
+				}
+				if = {
+					limit = { owner = { advisor = trobador } }
+					change_variable = { which = province_occitanism value = +0.05 }
+				}
+				if = {
+					limit = { owner = { trobador = 2 } }
+					change_variable = { which = province_occitanism value = +0.05 }
+				}
+			}
+			# Check the 50/50 rule
+			every_province = {
+				limit = {
+					check_variable = { which = province_occitanism value = 50 }
+					OR = {
+						culture = gascon
+						culture = aquitaine
+						culture = provencal
+						culture = occitain
+					}
+				}
+				change_culture = occitan
+				if = {
+					limit = { is_capital = yes }
+					owner = { change_primary_culture = occitan }
+				 }
+			}
+			every_province = {
+				limit = {
+					NOT = { check_variable = { which = province_occitanism value = 50 } }
+					culture = occitan
+				}
+				change_culture = occitain
+				if = {
+					limit = { is_capital = yes }
+					owner = { change_primary_culture = occitain }
+				 }
+			}
+			every_province = {
+				limit = {
+					check_variable = { which = province_occitanism value = 50 }
+					culture = catalan
+				}
+				change_culture = catala
+				if = {
+					limit = { is_capital = yes }
+					owner = { change_primary_culture = catala }
+				 }
+			}
+			every_province = {
+				limit = {
+					NOT = { check_variable = { which = province_occitanism value = 50 } }
+					culture = catala
+				}
+				change_culture = catalan
+				if = {
+					limit = { is_capital = yes }
+					owner = { change_primary_culture = catalan }
+				 }
+			}
+			# It's finished !
+			clr_global_flag = province_occitanism_updated # Resets the timer? Check!
+			set_global_flag = province_occitanism_updated
+		}
+	}
+
+	option = {
+		name = "trobador_ok"		# OK
+	}
+}
