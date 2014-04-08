@@ -9,6 +9,7 @@ country_decisions = {
 				primary_culture = provencal
 				primary_culture = occitain
 			}
+			NOT = { has_country_flag = gave_birth_occitanism }
 		}
 		allow = {
 			NOT = { has_opinion = { who = FRA value = 125 } }
@@ -16,12 +17,17 @@ country_decisions = {
 				faction_in_power = trobador_occitanist
 				AND = { # fallback in case of absent GUI for factions
 					has_factions = no
+					has_global_flag = trobador_factions_initialised
 					has_idea = paratge_traditions
 				}
 			}
+			capital_scope = { # mainly prints the variable so that we have an idea of what is happening
+				check_variable = { which = province_occitanism value = 20 }
+			}
 		}
 		effect = {
-			change_primary_culture = occitan
+			add_adm_power = -25
+			#change_primary_culture = occitan
 			every_owned_province = {
 				limit = {
 					OR = {
@@ -31,7 +37,8 @@ country_decisions = {
 						culture = occitain
 					}
 				}
-				change_culture = occitan
+				#change_culture = occitan
+				change_variable = { which = province_occitanism value = +40 }
 			}
 			FRA = {
 				add_opinion = {
@@ -41,6 +48,7 @@ country_decisions = {
 			}
 			add_faction_influence = { faction = trobador_occitanist influence = 10 }
 			add_prestige = 5
+			set_country_flag = gave_birth_occitanism
 		}
 		ai_will_do = {
 			factor = 0
@@ -51,6 +59,7 @@ country_decisions = {
 		major = yes
 		potential = {
 			primary_culture = occitan
+			NOT = { has_country_flag = assimilated_to_french_culture }
 		}
 		allow = {
 			exists = FRA
@@ -68,14 +77,19 @@ country_decisions = {
 				faction_in_power = trobador_french
 				has_opinion = { who = FRA value = 200 }
 			}
+			capital_scope = { # mainly prints the variable so that we have an idea of what is happening
+				NOT = { check_variable = { which = province_occitanism value = 80 } }
+			}
 		}
 		effect = {
-			change_primary_culture = occitain
+			add_adm_power = -10
+			#change_primary_culture = occitain
 			every_owned_province = {
 				limit = {
 					culture = occitan
 				}
-				change_culture = occitain
+				#change_culture = occitain
+				change_variable = { which = province_occitanism value = -40 }
 			}
 			FRA = {
 				add_opinion = {
@@ -85,6 +99,7 @@ country_decisions = {
 			}
 			add_faction_influence = { faction = trobador_french influence = 30 }
 			add_prestige = -10
+			set_country_flag = assimilated_to_french_culture
 		}
 		ai_will_do = {
 			factor = 0

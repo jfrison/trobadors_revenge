@@ -10,12 +10,13 @@ country_decisions = {
 				NOT = { has_opinion = { who = SPA value = 150 } }
 			}
 		effect = {
-			change_primary_culture = catala
+			#change_primary_culture = catala
 			every_owned_province = {
 				limit = {
 					culture = catalan
 				}
-				change_culture = catala
+				#change_culture = catala
+				change_variable = { which = province_occitanism value = +40 }
 			}
 			CAS = {
 				add_opinion = {
@@ -95,7 +96,13 @@ country_decisions = {
 					who = ROOT
 					modifier = opinion_pleased
 				}
-				add_faction_influence = { faction = trobador_occitanist influence  = 20 }
+				add_faction_influence = { faction = trobador_occitanist influence  = 10 }
+				add_faction_influence = { faction = trobador_aragonese influence  = 10 }
+				hidden_effect = {
+					every_owned_province = {
+						change_variable = { which = province_occitanism value = +10 }
+					}
+				}
 			}
 			set_country_flag = expressed_support_for_occitanism
 		}
@@ -105,6 +112,8 @@ country_decisions = {
 		potential = {
 			primary_culture = catala
 			NOT = { is_core = 201 }
+			NOT = { 201 = { owner = { is_subject_of = ROOT } } } # we don't want ARA to apply this to MJC !
+			NOT = { is_year = 1450 }
 		}
 		allow = {
 			prestige = 50
@@ -151,6 +160,7 @@ country_decisions = {
 			}
 		}
 		effect = {
+			add_adm_power = -25
 			culture_group_union = occitanocatala
 			add_prestige = 15
 		}

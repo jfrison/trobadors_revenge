@@ -98,4 +98,10 @@
  trobador_setup_1_desc: "We need to do some initialisation, sorry for this uninteresting message. "
  trobador_setup_2_title: "Welcome in Trobador's Revenge (with VeF)"
  trobador_setup_2_desc: "We need to do some VeF-only initialisation, sorry for this uninteresting message. "
+ trobador_province_occitanism_1_title: "Setting up Occitanism"
+ trobador_province_occitanism_1_desc: "We need to do some initialisation, sorry for this uninteresting message. "
+ trobador_province_occitanism_2_title: "Updating Occitanism"
+ trobador_province_occitanism_2_desc: "We need to update some variables, sorry for this uninteresting message. "
+ trobador_province_occitanism_3_title: "Cultural Shift"
+ trobador_province_occitanism_3_desc: "The definition of a culture can be very subjective, and depends on many political influences. This influence has recently reached the point where the culture in $PROVINCENAME$ is now considered to be $PROVINCECULTURE$. "
 

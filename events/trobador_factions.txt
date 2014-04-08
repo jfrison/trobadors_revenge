@@ -53,9 +53,9 @@ country_event = {
 	
 	immediate = {
 		hidden_effect = {
+			add_faction = trobador_french # first faction gains 100%
 			add_faction = trobador_occitanist
 			add_faction = trobador_republican
-			add_faction = trobador_french
 			add_faction = trobador_aragonese 
 			add_faction_influence = { # default
 				faction = trobador_french
@@ -113,6 +113,7 @@ country_event = {
 				}
 			}
 		}
+		set_global_flag = trobador_factions_initialised
 	}
 
 	option = {

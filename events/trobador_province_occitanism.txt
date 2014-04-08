@@ -16,6 +16,15 @@ country_event = {
 	trigger = {
 		NOT = { has_global_flag = trobador_province_occitanism_initialised }
 		ai = yes # this way the player will not have a useless message
+		has_global_flag = trobador_initialised # Not too early
+		OR = {
+			NOT = { has_global_flag = veritas_et_fortitudo }
+			has_global_flag = trobador_vef_initialised
+		}
+		OR = {
+			NOT = { has_global_flag = trobador_VeF_additional_content }
+			has_global_flag = trobador_VeFonly_initialised
+		}
 	}
 
 	immediate = {
@@ -30,16 +39,33 @@ country_event = {
 						culture = catalan
 					}
 				}
-				set_variable = { which = province_occitanism value = 0 }
+				set_variable = { which = province_occitanism value = 40 }
+				if = {
+					limit = { is_year = 1400 }
+					set_variable = { which = province_occitanism value = 30 }
+				}
+				if = {
+					limit = { is_year = 1500 }
+					set_variable = { which = province_occitanism value = 20 }
+				}
+				if = {
+					limit = { is_year = 1600 }
+					set_variable = { which = province_occitanism value = 10 }
+				}
+				if = {
+					limit = { is_year = 1700 }
+					set_variable = { which = province_occitanism value = 0 }
+				}
 				set_province_flag = province_occitanism_active
 			}
 			every_province = {
 				limit = { culture_group = occitanocatala }
-				set_variable = { which = province_occitanism value = 100 }
+				set_variable = { which = province_occitanism value = 60 }
 				set_province_flag = province_occitanism_active
 			}
 			# Initialisation is finished
 			set_global_flag = trobador_province_occitanism_initialised
+			set_global_flag = province_occitanism_updated # setup timer
 		}
 	}
 
@@ -51,8 +77,8 @@ country_event = {
 ## Update regularly (not too much, the variable should only vary smoothly)
 country_event = {
 	id = trobador_province_occitanism.2
-	title = "trobador_province_occitanism_title"
-	desc = "trobador_province_occitanism_desc"
+	title = "trobador_province_occitanism_2_title"
+	desc = "trobador_province_occitanism_2_desc"
 	picture = CULTURE_eventPicture
 
 	trigger = {
@@ -63,7 +89,58 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			# First fix discrepancies between culture and province_occitanism_active
+			# Setup some useful variables
+			every_province = {
+				limit = {
+					OR = {
+						culture = occitan
+						culture = gascon
+						culture = aquitaine
+						culture = provencal
+						culture = occitain
+						culture = catala
+						culture = catalan
+					}
+					owner = {
+						OR = {
+							primary_culture = occitan
+							primary_culture = gascon
+							primary_culture = aquitaine
+							primary_culture = provencal
+							primary_culture = occitain
+							primary_culture = catala
+							primary_culture = catalan
+						}
+					}
+				}
+				set_province_flag = occitanoid_owner
+			}
+			every_province = {
+				limit = {
+					OR = {
+						culture = occitan
+						culture = gascon
+						culture = aquitaine
+						culture = provencal
+						culture = occitain
+						culture = catala
+						culture = catalan
+					}
+					owner = {
+						NOT = { primary_culture = occitan }
+						NOT = { primary_culture = gascon }
+						NOT = { primary_culture = aquitaine }
+						NOT = { primary_culture = provencal }
+						NOT = { primary_culture = occitain }
+						NOT = { primary_culture = catala }
+						NOT = { primary_culture = catalan }
+					}
+				}
+				clr_province_flag = occitanoid_owner
+				set_province_flag = non_occitanoid_owner
+				# non_occitanoid_owner will to cleared by the event "integrating our brothers"
+			}
+			# Fix discrepancies between culture and province_occitanism_active
 			every_province = {
 				limit = {  # happens when a province has just been converted
 					OR = {
@@ -75,10 +152,18 @@ country_event = {
 					}
 					NOT = { has_province_flag = province_occitanism_active }
 				}
-				set_variable = { which = province_occitanism value = 0 }
+				set_variable = { which = province_occitanism value = 20 }
+				if = {
+					limit = { owner = { faction_in_power = trobador_french } }
+					set_variable = { which = province_occitanism value = 0 }
+				}
 				if = {
 					limit = { owner = { faction_in_power = trobador_occitanist } }
-					change_variable = { which = province_occitanism value = 100 }
+					set_variable = { which = province_occitanism value = 100 }
+				}
+				if = {
+					limit = { owner = { faction_in_power = trobador_aragonese } }
+					set_variable = { which = province_occitanism value = 60 }
 				}
 				set_province_flag = province_occitanism_active
 			}
@@ -87,10 +172,18 @@ country_event = {
 					culture_group = occitanocatala
 					NOT = { has_province_flag = province_occitanism_active }
 				}
-				set_variable = { which = province_occitanism value = 100 }
+				set_variable = { which = province_occitanism value = 60 }
 				if = {
 					limit = { owner = { faction_in_power = trobador_french } }
-					change_variable = { which = province_occitanism value = -100 }
+					set_variable = { which = province_occitanism value = 10 }
+				}
+				if = {
+					limit = { owner = { faction_in_power = trobador_occitanist } }
+					set_variable = { which = province_occitanism value = 100 }
+				}
+				if = {
+					limit = { owner = { faction_in_power = trobador_aragonese } }
+					set_variable = { which = province_occitanism value = 90 }
 				}
 				set_province_flag = province_occitanism_active
 			}
@@ -110,6 +203,30 @@ country_event = {
 				if = {
 					limit = { owner = { faction_in_power = trobador_occitanist } }
 					change_variable = { which = province_occitanism value = +0.1 }
+				}
+				if = {
+					limit = { 
+						owner = {
+							prestige = 40 
+							OR = {
+								culture_group = occitanocatala
+								faction_in_power = trobador_occitanist
+							}
+						} 
+					}
+					change_variable = { which = province_occitanism value = +0.05 }
+				}
+				if = {
+					limit = { 
+						owner = {
+							prestige = 80 
+							OR = {
+								culture_group = occitanocatala
+								faction_in_power = trobador_occitanist
+							}
+						} 
+					}
+					change_variable = { which = province_occitanism value = +0.05 }
 				}
 				if = {
 					limit = {
@@ -176,6 +293,45 @@ country_event = {
 					change_variable = { which = province_occitanism value = +0.05 }
 				}
 			}
+			# Spread this out
+			every_country = {
+				set_variable = { which = tot_province_occitanism value = 0 }
+				set_variable = { which = n_province_occitanism value = 0 }
+				every_owned_province = {
+					limit = { has_province_flag = province_occitanism_active }
+					change_variable = { which = tot_province_occitanism which = province_occitanism } # bad scope, won't work
+					PREV = { change_variable = { which = n_province_occitanism value = +1 } }
+				}
+				#FIXME: is not doing anything concrete
+			}
+			# Should I put diminishing returns? Decay should do just as good. 
+			# Decays to 50
+			every_province = {
+				limit = { has_province_flag = province_occitanism_active }
+				set_variable = { which = province_occitanism_diff which = province_occitanism }
+				change_variable = { which = province_occitanism_diff value = -50 }
+				divide_variable = { which = province_occitanism_diff value = 50 }
+				# province_occitanism_diff is now a number between -1 and 1
+				set_variable = { which = province_occitanism_decay which = province_occitanism_diff }
+				multiply_variable = { which = province_occitanism_decay which = province_occitanism_diff }
+				#multiply_variable = { which = province_occitanism_decay which = province_occitanism_diff }
+				if = {
+					limit = { check_variable = { which = province_occitanism_diff value = 0 } }
+					multiply_variable = { which = province_occitanism_decay value = -1 } # be careful about the sign if you change the power
+				}
+				# decay = +/-[(x-50)/50]^2 so that for instance for x=60 decay=-1/25 and for x=85.4 decay=-0.5
+				multiply_variable = { which = province_occitanism_decay value = 0.15 } # setup maximum decay
+				change_variable = { which = province_occitanism which = province_occitanism_decay }
+			}
+			# Limit to 0/100
+			every_province = {
+				limit = { NOT = { check_variable = { which = province_occitanism value = 0 } } }
+				set_variable = { which = province_occitanism value = 0 }
+			}
+			every_province = {
+				limit = { check_variable = { which = province_occitanism value = 100 } }
+				set_variable = { which = province_occitanism value = 100 }
+			}
 			# Check the 50/50 rule
 			every_province = {
 				limit = {
@@ -191,6 +347,7 @@ country_event = {
 				if = {
 					limit = { is_capital = yes }
 					owner = { change_primary_culture = occitan }
+					province_event = { id = trobador_province_occitanism.3 }
 				 }
 			}
 			every_province = {
@@ -202,6 +359,7 @@ country_event = {
 				if = {
 					limit = { is_capital = yes }
 					owner = { change_primary_culture = occitain }
+					province_event = { id = trobador_province_occitanism.3 }
 				 }
 			}
 			every_province = {
@@ -213,6 +371,7 @@ country_event = {
 				if = {
 					limit = { is_capital = yes }
 					owner = { change_primary_culture = catala }
+					province_event = { id = trobador_province_occitanism.3 }
 				 }
 			}
 			every_province = {
@@ -224,6 +383,7 @@ country_event = {
 				if = {
 					limit = { is_capital = yes }
 					owner = { change_primary_culture = catalan }
+					province_event = { id = trobador_province_occitanism.3 }
 				 }
 			}
 			# It's finished !
@@ -232,6 +392,23 @@ country_event = {
 		}
 	}
 
+	option = {
+		name = "trobador_ok"		# OK
+	}
+}
+
+province_event = { # Just a text to point out province conversion
+	id = trobador_province_occitanism.3
+	title = "trobador_province_occitanism_3_title"
+	desc = "trobador_province_occitanism_3_desc"
+	picture = CULTURE_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		always = yes
+	}
+	
 	option = {
 		name = "trobador_ok"		# OK
 	}

@@ -1,5 +1,7 @@
 namespace = occitanism_spreading
 
+# This is the top-bottom spreading, there should also be a bottom-up spreading from province_occitanism
+
 #########################
 ## Converting Countries
 
@@ -26,7 +28,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1
+		months = 6 # we don't want to have two in a row before province_occitanism get updated
 		modifier = {
 			factor = 10
 			has_country_flag = refused_occitanism
@@ -45,7 +47,22 @@ country_event = {
 
 	option = {
 		name = "occitanism_spreading_1_opta"		# Accept
-		change_primary_culture = occitan
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.5
+				is_subject_of = FRA
+			}
+			modifier = {
+				factor = 1.5
+				faction_influence = { faction = trobador_occitanist influence = 30 }
+			}
+			modifier = {
+				factor = 10
+				faction_in_power = trobador_occitanist
+			}
+		}
+		#change_primary_culture = occitan
 		every_owned_province = {
 			limit = {
 				OR = {
@@ -55,7 +72,8 @@ country_event = {
 					culture = occitain
 				}
 			}
-			change_culture = occitan
+			#change_culture = occitan
+			change_variable = { which = province_occitanism value = +40 }
 		}
 		FRA = {
 			add_opinion = {
@@ -64,20 +82,12 @@ country_event = {
 			}
 		}
 		add_faction_influence = { faction = trobador_occitanist influence = 25 }
-		ai_chance = {
-			factor = 1
-			modifier = {
-				factor = 2
-				faction_influence = { faction = trobador_occitanist influence = 30 }
-			}
-			modifier = {
-				factor = 100
-				faction_in_power = trobador_occitanist
-			}
-		}
 	}
 	option = {
 		name = "occitanism_spreading_1_optb"		# Refuse
+		ai_chance = {
+			factor = 1
+		}
 		every_country = {
 			limit = {
 				OR = {
@@ -89,6 +99,10 @@ country_event = {
 				who = ROOT
 				modifier = opinion_displeased
 			}
+		}
+		if = {
+			limit = { faction_in_power = trobador_occitanist }
+			add_stability = -1
 		}
 		add_faction_influence = { faction = trobador_occitanist influence = -25 }
 		set_country_flag = refused_occitanism
@@ -113,7 +127,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1
+		months = 6
 		modifier = {
 			factor = 100
 			has_country_flag = refused_occitanism
@@ -122,12 +136,13 @@ country_event = {
 
 	option = {
 		name = "occitanism_spreading_2_opta"		# Accept
-		change_primary_culture = catala
+		#change_primary_culture = catala
 		every_owned_province = {
 			limit = {
 				culture = catalan
 			}
-			change_culture = catala
+			#change_culture = catala
+			change_variable = { which = province_occitanism value = +40 }
 		}
 		CAS = {
 			add_opinion = {
@@ -185,7 +200,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1
+		months = 6
 		modifier = {
 			factor = 100
 			has_country_flag = refused_occitanism
@@ -194,16 +209,31 @@ country_event = {
 
 	option = {
 		name = "occitanism_spreading_3_opta"		# Let them go
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				OR = {
+					tag = FRA
+					tag = RFR
+					tag = SPA
+				}
+			}
+		}
 		every_owned_province = {
 			limit = {
 				culture = catalan
 			}
-			change_culture = catala
+			#change_culture = catala
+			change_variable = { which = province_occitanism value = +40 }
 		}
 		add_prestige = -15
 	}
 	option = {
 		name = "occitanism_spreading_3_optb"		# Oppose to this separatism
+		ai_chance = {
+			factor = 1
+		}
 		every_country = {
 			limit = {
 				OR = {
@@ -256,7 +286,7 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1
+		months = 6
 		modifier = {
 			factor = 100
 			has_country_flag = refused_occitanism
@@ -265,6 +295,17 @@ country_event = {
 
 	option = {
 		name = "occitanism_spreading_4_opta"		# Let them go
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+				OR = {
+					tag = FRA
+					tag = RFR
+					tag = SPA
+				}
+			}
+		}
 		every_owned_province = {
 			limit = {
 				OR = {
@@ -274,12 +315,16 @@ country_event = {
 					culture = provencal
 				}
 			}
-			change_culture = occitan
+			#change_culture = occitan
+			change_variable = { which = province_occitanism value = +40 }
 		}
 		add_prestige = -15
 	}
 	option = {
 		name = "occitanism_spreading_4_optb"		# Oppose to this separatism
+		ai_chance = {
+			factor = 1
+		}
 		every_country = {
 			limit = {
 				OR = {
@@ -323,6 +368,7 @@ country_event = {
 			primary_culture = catala
 		}
 		any_owned_province = {
+			has_province_flag = non_occitanoid_owner # has to be previous owner
 			OR = {
 				culture = gascon
 				culture = aquitaine
@@ -346,7 +392,9 @@ country_event = {
 					culture = provencal
 				}
 			}
-			change_culture = occitan
+			#change_culture = occitan
+			change_variable = { which = province_occitanism value = +40 }
+			clr_province_flag = non_occitanoid_owner
 		}
 	}
 }
@@ -363,6 +411,7 @@ country_event = {
 			primary_culture = catala
 		}
 		any_owned_province = {
+			has_province_flag = non_occitanoid_owner # has to be previous owner
 			culture = catalan
 		}
 	}
@@ -376,7 +425,9 @@ country_event = {
 			limit = {
 				culture = catalan
 			}
-			change_culture = catala
+			#change_culture = catala
+			change_variable = { which = province_occitanism value = +40 }
+			clr_province_flag = non_occitanoid_owner
 		}
 	}
 }
@@ -397,6 +448,12 @@ country_event = {
 		}
 		NOT = {primary_culture = occitan}
 		NOT = {primary_culture = catala}
+		any_owned_province = {
+			OR = {
+				culture = occitan
+				culture = catala
+			}
+		}
 	}
 	mean_time_to_happen = {
 		months = 1200
@@ -442,14 +499,16 @@ country_event = {
 			limit = {
 				culture = occitan
 			}
-			change_culture = occitain
+			#change_culture = occitain
+			change_variable = { which = province_occitanism value = -40 }
 			add_nationalism = 10
 		}
 		every_owned_province = {
 			limit = {
 				culture = catala
 			}
-			change_culture = catalan
+			#change_culture = catalan
+			change_variable = { which = province_occitanism value = -40 }
 			add_nationalism = 10
 		}
 	}
@@ -473,9 +532,12 @@ country_event = {
 
 	trigger = {
 		primary_culture = occitan
-		any_province = {
+		any_province = { # it's not a unification decision by us but an irresistible global movement
 			NOT = { owned_by = ROOT }
 			culture = occitan
+		}
+		any_province = {
+			check_variable = { which = province_occitanism value = 90 }
 		}
 	}
 	mean_time_to_happen = { 

@@ -22,6 +22,9 @@
 * When Marseille is released it is typically vassal of a vassal, then it cannot make war for independence  (this is a problem of the vanilla game, but maybe I should try to bypass this issue)
 * refusing occitanism should have more influence on countries with occitan faction in power
 
+== Misc ==
+* Most of my code has not taken RFR into account! It probably means the mod can't handle late dates for the moment.
+
 == TODO ==
 * TODO: icons for modifiers
 * TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this
@@ -29,4 +32,4 @@
 * TODO: "Yo mamma" between rival (sirventes either written by you -hoping you are gifted- or by your trobador -if you have one-) => event launched by a sirventes in "discussing with your trobador" ? => probably included in Jocs Florals
 * TODO: finish ruler-trobador, finish repub (non-city) events (use event revolution.1?)
 * add modifiers "Academia dau Gay Saber" and so on, to use with Jocs Florals
-
+* "oil stain" for province_occitanism
