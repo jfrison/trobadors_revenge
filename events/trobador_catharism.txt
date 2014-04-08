@@ -1,0 +1,306 @@
+namespace = trobador_catharism
+
+# Spread of Protestantism has been used as a basis
+province_event = {
+	id = trobador_catharism.1
+	title = "trobador_catharism_1_title"
+	desc = "trobador_catharism_1_desc"
+	picture = RELIGION_eventPicture
+
+	trigger = {
+		is_religion_enabled = cathar
+		religion = catholic
+		NOT = { religion_years = { cathar = 200 } } # VeF already starts 100y laters, but currently only VeF can have cathars
+		NOT = { is_year = 1500 }
+		NOT = { 
+			province_id = 118 # Rome
+			owner = { government = papal_government } 
+		}
+	}
+	mean_time_to_happen = {
+		months = 6000
+
+		# Positive modifiers
+		modifier = {
+			factor = 0.5
+			culture_group = occitanocatala
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				culture = occitain
+				culture = gascon
+				culture = provencal
+				culture = aquitaine
+				culture = catalan
+			}
+		}
+		modifier = {
+			factor = 0.9
+			culture_group = latin # a few got into Italy after the Crusade
+		}
+		modifier = {
+			factor = 0.75
+			reform_desire = 0.50 # we don't need much desire, we're in early game
+		}
+		modifier = {
+			factor = 0.75
+			reform_desire = 0.75
+		}
+		modifier = {
+			factor = 0.75
+			reform_desire = 0.95
+		}
+		modifier = {
+			factor = 0.75
+			reform_desire = 1.2
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				NOT = {
+					adm = 3
+				}
+				religion = catholic
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				adm = 5
+				religion = cathar
+			}
+		}		
+		modifier = {
+			factor = 0.20 # locality is important here, catharism is not as widespread as protestantism
+			any_neighbor_province = {
+				religion = cathar
+			}
+		}
+		modifier = {
+			factor = 0.25
+			any_neighbor_province = {
+				religion = cathar
+				culture_group = ROOT
+			}
+		}
+		modifier = {
+			factor = 0.50
+			owner = {
+				any_owned_province = {
+					religion = cathar
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			has_province_modifier = "heresy"
+		}
+		modifier = {
+			factor = 0.75
+			owner = { 
+				religion = catholic 
+				cathar = 0 
+			} # Tolerance to cathars
+		}
+		modifier = {
+			factor = 0.8
+			owner = { 
+				religion = catholic 
+				cathar = 1
+			} # Tolerance is something quite important here, more than for protestantism
+		}
+		modifier = {
+			factor = 0.8
+			owner = { 
+				religion = catholic 
+				cathar = 2
+			} 
+		}
+		modifier = {
+			factor = 0.8
+			owner = { 
+				religion = catholic 
+				cathar = 3
+			} 
+		}
+		modifier = {
+			factor = 0.8
+			owner = { 
+				religion = cathar
+				has_idea_group = religious_ideas
+			}
+		}
+		modifier = {
+			factor = 0.8
+			owner = { 
+				religion = cathar
+				is_defender_of_faith = yes
+			}
+		}
+		modifier = {
+			factor = 0.9
+			owner = {
+				has_idea_group = innovativeness_ideas
+			}
+		}
+		modifier = {
+			factor = 0.95
+			owner = {
+				has_country_modifier = the_statue_in_restraint_of_appeals
+			}
+		}
+
+		# Negative modifiers
+
+		modifier = {
+			factor = 3.0
+			NOT = { region = occitania }
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { region = occitania }
+			NOT = { region = spanish_region }
+			NOT = { region = italian_region }
+			NOT = { region = western_balkans }
+		}
+		modifier = {
+			factor = 1.25
+			religion_years = { cathar = 106 }
+		}
+		modifier = {
+			factor = 1.5
+			religion_years = { cathar = 112 }
+		}
+		modifier = {
+			factor = 2.0
+			religion_years = { cathar = 120 }
+		}
+		modifier = {
+			factor = 1.5
+			religion_years = { cathar = 130 }
+		}
+		modifier = {
+			factor = 1.5
+			religion_years = { cathar = 140 }
+		}
+		modifier = {
+			factor = 2.0
+			religion_years = { cathar = 150 }
+		}
+		modifier = {
+			factor = 4
+			religion_years = { cathar = 175 }
+		}
+		modifier = {
+			factor = 3
+			owner = { 
+				NOT = { religion = cathar }
+				has_idea_group = religious_ideas
+			}
+		}
+		modifier = {
+			factor = 5
+			owner = { 
+				NOT = { religion = cathar }
+				is_defender_of_faith = yes
+			}
+		}
+		modifier = {
+			factor = 2.0
+			owner = { 
+				NOT = { religion = cathar }
+				OR = {
+					government = theocratic_government 
+					AND = {
+						has_global_flag = veritas_et_fortitudo
+						government = archbishopric
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { owner = { religion_group = christian } }
+		}
+		modifier = {
+			factor = 4.0
+			owner = { government = papal_government }
+		}
+		modifier = {
+			factor = 4.0
+			owner = { religion = reformed }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cardinals = 1 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cardinals = 2 }
+		}
+		modifier = {
+			factor = 1.1
+			owner = { num_of_cardinals = 3 }
+		}		
+		modifier = {
+			factor = 2.0
+			owner = { is_papal_controller = yes }
+		}		
+		modifier = {
+			factor = 1.25
+			exists = PAP
+			owner = { has_opinion = { who = PAP value = 0 } }
+		}		
+		modifier = {
+			factor = 1.5
+			exists = PAP
+			owner = { has_opinion = { who = PAP value = 50 } }
+		}		
+		modifier = {
+			factor = 2.0
+			exists = PAP
+			owner = { has_opinion = { who = PAP value = 100 } }
+		}		
+		modifier = {
+			factor = 4.0
+			is_overseas = yes
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { continent = europe }
+		}
+		modifier = {
+			factor = 6.0
+			owner = { has_country_modifier = counter_reformation }
+		}
+		modifier = {
+			factor = 2.0
+			owner = { faction_in_power = trobador_french } # Crusaders... 
+		}
+		modifier = {
+			factor = 1.25
+			owner = { faction_in_power = trobador_aragonese } # Not our Crusaders but still Crusaders... 
+		}
+		modifier = {
+			factor = 1.25
+			owner = {
+				is_subject = yes
+				overlord = {
+					religion = catholic
+					NOT = { cathar = -2 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "trobador_ok"
+		change_religion = cathar
+		add_province_modifier = {
+			name = "religious_zeal_at_conv"
+			duration = 9000
+		}
+	}
+}
+

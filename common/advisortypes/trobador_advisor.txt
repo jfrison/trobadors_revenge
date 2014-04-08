@@ -64,3 +64,63 @@ trobador = {
 }
 
 
+######################################################
+mahometan_scholar = {
+	monarch_power = ADM
+	
+	# Bonus
+	tolerance_heathen = 2
+	tolerance_heretic = 1
+	technology_cost = -0.025
+	
+	chance = {
+		factor = 0 # Desactivated. Can I get him a foreign name? Otherwise I need to create him via events. Or just remove it. 
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { continent = europe }
+				NOT = { owner = { religion_group = christian } }
+				NOT = { owner = { sunni = 0 } } # no way if we're intolerant
+				NOT = { any_neighbor_province = { is_sea = yes } }
+				owner = {
+					NOT = {
+						any_country = {
+							religion_group = muslim
+							has_opinion = { who = PREV value = 0 }
+						}
+					}
+				}
+				NOT = {
+					owner = {
+						any_active_trade_node = {
+							continent = africa
+							any_neighbor_province = {
+								religion_group = muslim
+								culture_group = turko_semitic
+							}
+						}
+					}
+				}
+				owner = { tag = PAP }
+			}
+		}
+		modifier = {
+			factor = 1.25
+			owner = { sunni = 1 }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { sunni = 2 }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { sunni = 3 }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { sunni = 4 }
+		}
+	}
+}
+
+

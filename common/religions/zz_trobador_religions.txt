@@ -50,6 +50,7 @@ christian = {
 		heretic = { BOGOMILIST WALDENSIAN FRATICELLI LOLLARD SOCINIAN }
 		
 		papacy = no
+		date = 1208.1.1 # Let's choose the year of the Crusade to make it simple 
 	}
 
 }

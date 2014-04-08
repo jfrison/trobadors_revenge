@@ -1,6 +1,7 @@
 ﻿== Graphics == 
 * I thought having my own event pictures would make sure I don't have "VeF vs Vanilla" conflicts but that's actually worse: the pictures need to have different sizes if VeF is here, which doesn't look possible in a single mod. 
 * No gfx for cathars if you don't have "VeF additional content" (for the moment it means that anyway you shouldn't have cathars). Having all the religion icons in a single dds file make it difficult to have something portable. Right now it doesn't deserve a "Vanilla additional content" mod or "Dei Gratia additional mod". 
+* find a picture for mahometan scholar
 
 == History ==
 * The alternative scenario should turn Provence into Anjou, since it doesn't have any province in Province any more. Use MEIOU country ?
@@ -20,16 +21,17 @@
 * The Aragon intervention in coalition with French vassals might need some opinion/attitude boost (or maybe a proper coalition) to make sure the alliance is not broken. This require more testing. 
 * "Working on trobar" should be a ruler modifier, not country modifier, but then duration doesn't work
 * When Marseille is released it is typically vassal of a vassal, then it cannot make war for independence  (this is a problem of the vanilla game, but maybe I should try to bypass this issue)
-* refusing occitanism should have more influence on countries with occitan faction in power
 
 == Misc ==
 * Most of my code has not taken RFR into account! It probably means the mod can't handle late dates for the moment.
 
 == TODO ==
 * TODO: icons for modifiers
-* TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this
-* TODO: allow catharism to spread, as a mix between protestantism and occitanism
+* TODO: I think the King René(Renat) was a bit of a trobador, they are problably some nice events to do about this. Or just put the trobador modifier in history files. 
 * TODO: "Yo mamma" between rival (sirventes either written by you -hoping you are gifted- or by your trobador -if you have one-) => event launched by a sirventes in "discussing with your trobador" ? => probably included in Jocs Florals
 * TODO: finish ruler-trobador, finish repub (non-city) events (use event revolution.1?)
 * add modifiers "Academia dau Gay Saber" and so on, to use with Jocs Florals
+* write general events about mediterranean exchanges and tolerance to take advantage of the high tolerance of Occitans? Or should I leave that to VeF/DeiGratia/etc?
 * "oil stain" for province_occitanism
+* advisor_exists + NOT={is_advisor_employed} can tell whether there is a trobador to hire? Then change trobador mission
+* border_distance for mahometan scholar? And find a solution for the name issue. 
