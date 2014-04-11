@@ -318,6 +318,10 @@ country_event = {
 					}
 				}
 				multiply_variable = { which = tot_province_occitanism value = 0.05 } # effect of each neighbouring province
+				if = {
+					limit = { has_global_flag = veritas_et_fortitudo }
+					multiply_variable = { which = tot_province_occitanism value = 2 } # more provinces means slower diffusion
+				}
 				change_variable = { which = province_occitanism which = tot_province_occitanism }
 			}
 			# Should I put diminishing returns? Decay should do just as good. 

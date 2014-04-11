@@ -34,5 +34,5 @@
 * add modifiers "Academia dau Gay Saber" and so on, to use with Jocs Florals
 * write general events about mediterranean exchanges and tolerance to take advantage of the high tolerance of Occitans? Or should I leave that to VeF/DeiGratia/etc?
 * "oil stain" for province_occitanism
-* advisor_exists + NOT={is_advisor_employed} can tell whether there is a trobador to hire? Then change trobador mission
-* border_distance for mahometan scholar? And find a solution for the name issue. 
+* Find a solution for the name issue of mahometan_scholar (+female trob). 
+* Write events when advisor=mahometan_scholar (wait until I have solved the name issue)

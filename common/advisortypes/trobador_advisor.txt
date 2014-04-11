@@ -69,9 +69,9 @@ mahometan_scholar = {
 	monarch_power = ADM
 	
 	# Bonus
+	technology_cost = -0.04
 	tolerance_heathen = 2
 	tolerance_heretic = 1
-	technology_cost = -0.025
 	
 	chance = {
 		factor = 0 # Desactivated. Can I get him a foreign name? Otherwise I need to create him via events. Or just remove it. 
@@ -81,7 +81,7 @@ mahometan_scholar = {
 				NOT = { continent = europe }
 				NOT = { owner = { religion_group = christian } }
 				NOT = { owner = { sunni = 0 } } # no way if we're intolerant
-				NOT = { any_neighbor_province = { is_sea = yes } }
+				has_port = no
 				owner = {
 					NOT = {
 						any_country = {
@@ -119,6 +119,55 @@ mahometan_scholar = {
 		modifier = {
 			factor = 1.25
 			owner = { sunni = 4 }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { has_idea_group = innovativeness_ideas }
+		}
+		modifier = {
+			factor = 0.80
+			owner = { has_idea_group = religious_ideas }
+		}
+		modifier = {
+			factor = 1.50
+			has_building = college # both Vanilla and Vef have college+university, although they are very different
+		}
+		modifier = {
+			factor = 1.50
+			has_building = university
+		}
+		modifier = {
+			factor = 0.80
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						border_distance = { who = PREV distance = 100 }
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.65
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						border_distance = { who = PREV distance = 200 }
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.50
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						border_distance = { who = PREV distance = 300 }
+					}
+				}
+			}
 		}
 	}
 }

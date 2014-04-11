@@ -1,0 +1,176 @@
+namespace = trobador_mahometan
+
+province_event = {
+	id = trobador_mahometan.1
+	title = "trobador_mahometan_1_title"
+	desc = "trobador_mahometan_1_desc"
+	picture = INVENTION_eventPicture
+	
+	trigger = {
+		continent = europe
+		has_port = yes
+		NOT = { is_year = 1500 }
+		owner = {
+			religion_group = christian
+			sunni = 0 # no way if we're intolerant
+			NOT = { tag = PAP }
+		}
+		NOT = { advisor = mahometan_scholar } # is it possible to check that I'm not spamming unemployed scholars?
+	}
+
+	mean_time_to_happen = { 
+		months = 1200
+		modifier = {
+			factor = 10
+			owner = {
+				NOT = {
+					any_active_trade_node = {
+						continent = africa
+						any_neighbor_province = {
+							religion_group = muslim
+							culture_group = turko_semitic
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 10
+			owner = {
+				NOT = {
+					any_country = {
+						religion_group = muslim
+						culture_group = turko_semitic
+						has_opinion = { who = PREV value = 0 }
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				any_country = {
+					religion_group = muslim
+					culture_group = turko_semitic
+					has_opinion = { who = PREV value = 50 }
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = {
+				any_country = {
+					religion_group = muslim
+					culture_group = turko_semitic
+					has_opinion = { who = PREV value = 150 }
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			owner = { sunni = 1 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { sunni = 2 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { sunni = 3 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { sunni = 4 }
+		}
+		modifier = {
+			factor = 0.75
+			owner = { has_idea_group = innovativeness_ideas }
+		}
+		modifier = {
+			factor = 1.25
+			owner = { has_idea_group = religious_ideas }
+		}
+		modifier = {
+			factor = 0.5
+			has_building = college # both Vanilla and Vef have college+university, although they are very different
+		}
+		modifier = {
+			factor = 0.5
+			has_building = university
+		}
+		modifier = {
+			factor = 1.2
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						NOT = { culture_group = turko_semitic }
+						border_distance = { who = PREV distance = 100 }
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.6
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						NOT = { culture_group = turko_semitic }
+						border_distance = { who = PREV distance = 200 }
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2.0
+			owner = {
+				all_country = {
+					OR = {
+						NOT = { religion_group = muslim }
+						NOT = { culture_group = turko_semitic }
+						border_distance = { who = PREV distance = 300 }
+					}
+				}
+			}
+		}
+	}
+		
+	immediate = {
+	}
+
+	option = {
+		name = "trobador_mahometan_1_opta"		# welcome him
+		custom_tooltip = "mahometan_scholar_appear"
+		hidden_effect = {
+			random_list = { # dirty hack to avoid getting a latin name on an arab
+				1 = {
+					define_advisor = {
+						type = mahometan_scholar
+						name = "Abdallah"
+					}
+				}
+				1 = {
+					define_advisor = {
+						type = mahometan_scholar
+						name = "Yussuf"
+					}
+				}
+				1 = {
+					define_advisor = {
+						type = mahometan_scholar
+						name = "Muammad"
+					}
+				}
+				# continue the list
+				# add flags to avoid getting two times the same? 
+			}
+		}
+	}
+	
+	option = {
+		name = "trobador_mahometan_1_optb"	
+		owner = { add_papal_influence = 5 }
+	}
+
+}

@@ -106,4 +106,8 @@
  trobador_province_occitanism_3_desc: "The definition of a culture can be very subjective, and depends on many political influences. This influence has recently reached the point where the culture in $PROVINCENAME$ is now considered to be $PROVINCECULTURE$. "
  trobador_catharism_1_title: "Catharism is spreading"
  trobador_catharism_1_desc: "Although the Crusade have dealt a serious blow to catharism, it is now spreading again. Feeling the need for a Church closer to the spirit of the first Christians, many people in $PROVINCENAME$ are now taking their inspiration from those so-called Good Christians. "
+ trobador_mahometan_1_title: "A Mahometan scholar arrived"
+ trobador_mahometan_1_desc: "A renowned Mahometan scholar just arrived in our country, carrying lots of greek works with him and eager to exchange his knowledge. "
+ trobador_mahometan_1_opta: "Welcome him to the court"
+ trobador_mahometan_1_optb: "Ignore him and his pagan theories"
 

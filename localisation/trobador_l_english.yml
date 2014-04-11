@@ -15,6 +15,8 @@
  MPL_ADJ: "Montpelliérain"
  trobador: "Trobador"
  trobador_desc: "A skilled poet and musician revisiting this glorious tradition of Occitania. "
+ mahometan_scholar: "Mahometan Scholar"
+ mahometan_scholar_desc: "A Mahometan scholar carrying lots of greek works with him and eager to exchange his knowledge. "
  free_occitan_province: "Free Occitan province"
  free_occitan_province_desc: "We must give back their freedom to all the Occitans oppressed by foreigners. "
  cb_free_occitan_mission: "Free Occitan province"
@@ -29,4 +31,5 @@
  sub_prov_oc_40: "Substract 10 points of local strength to Occitanism"
  add_prov_oc_40_all: "Add 10 points of local strength to Occitanism in every province"
  sub_prov_oc_40_all: "Substract 10 points of local strength to Occitanism in every province"
+ mahometan_scholar_appear: "A Mahometan scholar will appear in your court as an advisor"
 

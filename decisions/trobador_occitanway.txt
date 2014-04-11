@@ -165,7 +165,7 @@ country_decisions = {
 					NOT = { faction_in_power = trobador_occitanist } 
 					NOT = { faction_in_power = trobador_french } 
 				}
-				add_adm_power = -100
+				add_adm_power = -100 # The cost should probably be cheaper in Vanilla as factions influence is 10per10 (50per5 with VeF)
 			}
 			if = {
 				limit = { faction_in_power = trobador_french }
