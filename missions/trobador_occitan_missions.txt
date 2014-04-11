@@ -508,8 +508,10 @@ conquer_occitania = {
 		add_prestige = 5
 		add_faction_influence = { faction = trobador_aragonese influence = 5 }
 		add_faction_influence = { faction = trobador_occitanist influence = 10 }
-		every_target_province = {
-			clr_province_flag = claimed_by_occitan_mission
+		hidden_effect = {
+			every_target_province = {
+				clr_province_flag = claimed_by_occitan_mission
+			}
 		}
 	}
 }

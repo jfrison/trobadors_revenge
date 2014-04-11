@@ -294,15 +294,31 @@ country_event = {
 				}
 			}
 			# Spread this out
-			every_country = {
+			every_province = { # Ideally I'ld just like to have dx_i/dt = alpha \sum_{j neighbouring i} (x_j-x_i) but the engine has many bugs
+				limit = { has_province_flag = province_occitanism_active }
 				set_variable = { which = tot_province_occitanism value = 0 }
-				set_variable = { which = n_province_occitanism value = 0 }
-				every_owned_province = {
+				every_neighbor_province = {
 					limit = { has_province_flag = province_occitanism_active }
-					change_variable = { which = tot_province_occitanism which = province_occitanism } # bad scope, won't work
-					PREV = { change_variable = { which = n_province_occitanism value = +1 } }
+					if = { 
+						#FIXME: we should have 0 when equals
+						#limit = { check_variable = { which = province_occitanism which = PREV } } # bug !
+						limit = {
+							check_variable = { which = province_occitanism value = 50 }
+							PREV = { NOT = { check_variable = { which = province_occitanism value = 50 } } }
+						}
+						PREV = { change_variable = { which = tot_province_occitanism value = +1 } } # 1 more province has higher occitanism
+					}
+					if = {
+						#limit = { NOT = { check_variable = { which = province_occitanism which = PREV } } }
+						limit = {
+							NOT = { check_variable = { which = province_occitanism value = 50 } }
+							PREV = { check_variable = { which = province_occitanism value = 50 } }
+						}
+						PREV = { change_variable = { which = tot_province_occitanism value = -1 } } # 1 more province has lower occitanism
+					}
 				}
-				#FIXME: is not doing anything concrete
+				multiply_variable = { which = tot_province_occitanism value = 0.05 } # effect of each neighbouring province
+				change_variable = { which = province_occitanism which = tot_province_occitanism }
 			}
 			# Should I put diminishing returns? Decay should do just as good. 
 			# Decays to 50

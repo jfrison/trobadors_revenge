@@ -24,6 +24,24 @@ country_decisions = {
 			capital_scope = { # mainly prints the variable so that we have an idea of what is happening
 				check_variable = { which = province_occitanism value = 20 }
 			}
+			#capital_scope = { # just print for debug
+			#	check_variable = { which = tot_province_occitanism value = 0 }
+			#}
+			#capital_scope = {
+			#	202 = { check_variable = { which = province_occitanism which = PREV } }
+			#}
+			#102 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#194 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#195 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#196 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#197 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#198 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#199 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#200 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#201 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#202 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#203 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
+			#204 = { check_variable = { which = tot_province_occitanism value = 0 } check_variable = { which = province_occitanism value = 0 } }
 		}
 		effect = {
 			add_adm_power = -25
