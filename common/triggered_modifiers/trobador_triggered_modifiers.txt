@@ -83,13 +83,14 @@ occitanist_faction_rising1 = {
 	
 	trigger = {
 		has_faction = trobador_occitanist # Validator doesn't like, I found no example, but N++ highlights and it works
-		OR = {
-			primary_culture = occitan # always false but it indicates the condition to skip directly to next level
-			any_country = {
-				primary_culture = occitan
-				has_opinion = { who = ROOT value = 100 }
-			}
-		}
+		#OR = {
+		#	primary_culture = occitan # always false but it indicates the condition to skip directly to next level
+		#	any_country = {
+		#		primary_culture = occitan
+		#		has_opinion = { who = ROOT value = 100 }
+		#	}
+		#}
+		 capital_scope = { check_variable = { which = province_occitanism value = 33 } }
 	}
 	
 	trobador_occitanist_influence = 0.05

@@ -21,4 +21,12 @@
  cb_free_occitan_mission_desc: "We must give back their freedom to all the Occitans oppressed by foreigners. "
  trobador_ok: "OK"
  cathar: "Cathar"
+ add_prov_oc_10: "Add 10 points of local strength to Occitanism"
+ sub_prov_oc_10: "Substract 10 points of local strength to Occitanism"
+ add_prov_oc_10_all: "Add 10 points of local strength to Occitanism in every province"
+ sub_prov_oc_10_all: "Substract 10 points of local strength to Occitanism in every province"
+ add_prov_oc_40: "Add 10 points of local strength to Occitanism"
+ sub_prov_oc_40: "Substract 10 points of local strength to Occitanism"
+ add_prov_oc_40_all: "Add 10 points of local strength to Occitanism in every province"
+ sub_prov_oc_40_all: "Substract 10 points of local strength to Occitanism in every province"
 

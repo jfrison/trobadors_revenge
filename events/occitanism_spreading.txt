@@ -75,6 +75,7 @@ country_event = {
 			#change_culture = occitan
 			change_variable = { which = province_occitanism value = +40 }
 		}
+		custom_tooltip = "add_prov_oc_40"
 		FRA = {
 			add_opinion = {
 				who = ROOT
@@ -144,6 +145,7 @@ country_event = {
 			#change_culture = catala
 			change_variable = { which = province_occitanism value = +40 }
 		}
+		custom_tooltip = "add_prov_oc_40"
 		CAS = {
 			add_opinion = {
 				who = ROOT
@@ -227,6 +229,7 @@ country_event = {
 			#change_culture = catala
 			change_variable = { which = province_occitanism value = +40 }
 		}
+		custom_tooltip = "add_prov_oc_40"
 		add_prestige = -15
 	}
 	option = {
@@ -318,6 +321,7 @@ country_event = {
 			#change_culture = occitan
 			change_variable = { which = province_occitanism value = +40 }
 		}
+		custom_tooltip = "add_prov_oc_40"
 		add_prestige = -15
 	}
 	option = {
@@ -396,6 +400,7 @@ country_event = {
 			change_variable = { which = province_occitanism value = +40 }
 			clr_province_flag = non_occitanoid_owner
 		}
+		custom_tooltip = "add_prov_oc_40"
 	}
 }
 
@@ -429,6 +434,7 @@ country_event = {
 			change_variable = { which = province_occitanism value = +40 }
 			clr_province_flag = non_occitanoid_owner
 		}
+		custom_tooltip = "add_prov_oc_40"
 	}
 }
 
@@ -511,6 +517,7 @@ country_event = {
 			change_variable = { which = province_occitanism value = -40 }
 			add_nationalism = 10
 		}
+		custom_tooltip = "sub_prov_oc_40"
 	}
 
 	option = {

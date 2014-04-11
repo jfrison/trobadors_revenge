@@ -10,6 +10,7 @@
 == Factions ==
 * GUI has to be hard-coded, so that if for some reason some unexpected non-occitan country appears (for instance because of Provence releasing Anjou after converting the provinces, or because of another mod adding a small French vassal), there will be no GUI, therefore the event will desactivate factions (we could still keep them for AI but that's dangerous)
 * Republican faction is a bit tasteless for the moment. 
+* If we're oscillating around the limit between two "faction rising" modifiers we spend some time with no modifier at all. This is a bit hard to optimise, so how much annoying is it? It looks like the modifier conditions are evaluated once for every modifiers to activate some and then once again for every modifier to desactivate those which need to be desactivated, rather than doing activation/desactivation in the same time. 
 
 == Advisors ==
 * Could we have female trobairitz? The presence of women was a bit of a specificity of the trobar. 

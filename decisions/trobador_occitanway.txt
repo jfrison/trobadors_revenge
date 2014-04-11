@@ -12,6 +12,7 @@ country_decisions = {
 			NOT = { has_country_flag = gave_birth_occitanism }
 		}
 		allow = {
+			adm_power = 25
 			NOT = { has_opinion = { who = FRA value = 125 } }
 			OR = {
 				faction_in_power = trobador_occitanist
@@ -58,6 +59,7 @@ country_decisions = {
 				#change_culture = occitan
 				change_variable = { which = province_occitanism value = +40 }
 			}
+			custom_tooltip = "add_prov_oc_40_all"
 			FRA = {
 				add_opinion = {
 					who = ROOT
@@ -109,6 +111,7 @@ country_decisions = {
 				#change_culture = occitain
 				change_variable = { which = province_occitanism value = -40 }
 			}
+			custom_tooltip = "sub_prov_oc_40_all"
 			FRA = {
 				add_opinion = {
 					who = ROOT
@@ -124,5 +127,120 @@ country_decisions = {
 		}
 	}
 
+	sponsor_occitan_language = { # Complete this with a "Villers-Cotteret" approach? Give sthg particular to FOI/NAV?
+		potential = {
+			OR = {
+				primary_culture = gascon
+				primary_culture = aquitaine
+				primary_culture = provencal
+				primary_culture = occitain
+				primary_culture = occitan
+			}
+			OR = {
+				NOT = { has_country_flag = language_sponsored }
+				had_country_flag = { flag = language_sponsored days = 365 }
+			}
+		}
+		allow = {
+			capital_scope = { # mainly prints the variable so that we have an idea of what is happening
+				check_variable = { which = province_occitanism value = 20 }
+			}
+			adm_power = 50
+			OR = {
+				faction_in_power = trobador_occitanist
+				adm_power = 100
+			}
+			OR = {
+				NOT = { faction_in_power = trobador_french }
+				adm_power = 200
+			}
+		}
+		effect = {
+			if = { # If the elites are pro-French our monarch will have a hard time to change their mind, if they're Occitanist that's easy
+				limit = { faction_in_power = trobador_occitanist }
+				add_adm_power = -50
+			}
+			if = {
+				limit = {
+					NOT = { faction_in_power = trobador_occitanist } 
+					NOT = { faction_in_power = trobador_french } 
+				}
+				add_adm_power = -100
+			}
+			if = {
+				limit = { faction_in_power = trobador_french }
+				add_adm_power = -200
+			}
+			every_owned_province = {
+				limit = { has_province_flag = province_occitanism_active }
+				change_variable = { which = province_occitanism value = +10 }
+			}
+			custom_tooltip = "add_prov_oc_10_all"
+			add_faction_influence = { faction = trobador_occitanist influence = 5 }
+			clr_country_flag = language_sponsored # reset timer
+			set_country_flag = language_sponsored
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	sponsor_french_language = {
+		potential = {
+			OR = {
+				primary_culture = gascon
+				primary_culture = aquitaine
+				primary_culture = provencal
+				primary_culture = occitain
+				primary_culture = occitan
+			}
+			OR = {
+				NOT = { has_country_flag = language_sponsored }
+				had_country_flag = { flag = language_sponsored days = 365 }
+			}
+		}
+		allow = {
+			capital_scope = { # mainly prints the variable so that we have an idea of what is happening
+				NOT = { check_variable = { which = province_occitanism value = 80 } }
+			}
+			adm_power = 50
+			OR = {
+				faction_in_power = trobador_french
+				adm_power = 100
+			}
+			OR = {
+				NOT = { faction_in_power = trobador_occitanist }
+				adm_power = 200
+			}
+		}
+		effect = {
+			if = { # If the elites are Occitanist our monarch will have a hard time to change their mind, if they're pro-French that's easy
+				limit = { faction_in_power = trobador_french }
+				add_adm_power = -50
+			}
+			if = {
+				limit = {
+					NOT = { faction_in_power = trobador_occitanist } 
+					NOT = { faction_in_power = trobador_french } 
+				}
+				add_adm_power = -100
+			}
+			if = {
+				limit = { faction_in_power = trobador_occitanist }
+				add_adm_power = -200
+			}
+			every_owned_province = {
+				limit = { has_province_flag = province_occitanism_active }
+				change_variable = { which = province_occitanism value = -10 }
+			}
+			custom_tooltip = "sub_prov_oc_10_all"
+			add_faction_influence = { faction = trobador_french influence = 5 }
+			clr_country_flag = language_sponsored # reset timer
+			set_country_flag = language_sponsored
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
 }

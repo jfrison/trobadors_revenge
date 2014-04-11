@@ -2,7 +2,7 @@
 # It will concerns catalans too, but I need to add catalans factions too (pro-Castille pro-Reconquista and mediterranean traders?) 
 trobador_occitanist =
 {
-	monarch_power = ADM
+	monarch_power = DIP
 	modifier = 
 	{
 		unjustified_demands = 0.25 # our objective is to free our nation, not to oppress others
