@@ -1093,11 +1093,13 @@ control_strategic_province = {
 				}
 			}
 		}
-		owner = { 
+		FROM = { 
 			OR = {
 				government = republic
 				faction_in_power = trobador_republican
 			}
+		}
+		owner = { 
 			NOT = { truce_with = FROM } 
 			NOT = { is_subject_of = FROM }
 			NOT = { alliance_with = FROM }
@@ -1165,7 +1167,7 @@ control_strategic_province = {
 		}
 		modifier = {
 			factor = 1.25
-			owner = { government = republic }
+			owner = { government = republic } # competiting republics
 		}
 		modifier = {
 			factor = 1.5

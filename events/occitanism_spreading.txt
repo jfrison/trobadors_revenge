@@ -25,6 +25,7 @@ country_event = {
 			}
 			has_opinion = { who = ROOT value = 50 }
 		}
+		NOT = { has_country_flag = accepted_occitanism } # We just want to give an initial boost, not preventing the country from turning back to French
 	}
 
 	mean_time_to_happen = {
@@ -83,6 +84,7 @@ country_event = {
 			}
 		}
 		add_faction_influence = { faction = trobador_occitanist influence = 25 }
+		set_country_flag = accepted_occitanism
 	}
 	option = {
 		name = "occitanism_spreading_1_optb"		# Refuse
@@ -125,6 +127,7 @@ country_event = {
 			}
 			has_opinion = { who = ROOT value = 50 }
 		}
+		NOT = { has_country_flag = accepted_occitanism }
 	}
 
 	mean_time_to_happen = {
@@ -158,6 +161,7 @@ country_event = {
 				modifier = opinion_mildly_displeased
 			}
 		}
+		set_country_flag = accepted_occitanism
 	}
 	option = {
 		name = "occitanism_spreading_2_optb"		# Refuse
@@ -231,6 +235,7 @@ country_event = {
 		}
 		custom_tooltip = "add_prov_oc_40"
 		add_prestige = -15
+		set_country_flag = accepted_occitanism
 	}
 	option = {
 		name = "occitanism_spreading_3_optb"		# Oppose to this separatism
@@ -323,6 +328,7 @@ country_event = {
 		}
 		custom_tooltip = "add_prov_oc_40"
 		add_prestige = -15
+		set_country_flag = accepted_occitanism
 	}
 	option = {
 		name = "occitanism_spreading_4_optb"		# Oppose to this separatism
@@ -544,7 +550,7 @@ country_event = {
 			culture = occitan
 		}
 		any_province = {
-			check_variable = { which = province_occitanism value = 90 }
+			check_variable = { which = province_occitanism value = 80 }
 		}
 	}
 	mean_time_to_happen = { 

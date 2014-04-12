@@ -373,3 +373,30 @@ country_event = {
 	}
 
 }
+
+# For some reason our culture have changed, so occitanism is out of the table
+country_event = {
+	id = trobador_faction.9
+	title = "trobador_faction_9_title"
+	desc = "trobador_faction_9_desc"
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		has_factions = yes
+		has_faction = trobador_occitanist
+		NOT= { primary_culture = gascon }
+		NOT= { primary_culture = aquitaine }
+		NOT= { primary_culture = occitain }
+		NOT= { primary_culture = provencal }
+		NOT= { primary_culture = occitan }
+	}
+	
+	option = {
+		name = "trobador_ok"
+		remove_faction = trobador_occitanist
+		remove_faction = trobador_aragonese
+		remove_faction = trobador_french
+		remove_faction = trobador_republican
+	}
+
+}
