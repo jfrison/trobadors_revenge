@@ -15,7 +15,7 @@ province_event = {
 			sunni = 0 # no way if we're intolerant
 			NOT = { tag = PAP }
 		}
-		NOT = { advisor = mahometan_scholar } # is it possible to check that I'm not spamming unemployed scholars?
+		NOT = { owner = { advisor = mahometan_scholar } } # is it possible to check that I'm not spamming unemployed scholars?
 	}
 
 	mean_time_to_happen = { 
@@ -143,27 +143,35 @@ province_event = {
 		name = "trobador_mahometan_1_opta"		# welcome him
 		custom_tooltip = "mahometan_scholar_appear"
 		hidden_effect = {
-			random_list = { # dirty hack to avoid getting a latin name on an arab
-				1 = {
-					define_advisor = {
-						type = mahometan_scholar
-						name = "Abdallah"
+			owner = { # it still work in province scope, without "location", but the Validator doesn't agree
+				random_list = { # dirty hack to avoid getting a latin name on an arab, I'm not satisfied by this solution
+					1 = {
+						define_advisor = {
+							type = mahometan_scholar
+							name = "Abdallah"
+							#location = ROOT # ROOT not recognised by the Validator
+							skill = 1 # looks like it worked without that, bu the Validator doesn't agree
+						}
 					}
-				}
-				1 = {
-					define_advisor = {
-						type = mahometan_scholar
-						name = "Yussuf"
+					1 = {
+						define_advisor = {
+							type = mahometan_scholar
+							name = "Yussuf"
+							#location = ROOT
+							skill = 1
+						}
 					}
-				}
-				1 = {
-					define_advisor = {
-						type = mahometan_scholar
-						name = "Muammad"
+					1 = {
+						define_advisor = {
+							type = mahometan_scholar
+							name = "Muammad"
+							#location = ROOT
+							skill = 2
+						}
 					}
+					# continue the list
+					# add flags to avoid getting two times the same? 
 				}
-				# continue the list
-				# add flags to avoid getting two times the same? 
 			}
 		}
 	}

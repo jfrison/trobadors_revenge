@@ -36,3 +36,10 @@
 * "oil stain" for province_occitanism
 * Find a solution for the name issue of mahometan_scholar (+female trob). 
 * Write events when advisor=mahometan_scholar (wait until I have solved the name issue)
+* upbringing event
+* Ligue => MRS2 & SAV/PRO
+* NAV oc
+* more on Aragon
+* small event occitanism or prestige (for FRA mainly)
+* add relevant exceptions for OCC on revolt_triggers
+* adapt la guerra dels segadors to the existence of the culture "catala": right now everything is broken ! (even though a catala ARA would make SPA unlikely, and vice-versa)

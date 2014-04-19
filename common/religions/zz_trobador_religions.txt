@@ -2,11 +2,13 @@
 # warning: no GFX if you don't have the VeF additional content ! (however it shouldn't crash, just stay blank)
 christian = {
 
-	catholic = {
-		allowed_conversion = {
-			cathar
-		}
-	}
+# The conversion should only be possible under precise conditions, but I've not been able to limit that
+# I'll probably write a conversion event instead
+#	catholic = {
+#		allowed_conversion = {
+#			cathar
+#		}
+#	}
 	
 	cathar = {
 		color = { 0.5 0.5 0.7 }
@@ -28,22 +30,42 @@ christian = {
 		}
 		
 		on_convert = {
-			change_religion = cathar
-			add_stability = -3
+			if = { # is there a way to make the button disappear instead of having a button doing nothing?
+			       #FIXME: it looks like an implicit change_religion is done anyway, and I just don't get the stability hit
+				limit = {
+					NOT = { has_global_flag = dei_gratia } # This content is not made to work with DG
+					has_global_flag = trobador_alternative_scenario # For the moment let's desactivate it outside alt-history
+					#has_global_flag = trobador_VeF_additional_content # only if we can print the icons
+					any_owned_province = { religion = cathar }
+				}
+				change_religion = cathar
+				if = { 
+					limit = { 
+						dominant_religion = cathar
+					}
+					add_stability = -1
+				}
+				if = { 
+					limit = { 
+						NOT = { dominant_religion = cathar }
+					}
+					add_stability = -5
+				}
 
-			remove_country_modifier = counter_reformation
-			remove_country_modifier = the_statue_in_restraint_of_appeals
-			remove_country_modifier = the_declaration_of_indulgence
-			remove_country_modifier = de_heretico_comburendo
-			if = {
-				limit = { has_global_flag = veritas_et_fortitudo }
-				remove_country_modifier = the_suffragan_bishop_act
-			}
-			if = {
-				limit = { NOT = { has_global_flag = veritas_et_fortitudo } }
-				remove_country_modifier = bavarian_jesuits
-				remove_country_modifier = the_societas_jesu
-				remove_country_modifier = the_conventicle_act
+				remove_country_modifier = counter_reformation
+				remove_country_modifier = the_statue_in_restraint_of_appeals
+				remove_country_modifier = the_declaration_of_indulgence
+				remove_country_modifier = de_heretico_comburendo
+				if = {
+					limit = { has_global_flag = veritas_et_fortitudo }
+					remove_country_modifier = the_suffragan_bishop_act
+				}
+				if = {
+					limit = { NOT = { has_global_flag = veritas_et_fortitudo } }
+					remove_country_modifier = bavarian_jesuits
+					remove_country_modifier = the_societas_jesu
+					remove_country_modifier = the_conventicle_act
+				}
 			}
 		}
 		

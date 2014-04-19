@@ -1,0 +1,528 @@
+namespace = trobador_segadors
+
+# Below is the vanilla stuff we use as a basis we don't want to modify (although I've been able to overwrite the event)
+#
+#namespace = flavor_spa
+# Olivares
+#		NOT = { advisor_exists = 675 }
+#			type = statesman
+#			name = "Conde-Duque Olivares"
+#			skill = 3
+# The Iberian Revolts
+# country_event = {
+	# id = flavor_spa.3169
+	# title = "flavor_spa.EVTNAME3169"
+	# desc = "flavor_spa.EVTDESC3169"
+	# picture = ANGRY_MOB_eventPicture
+
+	# trigger = {
+		# NOT = { has_country_flag = SPA_had_event_3169 }
+		# is_year = 1600
+		# NOT = { is_year = 1700 }
+		# OR = {
+			# AND = {
+				# tag = CAS
+				# NOT = { exists = SPA }
+			# }
+			# tag = SPA
+		# }
+		# num_of_cities = 4
+		# NOT = { primary_culture = catalan }
+		# any_owned_province = {
+			# culture = catalan
+		# }
+	# }
+
+	# mean_time_to_happen = {
+		# months = 2000
+		# modifier = {
+			# factor = 0.95
+			# NOT = { stability = 1 }
+		# }
+		# modifier = {
+			# factor = 0.95
+			# NOT = { stability = 0 }
+		# }
+		# modifier = {
+			# factor = 0.95
+			# NOT = { stability = -1 }
+		# }
+		# modifier = {
+			# factor = 0.95
+			# NOT = { stability = -2 }
+		# }
+		# modifier = {
+			# factor = 0.95
+			# is_at_war = yes
+		# }
+		# modifier = {
+			# factor = 0.95
+			# war_with = FRA
+		# }
+		# modifier = {
+			# factor = 0.95
+			# war_exhaustion = 3
+		# }
+		# modifier = {
+			# factor = 0.95
+			# war_exhaustion = 5
+		# }
+		# modifier = {
+			# factor = 0.95
+			# war_exhaustion = 10
+		# }
+		# modifier = {
+			# factor = 0.85
+			# war_exhaustion = 15
+		# }
+		# modifier = {
+			# factor = 0.75
+			# war_exhaustion = 20
+		# }
+	# }
+	
+	# immediate = {
+		# set_country_flag = SPA_had_event_3169
+	# }
+
+	# option = {		# Put it down!
+		# name = "flavor_spa.EVTOPTA3169"
+		# ai_chance = {
+			# factor = 90
+			# modifier = {
+				# factor = 0
+				# NOT = { stability = -1 }
+			# }
+		# }
+		# add_stability = -1
+		# if = {
+			# limit = {
+				# any_owned_province = {
+					# culture = catalan
+					# any_neighbor_province = {
+						# owned_by = FRA
+					# }
+				# }
+			# }
+			# every_owned_province = {
+				# limit = {
+					# culture = catalan
+					# NOT = {
+						# any_neighbor_province = {
+							# culture = ROOT
+						# }
+					# }
+				# }
+				# spawn_rebels = {
+					# type = nationalist_rebels
+					# size = 2
+					# friend = FRA
+				# }
+				# set_province_flag = catalan_revolt
+			# }
+			# every_owned_province = {
+				# limit = {
+					# culture = catalan
+					# NOT = { has_province_flag = catalan_revolt }
+				# }
+				# spawn_rebels = {
+					# type = nationalist_rebels
+					# size = 1
+					# friend = FRA
+				# }
+			# }
+		# }
+		# if = {
+			# limit = {
+				# NOT = {
+					# any_owned_province = {
+						# culture = catalan
+						# any_neighbor_province = {
+							# owned_by = FRA
+						# }
+					# }
+				# }
+			# }
+			# every_owned_province = {
+				# limit = {
+					# culture = catalan
+					# NOT = {
+						# any_neighbor_province = {
+							# culture = ROOT
+						# }
+					# }
+				# }
+				# spawn_rebels = {
+					# type = nationalist_rebels
+					# size = 2
+				# }
+				# set_province_flag = catalan_revolt
+			# }
+			# every_owned_province = {
+				# limit = {
+					# culture = catalan
+					# NOT = { has_province_flag = catalan_revolt }
+				# }
+				# spawn_rebels = {
+					# type = nationalist_rebels
+					# size = 1
+				# }
+			# }
+		# }
+		# hidden_effect = {
+			# every_owned_province = {
+				# clr_province_flag = catalan_revolt
+			# }
+		# }
+	# }
+	# option = {		# Appease them!
+		# name = "flavor_spa.EVTOPTB3169"
+		# ai_chance = {
+			# factor = 10
+			# modifier = {
+				# factor = 0
+				# stability = 1
+			# }
+		# }
+		# add_stability = 1
+		# every_owned_province = {
+			# limit = {
+				# culture = catalan
+			# }
+			# add_province_modifier = {
+				# name = local_autonomy
+				# duration = 3650
+			# }
+		# }
+	# }
+# }
+
+country_event = {
+	id = trobador_segadors.1
+	title = "trobador_segadors_1_title"
+	desc = "trobador_segadors_1_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		tag = FRA
+		NOT = { has_global_flag = trobador_segadors_begun }
+		OR = {
+			SPA = { has_country_flag = SPA_had_event_3169 }
+			CAS = { has_country_flag = SPA_had_event_3169 }
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_global_flag = trobador_segadors_begun
+			if = {
+				limit = {
+					any_country = {
+						OR = {
+							tag = SPA
+							tag = CAS
+						}
+						has_spawned_rebels = nationalist_rebels # the best thing would be having our own kind of rebels, but it will suppose rewriting the vanilla event
+						all_owned_province = { NOT = { has_province_modifier = local_autonomy } }
+					}
+				}
+				set_country_flag = trobador_segadors_revolted
+			}
+			if = {
+				limit = { NOT = { has_country_flag = trobador_segadors_revolted } } # It's already over
+				set_global_flag = trobador_segadors_end
+			}
+			if = { # initialise what will come out of the independence
+				limit = { NOT = { exists = CAT } }
+				CAT = {
+					change_government = noble_republic 
+					define_ruler = {
+						name = "Pau Claris"
+						dynasty = "Claris"
+						DIP = 5			
+						ADM = 5
+						MIL = 5
+						#	attach_leader = ""
+					}
+				}
+			}
+		}
+	}
+	
+	option = {		# Give them our full support
+		name = "trobador_segadors_1_opta"
+		trigger = {
+			any_owned_province = {
+				any_neighbor_province = {
+					culture = catalan
+					OR = {
+						owned_by = SPA
+						owned_by = CAS
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 0
+				is_at_war = yes
+				NOT = { war_score = -25 }
+			}
+			modifier = {
+				factor = 0.5
+				num_of_loans = 1
+			}
+			modifier = {
+				factor = 0.2
+				num_of_loans = 3
+			}
+		}
+		set_country_flag = trobador_segadors_fullsupport
+		add_yearly_manpower = -0.75
+		add_years_of_income = -0.25
+		random_province = {
+			limit = {
+				culture = catalan
+				OR = {
+					owned_by = SPA
+					owned_by = CAS
+				}
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+				friend = FRA
+				#leader = ""
+			}
+			change_siege = 20
+		}
+		if = {
+			limit = { exists = SPA }
+			declare_war = SPA
+			SPA = { add_war_exhaustion = 1 }
+		}
+		if = {
+			limit = { NOT = { exists = SPA } }
+			declare_war = CAS 
+			CAS = { add_war_exhaustion = 1 }
+		}
+		#declare_war_with_cb = {
+		#	who = 
+		#	casus_belli = 
+		#}
+	}
+		
+	option = {		# Support them cautiously
+		name = "trobador_segadors_1_optb"
+
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0.5
+				num_of_loans = 1
+			}
+			modifier = {
+				factor = 0.2
+				num_of_loans = 3
+			}
+		}
+
+		set_country_flag = trobador_segadors_cautioussupport
+		add_yearly_manpower = -0.25
+		add_years_of_income = -0.25
+		#add_casus_belli = {	
+		#	target = 
+		#	type = 	
+		#	months = 1825
+		#}
+	}
+	option = {		# Do not get involved
+		name = "trobador_segadors_1_optc"
+
+		ai_chance = {
+			factor = 10
+		}
+		add_prestige = -10
+
+		set_country_flag = trobador_segadors_nosupport
+	}
+
+}
+
+# Rebellion failed
+country_event = {
+	id = trobador_segadors.2
+	title = "trobador_segadors_2_title"
+	desc = "trobador_segadors_2_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = CAS
+				NOT = { exists = SPA }
+			}
+			tag = SPA
+		}
+		has_global_flag = trobador_segadors_begun
+		NOT = { has_global_flag = trobador_segadors_end }
+		NOT = { has_spawned_rebels = nationalist_rebels }
+	}
+	
+	immediate = {
+		set_global_flag = trobador_segadors_end
+	}
+
+	option = {
+		name = "trobador_ok"
+		add_country_modifier = { 
+			name = "centralization_modifier" # Corts dissolved and so on
+			duration = 7300
+		}
+	}
+
+}
+
+# Rebellion succeeded
+country_event = {
+	id = trobador_segadors.3
+	title = "trobador_segadors_3_title"
+	desc = "trobador_segadors_3_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = CAS
+				NOT = { exists = SPA }
+			}
+			tag = SPA
+		}
+		has_global_flag = trobador_segadors_begun
+		NOT = { has_global_flag = trobador_segadors_end }
+		NOT = {
+			any_owned_province = { culture = catalan } # We've lost all of it to CAT (ARA?) or FRA
+		}
+	}
+	
+	immediate = {
+		set_global_flag = trobador_segadors_end
+	}
+
+	option = {
+		name = "trobador_ok"
+		if = {
+			limit = {
+				exists = FRA
+				exists = CAT # this is most likely true at this stage, except if we got some weird situation (however it will contain all the catalan countries)
+				CAT = { is_subject = no }
+				NOT = { FRA = { has_country_flag = trobador_segadors_nosupport } } # here is the genuine criterion
+			}
+			FRA = { country_event = { id =  trobador_segadors.4 } }
+		}
+	}
+
+}
+
+# just keeping FRA in the loop, but we could allow her to refuse
+country_event = {
+	id = trobador_segadors.4
+	title = "trobador_segadors_4_title"
+	desc = "trobador_segadors_4_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = FRA
+	}
+
+	option = {
+		name = "trobador_ok"
+		if = {
+			limit = {
+				exists = CAT # this is most likely true at this stage, except if we got some weird situation
+				CAT = { is_subject = no } # is a revolted vassal considered as a vassal?
+			}
+			vassalize = CAT # still do this if France signed a peace treaty during this time? Note that anyway France will go back to war, and annexing CAT won't be possible
+			CAT = {
+				every_owned_province = {
+					remove_claim = FRA
+				}
+			}
+		}
+	}
+
+}
+	
+# Situation frozen, France will try to get a peace with Catalunya Nord or whatever she control
+country_event = {
+	id = trobador_segadors.5
+	title = "trobador_segadors_5_title"
+	desc = "trobador_segadors_5_desc"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = CAS
+				NOT = { exists = SPA }
+			}
+			tag = SPA
+		}
+		has_global_flag = trobador_segadors_begun
+		NOT = { has_global_flag = trobador_segadors_end }
+		war_with = FRA
+	}
+
+	mean_time_to_happen = {
+		months = 48
+		modifier = {
+			factor = 0.50
+			197 = { controlled_by = FRA }
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { stability = 0 }
+		}
+		modifier = {
+			factor = 0.8
+			NOT = { stability = -1 }
+		}
+		modifier = {
+			factor = 0.75
+			war_exhaustion = 5
+		}
+		modifier = {
+			factor = 0.75
+			war_exhaustion = 7.5
+		}
+		modifier = {
+			factor = 0.75
+			war_exhaustion = 10
+		}
+		modifier = {
+			factor = 0.9
+			is_at_war = yes
+			war_score = -10
+			NOT = { war_score = 10 }
+		}
+	}
+	
+	immediate = {
+		set_global_flag = trobador_segadors_end
+	}
+
+	option = {
+		name = "trobador_ok"
+		add_war_exhaustion = 1
+		FRA = { add_war_exhaustion = 1 }
+		197 = { add_claim = FRA } # Roussillon
+		every_owned_province = {
+			limit = { controlled_by = FRA }
+			add_claim = FRA
+		}
+	}
+
+}
