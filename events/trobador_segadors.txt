@@ -204,6 +204,7 @@ country_event = {
 	picture = ANGRY_MOB_eventPicture
 
 	trigger = {
+		always = no # Switch off this draft for the moment
 		tag = FRA
 		NOT = { has_global_flag = trobador_segadors_begun }
 		OR = {
@@ -231,20 +232,6 @@ country_event = {
 			if = {
 				limit = { NOT = { has_country_flag = trobador_segadors_revolted } } # It's already over
 				set_global_flag = trobador_segadors_end
-			}
-			if = { # initialise what will come out of the independence
-				limit = { NOT = { exists = CAT } }
-				CAT = {
-					change_government = noble_republic 
-					define_ruler = {
-						name = "Pau Claris"
-						dynasty = "Claris"
-						DIP = 5			
-						ADM = 5
-						MIL = 5
-						#	attach_leader = ""
-					}
-				}
 			}
 		}
 	}
@@ -408,6 +395,20 @@ country_event = {
 	
 	immediate = {
 		set_global_flag = trobador_segadors_end
+		if = { # we should check that it is the country the rebels freed ; and also check for partial liberation
+			limit = { NOT = { exists = CAT } }
+			CAT = {
+				change_government = noble_republic 
+				define_ruler = {
+					name = "Pau Claris"
+					dynasty = "Claris"
+					DIP = 5			
+					ADM = 5
+					MIL = 5
+					#	attach_leader = ""
+				}
+			}
+		}
 	}
 
 	option = {
