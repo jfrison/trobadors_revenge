@@ -43,7 +43,7 @@ occitan_ideas = {
 		naval_maintenance_modifier = -0.1
 	}
 	foral_laws = {
-		global_revolt_risk = -1
+		global_unrest = -1
 		republican_tradition = 0.005
 	}
 	occitan_renaissance = {

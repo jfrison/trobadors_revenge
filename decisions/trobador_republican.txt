@@ -27,7 +27,7 @@ country_decisions = {
 					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 365 } }
 					NOT = { owner = { government = republic } }
 				}
-				add_revolt_risk = 10
+				add_unrest = 10
 				nationalist_rebels = 3
 			}
 			every_owned_province = {
@@ -37,7 +37,7 @@ country_decisions = {
 					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 1825 } }
 					NOT = { owner = { government = republic } }
 				}
-				add_revolt_risk = 10
+				add_unrest = 10
 				nationalist_rebels = 2
 			}
 			every_owned_province = {
@@ -47,7 +47,7 @@ country_decisions = {
 					NOT = { had_province_flag = { flag = city_autonomy_timer  days = 3650 } }
 					NOT = { owner = { government = republic } }
 				}
-				add_revolt_risk = 5
+				add_unrest = 5
 				nationalist_rebels = 1
 			}
 			every_owned_province = {
@@ -56,7 +56,7 @@ country_decisions = {
 					had_province_flag = { flag = city_autonomy_timer  days = 3650 }
 					NOT = { owner = { government = republic } }
 				}
-				add_revolt_risk = 2
+				add_unrest = 2
 			}
 			every_owned_province = {
 				remove_province_modifier = autonomous_city

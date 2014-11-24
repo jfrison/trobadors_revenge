@@ -34,19 +34,19 @@ country_event = {
 				NOT = { exists = TLN }
 				NOT = { 2020 = { is_core = TLN } }
 				owns = 2020
-				2020 = { revolt_risk = 1.0 } # We use this to give an advantage to the historical Republic of Marseille against the non-historical ones
+				2020 = { unrest = 1.0 } # We use this to give an advantage to the historical Republic of Marseille against the non-historical ones
 			}
 			AND = {
 				NOT = { exists = NCE }
 				NOT = { 102 = { is_core = NCE } }
 				owns = 102
-				102 = { revolt_risk = 0.1 } # Nice has never been a Republic but it did try to get some autonomy
+				102 = { unrest = 0.1 } # Nice has never been a Republic but it did try to get some autonomy
 			}
 			AND = {
 				NOT = { exists = MPL }
 				NOT = { 200 = { is_core = MPL } }
 				owns = 200
-				200 = { revolt_risk = 1.0 }
+				200 = { unrest = 1.0 }
 			}
 		} 
 	}
@@ -102,22 +102,22 @@ country_event = {
 		modifier = {
 			factor = 0.5
 			owns = 2019 # Marseille
-			2019 = { revolt_risk = 2 }
+			2019 = { unrest = 2 }
 		}
 		modifier = {
 			factor = 0.75
 			owns = 2020
-			2020 = { revolt_risk = 3 }
+			2020 = { unrest = 3 }
 		}
 		modifier = {
 			factor = 0.75
 			owns = 200
-			200 = { revolt_risk = 3 }
+			200 = { unrest = 3 }
 		}
 		modifier = {
 			factor = 0.75
 			owns = 102
-			102 = { revolt_risk = 3 }
+			102 = { unrest = 3 }
 		}
 
 		modifier = {
@@ -196,7 +196,7 @@ country_event = {
 			limit = { 
 				102 = {
 					owned_by = ROOT
-					revolt_risk = 0.1
+					unrest = 0.1
 					}
 				}
 			release_vassal = NCE
@@ -205,7 +205,7 @@ country_event = {
 			limit = {
 				2020 = { 
 					owned_by = ROOT
-					revolt_risk = 1.0 
+					unrest = 1.0 
 				}
 			}
 			release_vassal = TLN
@@ -214,7 +214,7 @@ country_event = {
 			limit = {
 				200 = {
 					owned_by = ROOT
-					revolt_risk = 1.0 
+					unrest = 1.0 
 				}
 			}
 			release_vassal = MPL
@@ -248,7 +248,7 @@ country_event = {
 				}
 				OR = {
 					is_core = MRS
-					revolt_risk = 0.1
+					unrest = 0.1
 				}
 			}
 			add_province_modifier = { name = "autonomous_city" duration = -1 } 
@@ -352,11 +352,11 @@ province_event = {
 		
 		modifier = {
 			factor = 2
-			NOT = { revolt_risk = 0.1 }
+			NOT = { unrest = 0.1 }
 		}
 		modifier = {
 			factor = 0.5
-			revolt_risk = 1
+			unrest = 1
 		}
 		modifier = {
 			factor = 0.5

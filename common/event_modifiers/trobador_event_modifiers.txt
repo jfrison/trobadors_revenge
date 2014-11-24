@@ -1,6 +1,6 @@
 ## Trobador seducing the queen
 executed_trobador = {
-	global_revolt_risk = -10
+	global_unrest = -10
 	stability_cost_modifier = 0.30
 }
 
@@ -27,7 +27,7 @@ gifted_trobador = {
 famous_trobador = {
 	prestige = 1.5
 	diplomatic_reputation = 1
-	global_revolt_risk = -0.5
+	global_unrest = -0.5
 	heir_chance = 0.5
 	trobador_occitanist_influence = 0.15
 }
@@ -35,7 +35,7 @@ famous_trobador = {
 legendary_trobador = {
 	prestige = 2
 	diplomatic_reputation = 2
-	global_revolt_risk = -1
+	global_unrest = -1
 	heir_chance = 1
 	trobador_occitanist_influence = 0.20
 }
@@ -63,18 +63,18 @@ autonomous_city = {
 	possible_mercenaries = 0.5 # I think it's global and it should cumulate, to be checked
 	local_ship_cost = -0.10
 	ship_recruit_speed = -0.1
-	local_revolt_risk = -5
+	local_unrest = -5
 	local_defensiveness = 0.1
 	global_missionary_strength = -0.02
 }
 
 city_rights_restricted = {
-	local_revolt_risk = 10
+	local_unrest = 10
 }
 
 ## Special modifier for Marseille
 
 untameable_city = {
-	local_revolt_risk = 2
+	local_unrest = 2
 	trobador_republican_influence = 0.05
 }

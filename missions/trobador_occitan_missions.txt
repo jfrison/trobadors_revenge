@@ -1017,7 +1017,7 @@ restore_occitan_independence = {
 						culture = aquitaine
 						culture = gascon
 					}
-					revolt_risk = 0.1
+					unrest = 0.1
 				}
 			}
 		}

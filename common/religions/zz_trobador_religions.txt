@@ -17,6 +17,9 @@ christian = {
 			protestant
 			catholic
 		}
+		allowed_center_conversion = {
+			catholic
+		}
 
 		province = {
 			local_missionary_strength = 0.02 # Cathars are known to be ridiculously easy to spot
